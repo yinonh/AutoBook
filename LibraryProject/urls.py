@@ -19,5 +19,6 @@ from book_catalog import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='homepage')
+    path('', views.home, name='homepage'),
+    path('Simple/', views.simple, name="simple"),
 ]
