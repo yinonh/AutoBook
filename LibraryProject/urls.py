@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from book_catalog import views
 from django.conf.urls.static import static
 
@@ -24,8 +24,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='homepage'),
     path('Simple/', views.simple, name="simple"),
-    path('BookCataloge/', views.bookcataloge, name="bookcataloge"),
+    path('book_cataloge/',include('book_catalog.urls')),
     path('Contact/',views.contact,name="contact"),
     path('Filtered/',views.filteredbooks,name="filteredbooks"),
+
 ]
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

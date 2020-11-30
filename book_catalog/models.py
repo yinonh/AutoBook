@@ -4,7 +4,7 @@ class Book (models.Model):
     book_id = models.IntegerField()
     name = models.CharField(max_length=50)
     author_name = models.CharField(max_length=50)
-    summary = models.CharField(max_length=300)
+    summary = models.TextField(max_length=500)
     image = models.ImageField(upload_to='book_catalog/images')
     #user_queue =
     available = models.BooleanField(default=True)
@@ -21,7 +21,7 @@ class Book (models.Model):
         ('Thriller','Thriller'),('Science fiction','Science fiction'),
         ('Horror', 'Horror'),('Fairytale','Fairytale'),
         ('Comic book', 'Comic book'), ('Adventure', 'Adventure'),
-        ('Food', 'Food'),
+        ('Food', 'Food'),('Study Book', 'Study Book')
 
         )
     genre=models.CharField(default=True,max_length=100, choices=GENRE_CHOICES)
