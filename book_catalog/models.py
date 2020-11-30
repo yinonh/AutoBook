@@ -14,6 +14,17 @@ class Book (models.Model):
     #categories = models.Choices(names=Op)
     length = models.IntegerField(blank=True)
     reader_name = models.CharField(max_length=50, blank=True)
+    GENRE_CHOICES = (
+        ('Drama','Drama'),('Roman','Roman'),
+        ('Fantasy','Fantasy'),('Mystery','Mystery'),
+        ('Poetry','Poetry'),('Short story','Short story'),
+        ('Thriller','Thriller'),('Science fiction','Science fiction'),
+        ('Horror', 'Horror'),('Fairytale','Fairytale'),
+        ('Comic book', 'Comic book'), ('Adventure', 'Adventure'),
+        ('Food', 'Food'),
+
+        )
+    genre=models.CharField(default=True,max_length=100, choices=GENRE_CHOICES)
 
     def __str__(self):
         return self.name

@@ -26,5 +26,6 @@ urlpatterns = [
     path('Simple/', views.simple, name="simple"),
     path('BookCataloge/', views.bookcataloge, name="bookcataloge"),
     path('Contact/',views.contact,name="contact"),
+    path('Filtered/',views.filteredbooks,name="filteredbooks"),
 ]
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

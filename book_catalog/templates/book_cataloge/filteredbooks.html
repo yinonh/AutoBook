@@ -1,0 +1,19 @@
+Filtered Books:
+<br>
+<table style="width:50%">
+  <tr>
+     {% for book in books %}
+    <th>{{ book.name }} <br>by <br>{{ book.author_name }}</th>
+        {% endfor %}
+    </tr>
+  <tr>
+     {% for book in books %}
+    <th>genre: {{ book.genre }} </th>
+        {% endfor %}
+    </tr>
+  <tr>
+     {% for book in books %}
+    <th><img src="{{ book.image.url }}" height="90" width="90"></th>
+        {% endfor %}
+    </tr>
+</table>

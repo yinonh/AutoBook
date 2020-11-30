@@ -12,3 +12,33 @@
     </tr>
 </table>
 <a href={% url 'simple' %}><button>Back</button></a>
+<br>
+<br>
+<br>
+filter by:
+<form action={% url "filteredbooks" %}>
+        Genre<select name="genre">
+            <option value="Drama">Drama</option>
+            <option value="Roman">Roman</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Poetry">Poetry</option>
+            <option value="Short story">Short story</option>
+            <option value="Thriller" >Thriller</option>
+            <option value="Science fiction">Science fiction</option>
+            <option value="Horror">Horror</option>
+            <option value="Fairytale">Fairytale</option>
+            <option value="Comic book">Comic book</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Food">Food</option>
+            <option value="All"selected="All">All</option>
+        </select>
+    <br>
+    Author Name:<input type="text" id="AuthorName" name="AuthorName">
+    <br>
+    Name:<input type="text" id="Name" name="Name">
+    <br>
+    Available: <input type="checkbox" name="Available">
+    <br>
+    <input type="submit" value="Show">
+    </form>
