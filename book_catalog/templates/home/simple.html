@@ -22,13 +22,17 @@
             </tr>
             <tr>
                 <td>
-                    <input type="submit" value="takeBook">
+                    <a href={% url 'bookcataloge' %}><button>takeBook</button></a>
+
                 </td>
                 <td>
-                    <input type="submit" value="returnBook">
+                    <a href={% url 'bookcataloge' %}><button>returnBook</button></a>
                 </td>
                 <td>
-                    <input type="submit" value="contact">
+                    <a href={% url 'contact' %}><button>contact</button></a>
+                </td>
+                 <td>
+                    <a href={% url 'homepage' %}><button>home</button></a>
                 </td>
             </tr>
         </table>
