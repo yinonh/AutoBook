@@ -22,13 +22,17 @@ def filteredbooks (request):
         books = list(filter(lambda x: request.GET.get('AuthorName').lower() in x.author_name.lower(), books))
     elif request.GET.get("Name"):
         books = list(filter(lambda x: request.GET.get('Name').lower() in x.name.lower(), books))
-    elif request.GET.get("Available"):
+    if request.GET.get("Available"):
         books = list(filter(lambda x: x.available == True, books))
-    elif request.GET.get("Study_Book"):
+    else:
+        books = list(filter(lambda x: x.available == False, books))
+    if request.GET.get("Study_Book"):
         books = list(filter(lambda x: x.study_book == True, books))
+    else:
+        books = list(filter(lambda x: x.study_book == False, books))
     if books == []:
         books = -1
-    print(books)
+
     return render(request, 'book_cataloge/filteredbooks.html',{'books':books})
 
 def book_card(request, book_id):

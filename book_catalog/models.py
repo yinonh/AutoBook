@@ -20,7 +20,6 @@ class Book (models.Model):
         ('Horror', 'Horror'),('Fairytale','Fairytale'),
         ('Comic book', 'Comic book'), ('Adventure', 'Adventure'),
         ('Food', 'Food'),('Study Book', 'Study Book')
-
         )
     genre=models.CharField(default=True,max_length=100, choices=GENRE_CHOICES)
 

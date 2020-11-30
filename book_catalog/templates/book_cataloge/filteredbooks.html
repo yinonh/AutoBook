@@ -10,7 +10,7 @@
   {% if books != -1 %}
 
      {% for book in books %}
-    <th>{{ book.name }} <br>by <br>{{ book.author_name }}</th>
+    <th>{{ book.name|truncatechars:15 }} <br>by <br>{{ book.author_name }}</th>
         {% endfor %}
     </tr>
   <tr>
