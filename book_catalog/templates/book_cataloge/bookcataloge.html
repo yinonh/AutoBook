@@ -2,8 +2,47 @@
 {% load static %}
 <img src="{% static 'book_catalog/defult.png' %}" height="100" width="100">
 <div class="container text-center">
-<table style="width:70%">
 <h1>Book Cataloge</h1>
+</div>
+<br>
+<h2>Librarian's Favorites</h2><br>
+<div class="container text-center">
+<h2 class="alert alert-danger">
+
+    <table style="width:70%">
+
+
+
+
+  <tr>
+
+     {% for book in books %}
+         {% if book.librarian_favourite == True %}
+
+    <th>{{ book.name|truncatechars:15 }} <br>by <br>{{ book.author_name }}</th>
+         {% endif %}
+        {% endfor %}
+    </tr>
+  <tr>
+     {% for book in books %}
+{% if book.librarian_favourite == True %}
+            <th><a href="{% url 'book_card' book.id %}"><img src="{{ book.image.url }}" height="90" width="90"></a></th>
+{% endif %}
+
+        {% endfor %}
+    </tr>
+</table>
+<br>
+<br>
+</h2><br>
+</div>
+    <h2>Cataloge</h2><br>
+<div class="container text-center">
+    <table style="width:70%">
+
+
+
+
   <tr>
 
      {% for book in books %}
@@ -22,7 +61,9 @@
 <br>
 <br>
 <br>
+</div>
     <h2>filter by:</h2>
+<div class="container text-center">
 <form action={% url "filteredbooks" %}>
         Genre<select name="genre">
             <option value="Drama">Drama</option>
@@ -54,3 +95,7 @@
     </form>
 <a href={% url 'simple' %}><button class="btn btn-primary">Back</button></a>
 </div>
+<br>
+<br>
+<br>
+<br>

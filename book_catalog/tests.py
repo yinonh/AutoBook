@@ -5,8 +5,24 @@ from book_catalog import views"""
 
 class Booktest(TestCase):
     def test_setUp(self):
-        Book.objects.create(name='hii',author_name='jhs',summary='dsjh',key_words= 'ajsh',length=5,genre= 'Roman',available= True, study_book = False,reader_name='sdkfjh',image= 'book_catalog/images/defult.png')
-        Book.objects.create(name='hii', author_name='jhs', summary='dsjh', key_words='ajsh', length=5, reader_name='sdkfjh')
+        Book.objects.create(name='hii',author_name='jhs',summary='dsjh',librarian_favourite =False,key_words= 'ajsffh',length=5,genre= 'Roman',available= True, study_book = False,reader_name='sdkfjh',image= 'book_catalog/images/defult.png')
+        Book.objects.create(name='hifsfi', author_name='jhsasfasf', summary='dasfasfsjh',librarian_favourite =False, key_words='ajsadsash', length=5, reader_name='sdddkfjh')
+        Book.objects.create(name='hieeeei', author_name='jhasfasfs', summary='dsjsafsh',librarian_favourite =False, key_words='aasfsajsh', length=5, genre='Horror',
+                            available=True, study_book=False, reader_name='sdkasfafsfjh',
+                            )
+        Book.objects.create(name='heeeeii', author_name='jhrrrrs', summary='dsttttjh', librarian_favourite =True,key_words='acccjsh', length=5, genre='',
+                            available=True, reader_name='sdkfffjh',
+                            image='book_catalog/images/defult.png')
+        Book.objects.create(name='hieeei', author_name='jhstt', summary='dsvvvjh', librarian_favourite =True,key_words='ajsh', length=5, genre='Poetry',
+                          study_book=False, reader_name='sdkfjh',
+                            image='book_catalog/images/defult.png')
+        Book.objects.create(name='hiibbb', author_name='jhsnnnn', summary='dsjhmmmm', key_words='ajshccc', length=5, genre='Poetry',
+                            available=True, study_book=False,reader_name='sdkfjh',
+                            image='book_catalog/images/defult.png')
+        Book.objects.create(name='hieexei', author_name='jhcccs', summary='dsjvvh', key_words='ajsnnnh', length=5, genre='Thriller',
+                            available=True, study_book=False, reader_name='sdkfjh',
+                            image='book_catalog/images/defult.png')
+
     #All those next 5 checks are checking all lambdas functions from views.py's filteredbooks function
     def test_lambda1(self):
         books = Book.objects.all()

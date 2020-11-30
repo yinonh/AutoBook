@@ -7,6 +7,7 @@ class Book (models.Model):
     image = models.ImageField(upload_to='book_catalog/images', default='book_catalog/images/defult.png')
     #user_queue = NOT RELLEVANT YET
     available = models.BooleanField(default=True)
+    librarian_favourite = models.BooleanField(default=False)
     #location =NOT RELLEVANT YET
     study_book = models.BooleanField(default=False)
     key_words =models.CharField(max_length=100)
