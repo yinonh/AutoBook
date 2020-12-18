@@ -15,24 +15,25 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path,include
-from book_catalog import views
+from django.urls import path, include
+from book_catalog import views as book_catalog_views
 from django.conf.urls.static import static
+from authentication import views as authentication_views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='homepage'),
-    path('Simple/', views.simple, name="simple"),
+    path('', book_catalog_views.home, name='homepage'),
+    path('Simple/', book_catalog_views.simple, name="simple"),
 
     #Book Catalog
 
-    path('book_cataloge/',include('book_catalog.urls')),
-    path('Contact/',views.contact,name="contact"),
-    path('Filtered/',views.filteredbooks,name="filteredbooks"),
+    path('book_cataloge/', include('book_catalog.urls')),
+    path('Contact/', book_catalog_views.contact, name="contact"),
+    path('Filtered/', book_catalog_views.filteredbooks, name="filteredbooks"),
 
     #Authentication
-
+    path('signup/', authentication_views.signupuser, name="signupuser")
 
 
 ]
