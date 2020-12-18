@@ -33,8 +33,9 @@ urlpatterns = [
     path('Filtered/', book_catalog_views.filteredbooks, name="filteredbooks"),
 
     #Authentication
-    path('signup/', authentication_views.signupuser, name="signupuser")
-
+    path('signup/', authentication_views.signupuser, name="signupuser"),
+    path('logoutuser/', authentication_views.logoutuser, name="logoutuser"),
+    path('login/', authentication_views.login, name="login"),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

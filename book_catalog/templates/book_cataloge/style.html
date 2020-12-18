@@ -30,17 +30,30 @@
       <li class="nav-item" href="{% url "simple" %}">
         <a class="nav-link text-primary" href="{% url 'simple' %}">simple mode</a>
       </li>
+        {% if user.is_authenticated %}
+            <li class="nav-item"  href="{% url "bookcataloge" %}">
+        <a class="nav-link text-primary text size-12" href="{% url "bookcataloge" %}">me</a>
+      </li>
+            <li class="nav-item"  href="{% url "logoutuser" %}">
+        <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>
+                    <form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
+                        {% csrf_token %}
+                        <button id="signOutBtn" type="submit">Logout</button>
+                    </form>
+      </li>
+        {% else %}
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           sign in
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item"href="">log in</a>
+          <a class="dropdown-item"href="{% url 'login' %}">log in</a>
           <a class="dropdown-item"href="{% url 'signupuser' %}">rgister</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item"href="{% url 'admin:index' %}">admin</a>
         </div>
       </li>
+        {% endif %}
      </ul>
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="lookin for something?" aria-label="Search">
@@ -48,6 +61,9 @@
   </form>
   </div>
 </nav>
+{% if user.is_authenticated %}
+    hello {{ user.username }}
+{% endif %}
 
 
 {%  block content %}{% endblock %}
