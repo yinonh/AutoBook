@@ -22,7 +22,8 @@
     </tr>
     <tr>
      {% for book in books %}
-    <th><img src="{{ book.image.url }}" height="90" width="90"></th>
+   <th><a href="{% url 'book_card' book.id %}"><img src="{{ book.image.url }}" height="90" width="90"></a></th>
+
     {% endfor %}
     </tr>
 </table>
