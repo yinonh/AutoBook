@@ -9,7 +9,19 @@
     <br>
     <br>
  <div class="container text-center">
-    <h1>homepage</h1>
+     <h1><b>Welcom to AutoBook lilbrary</b></h1>
+ {% for home in homepage1 %}
+
+     <h2 ="ext-center"> this mounth events</h2>
+     <div class = "events text-center">
+
+         {{ home.title }}<br>
+         <img src="{{ home.image.url }}" height="220" width="180">
+     </div>
+
+
+
+{% endfor %}
  </div>
         <br>
     <br>

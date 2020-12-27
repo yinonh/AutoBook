@@ -1,18 +1,19 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Book
-
+from homepage.models import HomePage
+homepage1=HomePage.objects.all()
 books = Book.objects.all()
 def home(request):
-    return render(request, 'home/home.html')
+    return render(request, 'home/home.html',{'homepage1':homepage1})
 
 def simple (request):
     return render(request, 'home/simple.html')
 
+def contact (request):
+    return render(request, 'home/contact.html')
+
 def bookcataloge (request):
     return render(request,'book_cataloge/bookcataloge.html',{'books': books})
-
-def contact (request):
-    return render(request,'contact/contact.html')
 
 def filteredbooks (request):
     books = Book.objects.all()
