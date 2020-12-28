@@ -33,6 +33,8 @@ urlpatterns = [
     path('Filtered/', book_catalog_views.filteredbooks, name="filteredbooks"),
 
     #Authentication
+    path('signup/student/', authentication_views.studentsignupuser, name="signupstudent"),
+    path('signup/adult/', authentication_views.adultsignupuser, name="signupadult"),
     path('signup/', authentication_views.signupuser, name="signupuser"),
     path('logoutuser/', authentication_views.logoutuser, name="logoutuser"),
     path('loginU/', authentication_views.loginU, name="loginU"),

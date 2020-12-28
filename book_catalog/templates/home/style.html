@@ -62,7 +62,7 @@
   </div>
 </nav>
 {% if user.is_authenticated %}
-    hello {{ user.username }}
+    hello {{ user.username }} {{ user.adult.type }}  {{ user.student.type }}  Mode
 {% endif %}
 
 
