@@ -10,19 +10,18 @@
     <br>
  <div class="container text-center">
      <h1><b>Welcom to AutoBook lilbrary</b></h1>
- {% for home in homepage1 %}
+<br><br><br>
+     <h2><u>this mounth events</u></h2>
 
-     <h2 ="ext-center"> this mounth events</h2>
-     <div class = "events text-center">
+ <table>
+  {% for home in homepage1 %}
+  <tr>
+    <td><img src="{{ home.image.url }}" height="220" width="180" align="left"></td>
+    <td align="right" width="600"><h5>{{ home.title }}</h5><br>{{ home.description }}</td>
+  </tr>
+    {% endfor %}
+</table>
 
-         {{ home.title }}<br>
-         <img src="{{ home.image.url }}" height="220" width="180">
-     </div>
-
-
-
-{% endfor %}
- </div>
         <br>
     <br>
     <br>
