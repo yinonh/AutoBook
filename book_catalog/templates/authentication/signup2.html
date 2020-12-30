@@ -1,0 +1,22 @@
+{% extends 'home/style.html' %}
+{% block content %}
+
+<form method="POST">
+
+{% csrf_token %}
+
+    Select User<select name="kinduser">
+
+            <option value="1">Student</option>
+            <option value="2">Adult</option>
+<form>
+    <input type="submit">
+</form>
+</select>
+</form>
+<br>
+<br><br><br><br>
+<br>
+
+{% endblock %}
+

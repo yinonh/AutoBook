@@ -1,0 +1,16 @@
+{% extends 'home/style.html' %}
+
+{% block content %}
+<h1>Login</h1>
+{% if  error != "" %}
+<h2 class="alert alert-danger">{{ error }}</h2>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
+    <br>
+    <br>
+{% endblock %}
