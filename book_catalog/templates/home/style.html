@@ -40,6 +40,13 @@
                         {% csrf_token %}
                         <button id="signOutBtn" type="submit">Logout</button>
                     </form>
+            <li class="nav-item" >
+           {% if user.is_superuser%}
+                 <a class="nav-link text-primary text size-12"  >Admin Mode</a>
+      {% else %}
+        <a class="nav-link text-primary text size-12"  >{{ user.adult.type }}  {{ user.student.type }} Mode</a>
+      {% endif %}
+               </li>
       </li>
         {% else %}
     <li class="nav-item dropdown">
@@ -53,8 +60,12 @@
           <a class="dropdown-item"href="{% url 'admin:index' %}">admin</a>
         </div>
       </li>
+
+
         {% endif %}
+
      </ul>
+
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="lookin for something?" aria-label="Search">
     <button class="btn text-primary my-2 my-sm-0" type="submit">Search</button>
@@ -62,7 +73,7 @@
   </div>
 </nav>
 {% if user.is_authenticated %}
-    hello {{ user.username }} {{ user.adult.type }}  {{ user.student.type }}  Mode
+    hello {{ user.username }}
 {% endif %}
 
 

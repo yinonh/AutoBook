@@ -24,10 +24,10 @@ class ExtendedUserCreationForm(UserCreationForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model=Student
-        fields= ('grade',)
+        fields= ('grade','Phone_Number')
 class AdultProfileForm(forms.ModelForm):
     class Meta:
         model=Adult
-        fields= ('taz',)
+        fields= ('ID_Number',)
 
 
