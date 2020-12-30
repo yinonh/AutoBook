@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Book
+from django.contrib.auth.decorators import login_required
+
 
 books = Book.objects.all()
 def home(request):
@@ -38,4 +40,9 @@ def filteredbooks (request):
 def book_card(request, book_id):
     book = get_object_or_404(Book,pk = book_id)
     return render(request,'book_cataloge/book_card.html',{'book':book})
+
+@login_required
+def takeBook(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    return render(request,'book_cataloge/takeBook.html',{'book':book})
 

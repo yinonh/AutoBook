@@ -19,6 +19,13 @@
     <br>
     <br>
 <a href={% url 'bookcataloge' %}><button class="btn btn-primary">Back</button></a>
+    {% if book.posses %}
+<a href={% url 'takeBook' book.id %}><button class="btn btn-success">Take Book</button></a>
+    {% else %}
+<button class="btn btn-danger">This Book Already Taken</button>
+    {% endif %}
+
+
     <br>
     <br><br>
 
