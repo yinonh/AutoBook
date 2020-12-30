@@ -9,7 +9,9 @@
     <h2>Librarian's Favorites</h2><br>
 
     <h2 class="alert alert-primary">
+
         <table style="table: table-bordered table-striped text-center">
+
             <tr>
         {% for book in books %}
            {% if book.librarian_favourite == True %}
@@ -27,6 +29,7 @@
 
         </tr>
     </table>
+    </h2>
 </div>
 <br>
 <br>

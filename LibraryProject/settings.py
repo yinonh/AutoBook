@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'book_catalog',
     'authentication',
-
+    'mepage',
 ]
 
 MIDDLEWARE = [
