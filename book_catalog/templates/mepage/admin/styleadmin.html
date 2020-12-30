@@ -22,27 +22,17 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link text-primary" href="{% url "homepage" %}">home <span class="sr-only" href="{% url "homepage" %}">home</span></a>
+        <a class="nav-link text-primary" href="{% url "homepage" %}">Back <span class="sr-only" href="{% url "homepage" %}">home</span></a>
       </li>
-      <li class="nav-item"  href="{% url "bookcataloge" %}">
-        <a class="nav-link text-primary text size-12" href="{% url "bookcataloge" %}">books catalog</a>
+      <li class="nav-item"  href="{% url "meadminpage" %}">
+        <a class="nav-link text-primary text size-12" href="{% url "meadminpage" %}">Reports</a>
       </li>
-      <li class="nav-item" href="{% url "simple" %}">
-        <a class="nav-link text-primary" href="{% url 'simple' %}">simple mode</a>
+      <li class="nav-item" href="{% url "meadminpage" %}">
+        <a class="nav-link text-primary" href="{% url 'meadminpage' %}">Favourites</a>
       </li>
         {% if user.is_authenticated %}
-            {% if user.adult.ID_Number %}
-            <li class="nav-item"  href="{% url "meadult" %}">
-        <a class="nav-link text-primary text size-12" href="{% url "meadult" %}">Me</a>
-            {% endif %}
-            {% if user.student.grade %}
-            <li class="nav-item"  href="{% url "mestudent" %}">
-        <a class="nav-link text-primary text size-12" href="{% url "mestudent" %}">Me</a>
-            {% endif %}
-            {% if user.is_superuser %}
             <li class="nav-item"  href="{% url "meadminpage" %}">
-        <a class="nav-link text-primary text size-12" href="{% url "meadminpage" %}">Reports</a>
-            {% endif %}
+        <a class="nav-link text-primary text size-12" href="{% url "meadminpage" %}">Possessed</a>
       </li>
             <li class="nav-item"  href="{% url "logoutuser" %}">
         <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>

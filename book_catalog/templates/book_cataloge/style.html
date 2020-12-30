@@ -31,8 +31,18 @@
         <a class="nav-link text-primary" href="{% url 'simple' %}">simple mode</a>
       </li>
         {% if user.is_authenticated %}
-            <li class="nav-item"  href="{% url "mepage" %}">
-        <a class="nav-link text-primary text size-12" href="{% url "mepage" %}">me</a>
+            {% if user.adult.ID_Number %}
+            <li class="nav-item"  href="{% url "meadult" %}">
+        <a class="nav-link text-primary text size-12" href="{% url "meadult" %}">Me</a>
+            {% endif %}
+            {% if user.student.grade %}
+            <li class="nav-item"  href="{% url "mestudent" %}">
+        <a class="nav-link text-primary text size-12" href="{% url "mestudent" %}">Me</a>
+            {% endif %}
+            {% if user.is_superuser %}
+            <li class="nav-item"  href="{% url "meadult" %}">
+        <a class="nav-link text-primary text size-12" href="{% url "meadult" %}">Reports</a>
+            {% endif %}
       </li>
             <li class="nav-item"  href="{% url "logoutuser" %}">
         <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>
