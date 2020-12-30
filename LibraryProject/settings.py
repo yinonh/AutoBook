@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'book_catalog',
     'authentication',
     'mepage',
-
 ]
 
 MIDDLEWARE = [

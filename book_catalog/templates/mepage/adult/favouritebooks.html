@@ -1,0 +1,29 @@
+{% extends "mepage/adult/styleadult.html" %}
+
+{% block content %}
+<div class="container text-center">
+    <h1>Me</h1><br>
+    <h2>My Favorites</h2><br>
+
+
+    <h2 class="alert alert-warning">
+        <table style="table:table-bordered table-striped text-center">
+            <tr>
+        {% for book in user.adult.FavouriteBooks.all %}
+
+        <th><h4>{{ book.name|truncatechars:15 }} <br>by <br>{{ book.author_name }}</h4></th>
+
+        {% endfor %}
+        </tr>
+      <tr>
+         {% for book in user.adult.FavouriteBooks.all %}
+          <th><a href="{% url 'book_card' book.id %}"><img src="{{ book.image.url }}" height="90" width="90"></a></th>
+
+         {% endfor %}
+
+        </tr>
+    </table>
+    </h2>
+</div>
+
+{% endblock %}

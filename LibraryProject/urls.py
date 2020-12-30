@@ -19,6 +19,7 @@ from django.urls import path, include
 from book_catalog import views as book_catalog_views
 from django.conf.urls.static import static
 from authentication import views as authentication_views
+from mepage import views as mepage_views
 
 
 urlpatterns = [
@@ -38,6 +39,12 @@ urlpatterns = [
     path('signup/', authentication_views.signupuser, name="signupuser"),
     path('logoutuser/', authentication_views.logoutuser, name="logoutuser"),
     path('loginU/', authentication_views.loginU, name="loginU"),
+
+    #Me page
+    path('', include('mepage.urls')),
+    # path('Me/Adult/', mepage_views.meadult, name="meadult"),
+    # # path('Me/Adult/Favourites/', mepage_views.meadultfavourites, name="meadultfavourites"),
+    # path('Me/Student/', mepage_views.mestudent, name="mestudent"),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
