@@ -24,7 +24,8 @@ class Book (models.Model):
         ('Food', 'Food'),('Study Book', 'Study Book')
         )
     genre=models.CharField(default=True,max_length=100, choices=GENRE_CHOICES)
-    posses=models.OneToOneField(User,null=True,blank=True,on_delete = models.SET_NULL)
+    posses = models.BooleanField(default=False)
+
 
     def __str__(self):
         return self.name

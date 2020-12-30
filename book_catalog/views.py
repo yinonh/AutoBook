@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from .models import Book
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
 
 
 books = Book.objects.all()
@@ -38,11 +39,21 @@ def filteredbooks (request):
     return render(request, 'book_cataloge/filteredbooks.html',{'books':books})
 
 def book_card(request, book_id):
-    book = get_object_or_404(Book,pk = book_id)
+    book = get_object_or_404(Book, pk=book_id)
+    if request.method == "POST":
+        if not request.user.is_authenticated:
+            return redirect("loginU")
+        try:
+            request.user.adult.Adultposses.add(book)
+            request.user.adult.save()
+            book.posses = True
+            book.save()
+        except ObjectDoesNotExist:
+            request.user.student.Studentposses.add(book)
+            request.user.student.save()
+            book.posses = True
+            book.save()
     return render(request,'book_cataloge/book_card.html',{'book':book})
 
-@login_required
-def takeBook(request, book_id):
-    book = get_object_or_404(Book, pk=book_id)
-    return render(request,'book_cataloge/takeBook.html',{'book':book})
+
 

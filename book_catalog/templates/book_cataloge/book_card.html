@@ -19,11 +19,21 @@
     <br>
     <br>
 <a href={% url 'bookcataloge' %}><button class="btn btn-primary">Back</button></a>
-    {% if book.posses %}
-<a href={% url 'takeBook' book.id %}><button class="btn btn-success">Take Book</button></a>
+{% if not user.is_superuser %}
+    {% if not book.posses  %}
+<form method="POST" action="{% url 'book_card' book.id %}">
+                        {% csrf_token %}
+                        <button class="btn btn-success" type="submit">Take Book</button>
+                    </form>
     {% else %}
 <button class="btn btn-danger">This Book Already Taken</button>
     {% endif %}
+    {% elif book.posses %}
+    <button class="btn btn-danger">Taken</button>
+    {% else %}
+    <button class="btn btn-success">Available</button>
+
+{% endif %}
 
 
     <br>

@@ -13,6 +13,8 @@ class Student(models.Model):
     Forum_Banned=models.BooleanField(default=False)
     Phone_Number = models.CharField(max_length=10, validators=[MinLengthValidator(10)])
     Security_Check = models.BooleanField(default=False)
+    Studentposses = models.ManyToManyField(Book, null=True, blank=True)
+
     def __str__(self):
         return self.user.username
 
@@ -22,6 +24,7 @@ class Adult(models.Model):
     type = models.CharField(max_length=50,default='Adult')
     Is_Banned = models.BooleanField(default=False)
     Security_Check = models.BooleanField(default=False)
-    FavouriteBooks=models.ManyToManyField(Book,null=True,blank=True)
+    FavouriteBooks=models.ManyToManyField(Book,null=True,blank=True,related_name='favourite')
+    Adultposses = models.ManyToManyField(Book, null=True, blank=True, related_name='adultposses')
     def __str__(self):
         return self.user.username
