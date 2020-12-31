@@ -53,6 +53,7 @@ def book_card(request, book_id):
             request.user.student.save()
             book.posses = True
             book.save()
+
     return render(request,'book_cataloge/book_card.html',{'book':book})
 
 
