@@ -23,8 +23,17 @@
     {% if not book.posses  %}
 <form method="POST" action="{% url 'book_card' book.id %}">
                         {% csrf_token %}
-                        <button class="btn btn-success" type="submit">Take Book</button>
+
+                        <button class="btn btn-success" onclick="myFunction()" type="submit">Take Book</button>
+
+<script>
+function myFunction() {
+  alert("This Book Will Wait you in the Library in 24 hours Thank You");
+}
+</script>
+
                     </form>
+
     {% else %}
 <button class="btn btn-danger">This Book Already Taken</button>
     {% endif %}
