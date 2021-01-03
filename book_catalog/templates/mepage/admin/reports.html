@@ -1,8 +1,10 @@
 {% extends "mepage/admin/styleadmin.html" %}
 {% block content %}
+    <h1>Reports</h1>
     <br>
     <br>
-    <br>
-    
-Books needed to take out report <a href={% url 'getout' %}><button class="btn btn-primary">getout</button></a>
+
+Books needed to take out report <a href={% url 'getout' %}><button class="btn btn-primary">GO</button></a>
+<br>
+Books to fix    <a href={% url 'damaged' %}><button class="btn btn-primary">GO</button></a>
 {% endblock %}

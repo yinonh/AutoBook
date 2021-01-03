@@ -27,9 +27,13 @@
       <li class="nav-item"  href="{% url "bookcataloge" %}">
         <a class="nav-link text-primary text size-12" href="{% url "bookcataloge" %}">books catalog</a>
       </li>
+    {% if not user.is_superuser %}
+
       <li class="nav-item" href="{% url "simple" %}">
         <a class="nav-link text-primary" href="{% url 'simple' %}">simple mode</a>
       </li>
+
+    {% endif %}
         {% if user.is_authenticated %}
             {% if user.adult.ID_Number %}
             <li class="nav-item"  href="{% url "meadult" %}">

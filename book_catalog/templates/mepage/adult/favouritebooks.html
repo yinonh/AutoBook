@@ -5,7 +5,9 @@
     <h1>Me</h1><br>
     <h2>My Favorites</h2><br>
 
-
+    {% if user.adult.FavouriteBooks.all|length == 0 %}
+      <h2>You Don't Own Any Books In Favourites.</h2>
+        {% else %}
     <h2 class="alert alert-warning">
         <table style="table:table-bordered table-striped text-center">
             <tr>
@@ -16,11 +18,13 @@
         {% endfor %}
         </tr>
       <tr>
+
+
+
          {% for book in user.adult.FavouriteBooks.all %}
           <th><a href="{% url 'book_card' book.id %}"><img src="{{ book.image.url }}" height="90" width="90"></a></th>
-
          {% endfor %}
-
+    {% endif %}
         </tr>
     </table>
     </h2>
