@@ -26,7 +26,7 @@ class Book (models.Model):
     genre = models.CharField(default=True,max_length=100, choices=GENRE_CHOICES)
     posses = models.BooleanField(default=False)
     takenout = models.BooleanField(default=False)
-
+    Is_Damaged=models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

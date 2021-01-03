@@ -1,5 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from book_catalog.models import Book
+from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
+from authentication.models import Student,Adult
 
 def meadult(request):
     return render(request, 'mepage/adult/mepageadult.html')
@@ -25,6 +28,16 @@ def meAdultReturn(request, book_id):
             return redirect("meadultpossesses")
 
     return render(request, 'mepage/adult/meAdultReturn.html',{"book":book})
+def meAdultDamage(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    if request.method == "POST":
+        if 'yes' in request.POST:
+            book.Is_Damaged=True
+            book.save()
+            return redirect("meadultpossesses")
+        elif 'no' in request.POST:
+            return redirect("meadultpossesses")
+    return render(request, 'mepage/adult/meAdultDamage.html',{"book":book})
 def meStudentReturn(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     if request.method == "POST":
@@ -56,6 +69,42 @@ def meadminpage(request):
     return render(request, 'mepage/admin/reports.html')
 
 def getout(request):
+    if request.method == 'POST':
+        id_list = request.POST.getlist('book.id')
+        cancelid_list = request.POST.getlist('cancelbook.id')
+        for bookid in id_list:
+            book = get_object_or_404(Book, pk=bookid)
+            book.takenout=True
+            book.save()
+        cancelid_list = request.POST.getlist('cancelbook.id')
+        for bookid in id_list:
+            book = get_object_or_404(Book, pk=bookid)
+            book.takenout = True
+            book.save()
+        for cancelid in cancelid_list:
+            book = get_object_or_404(Book, pk=cancelid)
+            for user1 in Student.objects.all():
+                if book in user1.Studentposses.all():
+                    user1.Studentposses.remove(book)
+                    user1.save()
+                    book.posses = False
+                    book.save()
+            for user1 in Adult.objects.all():
+                if book in user1.Adultposses.all():
+                    user1.Adultposses.remove(book)
+                    user1.save()
+                    book.posses = False
+                    book.save()
     books = Book.objects.filter(posses=True)
     books = list(filter(lambda x:not x.takenout,books))
     return render(request, 'mepage/admin/getout.html',{'books':books})
+def damaged (request):
+    if request.method == 'POST':
+        id_list = request.POST.getlist('book.id')
+        for bookid in id_list:
+            book = get_object_or_404(Book, pk=bookid)
+            book.Is_Damaged=False
+            book.save()
+    books = Book.objects.filter(Is_Damaged=True)
+    return render(request, 'mepage/admin/damaged.html',{'books':books})
+

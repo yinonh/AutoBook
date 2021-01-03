@@ -12,9 +12,15 @@
                 <td>
                     <a href="{% url "bookcataloge" %}"> <input type="submit" value="Take Book"></a>
                 </td>
+                {% if user.adult %}
                 <td>
-                    <input type="submit" value="Return Book">
+                    <a href="{% url "meadultpossesses" %}"><input type="submit" value="Return Book"></a>
                 </td>
+                    {% else %}
+                <td>
+                    <a href="{% url "mestudentpossesses" %}"><input type="submit" value="Return Book"></a>
+                </td>
+                {% endif %}
             </tr>
         </table>
     </div>

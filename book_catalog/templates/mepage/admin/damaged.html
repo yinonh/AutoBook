@@ -2,7 +2,7 @@
 {% block content %}
     <br>
     <br>
-{% if books|length == 0 %}
+    {% if books|length == 0 %}
         <h1>Nothing To Perform</h1>
     {% else %}
     <form method="POST" >
@@ -10,13 +10,14 @@
     {% for book in books %}
     {{ book.id }}
     {{ book.name }}
-        &emsp;Take Out  <input type="checkbox" name="book.id" value="{{ book.id }}">
-        &emsp;Cancel Order  <input type="checkbox" name="cancelbook.id" value="{{ book.id }}">
+        <input type="checkbox" name="book.id" value="{{ book.id }}">
         <br>
     {% endfor %}
     <br>
-<input type="submit" value="Submit">
+        <input type="submit" value="Submit">
 </form>
+
     {% endif %}
 <a href={% url 'meadminpage' %}><button class="btn btn-primary">Back</button></a>
+
 {% endblock %}

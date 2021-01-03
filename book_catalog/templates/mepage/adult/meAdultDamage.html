@@ -1,0 +1,28 @@
+{% extends "mepage/adult/styleadult.html" %}
+
+{% block content %}
+
+   <h2>{{ book.name }} by
+    {{ book.author_name }}</h2>
+
+    <br>
+    <br>
+    <img src="{{ book.image.url }}" height="220" width="180">
+    <br>
+    <br>
+    are you sure?
+    <form method="POST" action="{% url 'meAdultDamage' book.id %}">
+    {% csrf_token %}
+        <button class="btn btn-primary" name="yes" type="submit">yes</button>
+    </form>
+
+    <form method="POST" action="{% url 'meAdultDamage' book.id %}">
+    {% csrf_token %}
+        <button class="btn btn-danger" name="no" type="submit">No</button>
+    </form>
+
+
+
+
+
+{% endblock %}
