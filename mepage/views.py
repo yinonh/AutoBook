@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from book_catalog.models import Book
+from homepage.models import Event
 
 def meadult(request):
     return render(request, 'mepage/adult/mepageadult.html')
@@ -19,7 +20,21 @@ def mestudentpossesses(request):
     return render(request, 'mepage/adult/possessedbooks.html', {"possessBooks": possessBooks})
 
 def mestudentevents(request):
-    return render(request, 'mepage/student/events.html')
+    events = Event.objects.all()
+    return render(request, 'mepage/student/events.html',{"events":events})
+
+def registerEvents(request, event_id):
+    event = get_object_or_404(Event, pk=event_id)
+    if request.method == "POST":
+        if "cancelled" in request.POST:
+            event.registerstudent.remove(request.user.student)
+        elif "register" in request.POST:
+            event.registerstudent.add(request.user.student)
+
+        event.save()
+        return redirect("mestudentevents")
+
+    return render(request, 'mepage/student/registerEvent.html', {"event": event})
 
 def mestudentlendedbooks(request):
     return render(request, 'mepage/student/lendedbooks.html')

@@ -1,0 +1,40 @@
+{% extends "mepage/student/stylestudent.html" %}
+
+{% block content %}
+
+<tr>
+        {% if event.link != None %}
+			<td><img src="{{ book.image.url }}" height="180" align="left" width="220"  hspace="20"></a><th><a href="{{ event.link }}" target="_blank"><\th></td>
+        {% else %}
+    </tr><br><br><br><br><br>
+    <td>
+			<td><tr align="left"><img src="{{ event.image.url }}" height="200" width="250" align="right" hspace="20"></tr></td>
+		{% endif %}
+			<td><tr align="right" width="1000"><h5>{{ event.title }}</h5><br>{{ event.text }}</tr></td>
+	</td>
+       <br>
+       <b>{{ event.date }}</b>
+    <br>
+    <br>
+    <br>
+    <br>
+    {% if request.user.student not in event.registerstudent.all %}
+     <form method="POST" action="{% url 'registerEvent' event.id %}">
+                        {% csrf_token %}
+
+         <button class="btn btn-success" name="register" onclick="myFunction()" type="submit">register</button>
+       </form>
+    {% else %}
+        <form method="POST" action="{% url 'registerEvent' event.id %}">
+                        {% csrf_token %}
+        <button class="btn btn-danger" name="cancelled" onclick="myFunction()" type="submit">cancelled</button>
+</form>
+    {% endif %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}
