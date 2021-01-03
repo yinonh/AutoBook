@@ -5,6 +5,7 @@ urlpatterns = [
     path('Adult/', views.meadult, name="meadult"),
     path('Adult/Favourites/', views.meadultfavourites, name="meadultfavourites"),
     path('Adult/Possesses/', views.meAdultPossesses, name="meadultpossesses"),
+    path('Adult/Cancel/<int:book_id>/', views.meAdultCancel, name="AdultCancel"),
     path('Adult/Possesses/<int:book_id>/', views.meAdultReturn, name="meAdultReturn"),
     path('Adult/Possesses/Damaged/<int:book_id>/', views.meAdultDamage, name="meAdultDamage"),
     path('Student/', views.mestudent, name="mestudent"),
@@ -15,6 +16,7 @@ urlpatterns = [
     path('Student/LendedBooks/', views.mestudentlendedbooks, name="melendedbooks"),
     path('Admin/Reports/', views.meadminpage, name="meadminpage"),
     path('getout/',views.getout,name="getout"),
+    path('getin/',views.getin,name="getin"),
     path('damaged/',views.damaged,name="damaged"),
 
 ]

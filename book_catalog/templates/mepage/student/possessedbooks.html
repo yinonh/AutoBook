@@ -28,7 +28,8 @@
     {% csrf_token %}
         <button class="btn btn-primary" type="submit">Return Book</button>
     </form>
-        {% if not book.Is_Damaged %}
+
+        {% if not book.Is_Damaged and book.taken == True %}
     <form method="POST" action="{% url 'meStudentDamage' book.id %}">
     {% csrf_token %}
         <button class="btn btn-danger" type="submit">Report Damaged</button>
