@@ -2,30 +2,9 @@
 {% extends 'home/style.html' %}
 
 {% block content %}
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
- <div class="container text-center">
-    <h1>homepage</h1>
- </div>
-        <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
+    {% for event in events %}
+        {{ event.title }}
+    {% endfor %}
 
 {% endblock %}

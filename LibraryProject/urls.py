@@ -19,12 +19,13 @@ from django.urls import path, include
 from book_catalog import views as book_catalog_views
 from django.conf.urls.static import static
 from authentication import views as authentication_views
+from homepage import views as homepage_views
 from mepage import views as mepage_views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', book_catalog_views.home, name='homepage'),
+    path('', homepage_views.homepage, name='homepage'),
     path('Simple/', book_catalog_views.simple, name="simple"),
 
     #Book Catalog
