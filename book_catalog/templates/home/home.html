@@ -5,36 +5,33 @@
     <br>
     <br>
     <br>
- <div class="container text-center">
+ <d class="container text-center">
      <h1><b> {{ home.title }}</b></h1>
 <br><br>
- <div class="align:right"> <p> {{ home.description }}</p></div>
- <img src="{{ home.image.url }}" height="180" width="220" align="left">
-<br><br><br><br><br><br>
+  <p align="justify">
+ <img src="{{ home.image.url }}" height="250" width="400" align="right" hspace="20">
+      {{ home.description }}</p>
+<br><br><br><br><br>
 
-
- <br>
+ <br><br><br><br>
      <h2><u>this mounth events</u></h2>
 
  <table>
-
-
-  {% for event in events %}
-            <br>
-  <tr>
-  {% if event.link != None %}
-      <th><a href="{{ event.link }}" target="_blank"><img src="{{ book.image.url }}" height="180" width="220"></a></th>
-      {% else %}
-    <td><img src="{{ event.image.url }}" height="180" width="220" align="left"></td>
-      {% endif %}
-
-    <td align="right" width="600"><h5>{{ event.title }}</h5><br>{{ event.text }}</td>
-  </tr>
-      <br>
-
-    {% endfor %}
-      <br>
+	{% for event in events %}
+	<tr>
+        {% if event.link != None %}
+			<td><img src="{{ book.image.url }}" height="180" align="left" width="220"  hspace="20"></a><th><a href="{{ event.link }}" target="_blank"><\th></td>
+        {% else %}
+    </tr><br><br><br><br><br><br><br><br>
+    <td>
+			<td><tr align="left"><img src="{{ event.image.url }}" height="200" width="250" align="right" hspace="20"></tr></td>
+		{% endif %}
+			<td><tr align="right" width="1000"><h5>{{ event.title }}</h5><br>{{ event.text }}</tr></td>
+	</td>
+    	{% endfor %}
 </table>
+
+
 
         <br>
     <br>
