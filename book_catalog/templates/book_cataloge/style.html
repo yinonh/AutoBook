@@ -12,6 +12,35 @@
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </head>
+
+  <style>
+.grid-container {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: auto auto auto;
+  background-color: white;
+  padding: 10px;
+}
+
+.grid-item {
+  background-color:white ;
+  border: 1px solid white(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.registration{
+    background-color:white;
+	margin:10px 500px;
+	position: "absolute";
+	left:200px;
+	top:100px;
+	padding:50px;
+	padding-left:150px;
+}
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     {% load static %}
 <a class="navbar-brand" href="{% url "homepage" %}"><img src="{% static 'book_catalog/defult.png' %}" height="60" width="60" href="{% url "homepage" %}"></a>
@@ -77,11 +106,5 @@
 
 
 {%  block content %}{% endblock %}
-
-<footer class="footer mt-auto py-3">
-  <div class="container-fluid text-center alert-primary">
-    <span class="text-muted">CONTACT US  |  telephon no: 08-335323  |  mail:AutoBook@library.ac.co.il  |  address:ha'mefathim 11 be'er sheva.</span>
-  </div>
-</footer>
 
 </html>

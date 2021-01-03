@@ -2,13 +2,16 @@
 
 {% block content %}
 <h1>Register</h1>
+    <div class="registration">
 
-<form method="POST" action="{% url 'signupadult' %}">
-{% csrf_token %}
-    {{ form.as_p }}
-    {{ profile_form.as_p }}
-    <input type="submit" value ="Create New Account">
-</form>
+        <form method="POST" action="{% url 'signupadult' %}">
+        {% csrf_token %}
+            {{ form.as_p }}
+            {{ profile_form.as_p }}
+            <input type="submit" value ="Create Account">
+        </form>
+    </div>
+<br>
     <br>
     <br>
 {% endblock %}

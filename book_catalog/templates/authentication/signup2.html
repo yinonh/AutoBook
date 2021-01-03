@@ -1,22 +1,25 @@
 {% extends 'home/style.html' %}
 {% block content %}
-
+ <div class="container text-center">
+    <br><br><br><br>
 <form method="POST">
 
 {% csrf_token %}
 
-    Select User<select name="kinduser">
+    <h3>Select User Type</h3><br>
+
+    <select name="kinduser">
 
             <option value="1">Student</option>
-            <option value="2">Adult</option>
+            <option value="2">Adult</option><br><br>
 <form>
-    <input type="submit">
+    <input type="submit" value="submit">
 </form>
 </select>
 </form>
 <br>
 <br><br><br><br>
-<br>
-
+     <br>
+ </div>
 {% endblock %}
 
