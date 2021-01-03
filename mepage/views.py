@@ -41,6 +41,19 @@ def meAdultDamage(request, book_id):
         elif 'no' in request.POST:
             return redirect("meadultpossesses")
     return render(request, 'mepage/adult/meAdultDamage.html',{"book":book})
+def meStudentDamage(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    if request.method == "POST":
+        if 'yes' in request.POST:
+            damagedes = request.POST.get('damagetext')
+            book.Is_Damaged=True
+            book.Damage_Description=damagedes
+            print(book.Damage_Description)
+            book.save()
+            return redirect("mestudentpossesses")
+        elif 'no' in request.POST:
+            return redirect("mestudentpossesses")
+    return render(request, 'mepage/student/meStudentDamage.html',{"book":book})
 def meStudentReturn(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     if request.method == "POST":

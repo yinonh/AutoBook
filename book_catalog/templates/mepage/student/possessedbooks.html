@@ -17,10 +17,24 @@
     <img src="{{ book.image.url }}" height="220" width="180">
     <br>
     <br>
-    <form method="POST" action="{% url 'meStudentReturn' book.id %}">
+    {% if book.takenout == False %}
+        <button class="btn btn-warning" type="submit">Waiting For Admin Confirmation</button>
+        <form method="POST" action="{% url 'meStudentReturn' book.id %}" >
     {% csrf_token %}
-        <button class="btn btn-danger" type="submit">Return Book</button>
+        <button class="btn btn-primary" type="submit">Cancel Request</button>
     </form>
+    {% else %}
+    <form method="POST" action="{% url 'meStudentReturn' book.id %}" >
+    {% csrf_token %}
+        <button class="btn btn-primary" type="submit">Return Book</button>
+    </form>
+        {% if not book.Is_Damaged %}
+    <form method="POST" action="{% url 'meStudentDamage' book.id %}">
+    {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Report Damaged</button>
+    </form>
+    {% endif %}
+    {% endif %}
     <br>
     <br>
 
