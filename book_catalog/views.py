@@ -41,18 +41,25 @@ def filteredbooks (request):
 def book_card(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     if request.method == "POST":
-        if not request.user.is_authenticated:
-            return redirect("loginU")
-        try:
-            request.user.adult.Adultposses.add(book)
+        if "favourite" in request.POST:
+            request.user.adult.FavouriteBooks.add(book)
             request.user.adult.save()
-            book.posses = True
-            book.save()
-        except ObjectDoesNotExist:
-            request.user.student.Studentposses.add(book)
-            request.user.student.save()
-            book.posses = True
-            book.save()
+        elif "notFavourite" in request.POST:
+            request.user.adult.FavouriteBooks.remove(book)
+            request.user.adult.save()
+        elif "posses" in request.POST:
+            if not request.user.is_authenticated:
+                return redirect("loginU")
+            try:
+                request.user.adult.Adultposses.add(book)
+                request.user.adult.save()
+                book.posses = True
+                book.save()
+            except ObjectDoesNotExist:
+                request.user.student.Studentposses.add(book)
+                request.user.student.save()
+                book.posses = True
+                book.save()
 
     return render(request,'book_cataloge/book_card.html',{'book':book})
 
