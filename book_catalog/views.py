@@ -9,6 +9,9 @@ def home(request):
 def simple (request):
     return render(request, 'home/simple.html')
 
+def log (request):
+    return render(request, 'home/log.html')
+
 def contact (request):
     return render(request, 'home/contact.html')
 
