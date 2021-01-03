@@ -15,8 +15,10 @@
     <img src="{{ book.image.url }}" height="220" width="180">
     <br>
     <br>
-    <button class="btn btn-danger">Return Book</button>
-
+    <form method="POST" action="{% url 'meAdultReturn' book.id %}">
+    {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Return Book</button>
+    </form>
     <br>
     <br>
 {% endfor %}

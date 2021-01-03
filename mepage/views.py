@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404,redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from book_catalog.models import Book
 
 def meadult(request):
@@ -11,12 +11,40 @@ def meAdultPossesses(request):
     possessBooks = request.user.adult.Adultposses.all()
     return render(request, 'mepage/adult/possessedbooks.html',{"possessBooks":possessBooks})
 
+def meAdultReturn(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    if request.method == "POST":
+        if 'yes' in request.POST:
+            request.user.adult.Adultposses.remove(book)
+            request.user.adult.save()
+            book.posses=False
+            book.takenout=False
+            book.save()
+            return redirect("meadultpossesses")
+        elif 'no' in request.POST:
+            return redirect("meadultpossesses")
+
+    return render(request, 'mepage/adult/meAdultReturn.html',{"book":book})
+def meStudentReturn(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    if request.method == "POST":
+        if 'yes' in request.POST:
+            request.user.student.Studentposses.remove(book)
+            request.user.student.save()
+            book.posses=False
+            book.save()
+            return redirect("mestudentpossesses")
+        elif 'no' in request.POST:
+            return redirect("mestudentpossesses")
+
+    return render(request, 'mepage/student/meStudentReturn.html',{"book":book})
+
 def mestudent(request):
     return render(request, 'mepage/student/mepagestudent.html')
 
 def mestudentpossesses(request):
     possessBooks = request.user.student.Studentposses.all()
-    return render(request, 'mepage/adult/possessedbooks.html', {"possessBooks": possessBooks})
+    return render(request, 'mepage/student/possessedbooks.html', {"possessBooks": possessBooks})
 
 def mestudentevents(request):
     return render(request, 'mepage/student/events.html')
