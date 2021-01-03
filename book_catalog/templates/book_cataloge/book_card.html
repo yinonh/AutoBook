@@ -49,21 +49,30 @@
     {% if not book.posses  %}
 <form method="POST" action="{% url 'book_card' book.id %}" name="takeBook">
                         {% csrf_token %}
-
+{% if request.user.is_authenticated %}
                         <button class="btn btn-success" name="posses" onclick="myFunction()" type="submit">Take Book</button>
-{% if user.isauthenticate %}
-    <script>
+<script>
     function myFunction() {
       alert("This Book Will Wait you in the Library in the next exchanging day Thank You");
     }
     </script>
-{% else %}
-    <script>
-    function myFunction() {
+    {% else %}
+                            <button class="btn btn-success" name="posses" onclick="myFunction1()" type="submit">Take Book</button>
+<script>
+    function myFunction1() {
       alert("Please log in first");
     }
     </script>
-{% endif %}
+    {% endif %}
+{#    {% if user.isauthenticate %}#}
+{##}
+{#{% else %}#}
+{#    <script>#}
+{#    function myFunction() {#}
+{#      alert("Please log in first");#}
+{#    }#}
+{#    </script>#}
+{#{% endif %}#}
 
                     </form>
 
