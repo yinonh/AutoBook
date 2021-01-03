@@ -1,6 +1,5 @@
 
 {% extends 'home/style.html' %}
-
 {% block content %}
     <br>
     <br>
@@ -11,18 +10,21 @@
  <div class="container text-center">
      <h1><b>Welcom to AutoBook lilbrary</b></h1>
 <br><br><br>
-     <h2><u>this mounth events</u></h2>
+     <h2><u>this mounth events</u></h2><br><br>
 
  <table>
-  {% for home in homepage1 %}
-  <tr>
-    <td><img src="{{ home.image.url }}" height="220" width="180" align="left"></td>
-    <td align="right" width="600"><h5>{{ home.title }}</h5><br>{{ home.description }}</td>
-  </tr>
-    {% endfor %}
+     {% for home in homepage1 %}
+     <tb>
+         <tr><img src="{{ home.image.url }}" height="220" width="180" align="left"></tr>
+         <tr align="right" width="600"><h5>{{ home.title }}</h5></tr><br>{{ home.description }}</tr>
+     </tb><br><br><br><br><br><br><br>
+     {% endfor %}
 </table>
 
-        <br>
+
+
+
+    <br>
     <br>
     <br>
     <br>
