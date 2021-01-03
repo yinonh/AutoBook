@@ -10,6 +10,7 @@
     {% for book in books %}
     {{ book.id }}
     {{ book.name }}
+        &ensp;Damage Description:&ensp;{{ book.Damage_Description }}
         <input type="checkbox" name="book.id" value="{{ book.id }}">
         <br>
     {% endfor %}

@@ -13,6 +13,7 @@
     are you sure?
     <form method="POST" action="{% url 'meAdultDamage' book.id %}">
     {% csrf_token %}
+        <input type="text" name="damagetext">Damage Description:<br>
         <button class="btn btn-primary" name="yes" type="submit">yes</button>
     </form>
 

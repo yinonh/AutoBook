@@ -30,13 +30,14 @@
     {% csrf_token %}
         <button class="btn btn-primary" type="submit">Return Book</button>
     </form>
-    {% endif %}
-    {% if not book.Is_Damaged %}
+        {% if not book.Is_Damaged %}
     <form method="POST" action="{% url 'meAdultDamage' book.id %}">
     {% csrf_token %}
         <button class="btn btn-danger" type="submit">Report Damaged</button>
     </form>
     {% endif %}
+    {% endif %}
+
     <br>
     <br>
 {% endfor %}

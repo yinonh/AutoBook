@@ -32,7 +32,10 @@ def meAdultDamage(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     if request.method == "POST":
         if 'yes' in request.POST:
+            damagedes = request.POST.get('damagetext')
             book.Is_Damaged=True
+            book.Damage_Description=damagedes
+            print(book.Damage_Description)
             book.save()
             return redirect("meadultpossesses")
         elif 'no' in request.POST:
@@ -104,6 +107,7 @@ def damaged (request):
         for bookid in id_list:
             book = get_object_or_404(Book, pk=bookid)
             book.Is_Damaged=False
+            book.Damage_Description=None
             book.save()
     books = Book.objects.filter(Is_Damaged=True)
     return render(request, 'mepage/admin/damaged.html',{'books':books})
