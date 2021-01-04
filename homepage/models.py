@@ -9,6 +9,8 @@ class Event (models.Model):
     link = models.URLField(max_length=200,null=True,default=None,blank=True)
     registerstudent = models.ManyToManyField(Student, null=True, blank=True)
 
+
+
     def __str__(self):
         return self.title
 
@@ -17,6 +19,7 @@ class HomePage(models.Model):
     description = models.TextField(max_length=500)
     image = models.ImageField(upload_to='home/images', default='book_catalog/images/defult.png')
     events = models.ManyToManyField(Event, null=True, blank=True)
+    change_Book_date = models.DateField(blank=True, null=True, default=None)
 
     def __str__(self):
         return self.title

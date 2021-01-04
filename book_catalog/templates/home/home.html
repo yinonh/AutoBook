@@ -11,6 +11,10 @@
   <p align="justify">
  <img src="{{ home.image.url }}" height="250" width="400" align="right" hspace="20">
       {{ home.description }}</p>
+ {% if home.change_Book_date != None %}
+     <h6 align="left">next exchanging day:  {{ home.change_Book_date|date:'d/m/y, D' }} </h6>
+
+ {% endif %}
 <br><br><br><br><br>
 
  <br><br><br><br>
