@@ -1,12 +1,81 @@
 {% extends "mepage/admin/styleadmin.html" %}
 {% block content %}
-    <h1>Reports</h1>
+
     <br>
     <br>
 
-Books needed to take out report <a href={% url 'getout' %}><button class="btn btn-primary">GO</button></a>
-<br>
-Books to fix    <a href={% url 'damaged' %}><button class="btn btn-primary">GO</button></a><br>
-    Books needed to bring in report <a href={% url 'getin' %}><button class="btn btn-primary">GO</button></a>
 
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #E0FFFF;
+}
+</style>
+</head>
+<body>
+
+
+
+<table>
+  <tr>
+    <th>Reports</th>
+    <th>Entrance</th>
+
+  </tr>
+  <tr>
+    <td>Books needed to take out report </td>
+    <td><a href={% url 'getout' %}><button class="btn btn-primary">GO</button></a></td>
+
+  </tr>
+  <tr>
+
+  <td>Books to fix report</td>
+    <td> <a href={% url 'damaged' %}><button class="btn btn-primary">GO</button></a></td>
+
+  </tr>
+  <tr>
+  <td> Books needed to bring in report</td>
+    <td><a href={% url 'getin' %}><button class="btn btn-primary">GO</button></a></td>
+  </tr>
+  <tr>
+
+</table>
+
+</body>
+</html>
 {% endblock %}
+
+
+
+
+
+
+
+
+{#{% extends "mepage/admin/styleadmin.html" %}#}
+{#{% block content %}#}
+{#    <h1>Reports</h1>#}
+{#    <br>#}
+{#    <br>#}
+{##}
+{#Books needed to take out report <a href={% url 'getout' %}><button class="btn btn-primary">GO</button></a>#}
+{#<br>#}
+{#Books to fix    <a href={% url 'damaged' %}><button class="btn btn-primary">GO</button></a><br>#}
+{#    Books needed to bring in report <a href={% url 'getin' %}><button class="btn btn-primary">GO</button></a>#}
+{##}
+{#{% endblock %}#}

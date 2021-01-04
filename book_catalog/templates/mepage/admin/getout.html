@@ -1,22 +1,109 @@
+
 {% extends "mepage/admin/styleadmin.html" %}
 {% block content %}
     <br>
     <br>
-{% if books|length == 0 %}
-        <h1>Nothing To Perform</h1>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #E0FFFF;
+}
+</style>
+</head>
+<body>
+
+<h2>Book To Take Out</h2>
+
+<table>
+  <tr>
+    <th>Book Name</th>
+    <th>Book ID</th>
+    <th>Took Out</th>
+    <th>Cancel</th>
+
+  </tr>
+  <tr>
+      {% if books|length == 0 %}
+        <h1> </h1>
     {% else %}
     <form method="POST" >
     {% csrf_token %}
     {% for book in books %}
-    {{ book.id }}
-    {{ book.name }}
-        &emsp;Take Out  <input type="checkbox" name="book.id" value="{{ book.id }}">
-        &emsp;Cancel Order  <input type="checkbox" name="cancelbook.id" value="{{ book.id }}">
-        <br>
+    <td>{{ book.name }}</td>
+    <td>{{  book.id  }}</td>
+    <td> &emsp;Take Out  <input type="checkbox" name="book.id" value="{{ book.id }}"></td>
+    <td> &emsp;Cancel Order  <input type="checkbox" name="cancelbook.id" value="{{ book.id }}"></td>
+
+
+
+  <tr>
+         <br>
     {% endfor %}
+
     <br>
-<input type="submit" value="Submit">
-</form>
+
     {% endif %}
+          </tr>
+</td>
+</table>
+    <br><br>
+
+
+    <input type="submit" class="btn btn-success" value="Submit"></form>
+
 <a href={% url 'meadminpage' %}><button class="btn btn-primary">Back</button></a>
 {% endblock %}
+</body>
+</html>
+
+
+
+
+
+{##}
+{##}
+{#{% extends "mepage/admin/styleadmin.html" %}#}
+{#{% block content %}#}
+{#    <br>#}
+{#    <br>#}
+{#{% if books|length == 0 %}#}
+{#        <h1>Nothing To Perform</h1>#}
+{#    {% else %}#}
+{#    <form method="POST" >#}
+{#    {% csrf_token %}#}
+{#    {% for book in books %}#}
+{#    {{ book.id }}#}
+{#    {{ book.name }}#}
+{#        &emsp;Take Out  <input type="checkbox" name="book.id" value="{{ book.id }}">#}
+{#        &emsp;Cancel Order  <input type="checkbox" name="cancelbook.id" value="{{ book.id }}">#}
+{#        <br>#}
+{#    {% endfor %}#}
+{#    <br>#}
+{#<input type="submit" value="Submit">#}
+{#</form>#}
+{#    {% endif %}#}
+{#<a href={% url 'meadminpage' %}><button class="btn btn-primary">Back</button></a>#}
+{#{% endblock %}#}
+
+
+
+
+
+
+

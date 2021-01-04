@@ -2,23 +2,115 @@
 {% block content %}
     <br>
     <br>
-    {% if books|length == 0 %}
-        <h1>Nothing To Perform</h1>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #E0FFFF;
+}
+</style>
+</head>
+<body>
+
+<h2>Damaged Books</h2>
+
+<table>
+  <tr>
+    <th>Book Name</th>
+    <th>Id book</th>
+    <th>Damage Description</th>
+    <th>Done</th>
+
+  </tr>
+  <tr>
+      {% if books|length == 0 %}
+
     {% else %}
     <form method="POST" >
     {% csrf_token %}
     {% for book in books %}
-    {{ book.id }}
-    {{ book.name }}
-        &ensp;Damage Description:&ensp;{{ book.Damage_Description }}
-        <input type="checkbox" name="book.id" value="{{ book.id }}">
-        <br>
+    <td>{{ book.name }}</td>
+    <td>{{  book.id  }}</td>
+    <td> {{ book.Damage_Description }}</td>
+    <td>  <input type="checkbox" name="book.id" value="{{ book.id }}"></td>
+
+
+
+  <tr>
+         <br>
     {% endfor %}
+
+</td>
+
     <br>
-        <input type="submit" value="Submit">
-</form>
 
     {% endif %}
-<a href={% url 'meadminpage' %}><button class="btn btn-primary">Back</button></a>
+      </tr>
 
+</table><br><br>
+<input type="submit" class="btn btn-success" value="Submit"></form>
+
+</body>
+</html>
+<a href={% url 'meadminpage' %}><button class="btn btn-primary">Back</button></a>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#{% extends "mepage/admin/styleadmin.html" %}#}
+{#{% block content %}#}
+{#    <br>#}
+{#    <br>#}
+{#    {% if books|length == 0 %}#}
+{#        <h1>Nothing To Perform</h1>#}
+{#    {% else %}#}
+{#    <form method="POST" >#}
+{#    {% csrf_token %}#}
+{#    {% for book in books %}#}
+{#    {{ book.id }}#}
+{#    {{ book.name }}#}
+{#        &ensp;Damage Description:&ensp;{{ book.Damage_Description }}#}
+{#        <input type="checkbox" name="book.id" value="{{ book.id }}">#}
+{#        <br>#}
+{#    {% endfor %}#}
+{#    <br>#}
+{#        <input type="submit" value="Submit">#}
+{#</form>#}
+{##}
+{#    {% endif %}#}
+{#<a href={% url 'meadminpage' %}><button class="btn btn-primary">Back</button></a>#}
+{##}
+{#{% endblock %}#}
