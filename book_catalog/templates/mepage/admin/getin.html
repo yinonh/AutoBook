@@ -1,0 +1,21 @@
+{% extends "mepage/admin/styleadmin.html" %}
+{% block content %}
+    <br>
+    <br>
+{% if books|length == 0 %}
+        <h1>Nothing To Perform</h1>
+    {% else %}
+    <form method="POST" >
+    {% csrf_token %}
+    {% for book in books %}
+    {{ book.id }}
+    {{ book.name }}
+        &emsp;Took In  <input type="checkbox" name="book.id" value="{{ book.id }}">
+        <br>
+    {% endfor %}
+    <br>
+<input type="submit" value="Submit">
+</form>
+    {% endif %}
+<a href={% url 'meadminpage' %}><button class="btn btn-primary">Back</button></a>
+{% endblock %}

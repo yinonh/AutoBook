@@ -1,6 +1,7 @@
 {% extends "mepage/adult/styleadult.html" %}
 
 {% block content %}
+
 {% if possessBooks|length == 0 %}
     <h2>You Don't Own Any Books.</h2>
 
@@ -12,8 +13,6 @@
     <br>
     <h2>{{ book.name }} by
     {{ book.author_name }}</h2>
-
-
     <br>
     <br>
     <img src="{{ book.image.url }}" height="220" width="180">
@@ -23,19 +22,29 @@
         <button class="btn btn-warning" type="submit">Waiting For Admin Confirmation</button>
         <form method="POST" action="{% url 'meAdultReturn' book.id %}" >
     {% csrf_token %}
-        <button class="btn btn-primary" type="submit">Cancel Request</button>
+        <button class="btn btn-primary" name="cancelrequest" type="submit">Cancel Request</button>
     </form>
+
     {% else %}
+        {% if book.returned == False  %}
+            <button class="btn btn-warning" type="submit">Waiting For Admin Confirmation</button>
+        <form method="POST" action="{% url 'meAdultReturn' book.id %}" >
+    {% csrf_token %}
+        <button class="btn btn-primary" name="cancelreturn" type="submit">Cancel Request</button>
+    </form>
+            {% else %}
     <form method="POST" action="{% url 'meAdultReturn' book.id %}" >
     {% csrf_token %}
         <button class="btn btn-primary" type="submit">Return Book</button>
     </form>
-        {% if not book.Is_Damaged %}
+{% endif %}
+{% if not book.Is_Damaged and book.returned == True %}
     <form method="POST" action="{% url 'meAdultDamage' book.id %}">
     {% csrf_token %}
         <button class="btn btn-danger" type="submit">Report Damaged</button>
+
     </form>
-    {% endif %}
+{% endif %}
     {% endif %}
 
     <br>

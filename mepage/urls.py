@@ -15,6 +15,7 @@ urlpatterns = [
     path('Student/LendedBooks/', views.mestudentlendedbooks, name="melendedbooks"),
     path('Admin/Reports/', views.meadminpage, name="meadminpage"),
     path('getout/',views.getout,name="getout"),
+    path('getin/',views.getin,name="getin"),
     path('damaged/',views.damaged,name="damaged"),
 
 ]
