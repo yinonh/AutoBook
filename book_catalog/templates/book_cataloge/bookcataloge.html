@@ -12,8 +12,7 @@
                 <div class="card" style="width: 12rem;">
                     <img src="{{ book.image.url }}" class="card-img-top" alt="...">
                     <h5 class="card-title">{{ book.name|truncatechars:15}}</h5>
-                    <h5>by</h5>
-                    <div class="card-body size"><h5>{{ book.author_name }}</h5>
+                    <div class="card-body size"><h6>{{ book.author_name }}</h6>
                     <a href="{% url 'book_card' book.id %}" class="btn btn-info">overview</a>
                     </div>
                 </div>
@@ -32,8 +31,7 @@
                 <div class="card" style="width: 12rem;">
                     <img src="{{ book.image.url }}" class="card-img-top" alt="...">
                     <h5 class="card-title">{{ book.name|truncatechars:15}}</h5>
-                    <h5>by</h5>
-                    <div class="card-body"><h5>{{ book.author_name }}</h5>
+                    <div class="card-body"><h6>{{ book.author_name }}</h6>
                     <a href="{% url 'book_card' book.id %}" class="btn btn-primary">overview</a>
                 </div>
                 </div>

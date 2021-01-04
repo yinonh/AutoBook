@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 
 
-books = Book.objects.all()
+#books = Book.objects.all()
 def home(request):
     return render(request, 'home/home.html')
 
@@ -13,6 +13,7 @@ def simple (request):
     return render(request, 'home/simple.html')
 
 def bookcataloge (request):
+    books = Book.objects.all()
     return render(request,'book_cataloge/bookcataloge.html',{'books': books})
 
 def contact (request):
@@ -69,7 +70,7 @@ def book_card(request, book_id):
             if adult != request.user.adult:
                 if book in adult.FavouriteBooks.all():
                     for item in adult.FavouriteBooks.all():
-                        if item != book:
+                        if item != book and item.genre == book.genre:
                             suggestions.append(item)
         suggestions = suggestions[:3]
         suggestions = set(suggestions)

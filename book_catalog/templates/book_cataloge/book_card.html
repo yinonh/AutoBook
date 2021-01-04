@@ -32,7 +32,7 @@
 </form>
 
     <br>
-    <h2>{{ book.name }} by
+    <h2>{{ book.name }}
     {{ book.author_name }}</h2>
 
     <br>
@@ -116,15 +116,15 @@
 
 {% if suggestions|length > 0 %}
     <div class="form-group col-12"><hr></div>
-    <h2>People also liked:</h2>
+    <h2>Readers also liked from {{ book.genre }}:</h2>
         <div class="grid-container">
         {% for suggestion in suggestions %}
             <div class="grid-item">
                 <div class="card" style="width: 10rem;">
                     <img src="{{ suggestion.image.url }}" class="card-img-top" alt="...">
                     <h5 class="card-title">{{ suggestion.name|truncatechars:15}}</h5>
-                    <h5>by</h5>
-                    <div class="card-body size"><h5>{{ suggestion.author_name }}</h5>
+
+                    <div class="card-body size"><h6>{{ suggestion.author_name }}</h6>
                     <a href="{% url 'book_card' suggestion.id %}" class="btn btn-info">overview</a>
                     </div>
                 </div>
