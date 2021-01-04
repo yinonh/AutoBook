@@ -82,4 +82,24 @@
 
 </div>
 
+  <div class="form-group col-12"><hr></div>
+
+<h2>People also liked:</h2>
+    <div class="grid-container">
+    {% for suggestion in suggestions %}
+        <div class="grid-item">
+            <div class="card" style="width: 10rem;">
+                <img src="{{ suggestion.image.url }}" class="card-img-top" alt="...">
+                <h5 class="card-title">{{ suggestion.name|truncatechars:15}}</h5>
+                <h5>by</h5>
+                <div class="card-body size"><h5>{{ suggestion.author_name }}</h5>
+                <a href="{% url 'book_card' suggestion.id %}" class="btn btn-info">overview</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+
 {% endblock %}

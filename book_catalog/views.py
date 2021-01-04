@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from .models import Book
+from authentication.models import Adult
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -60,8 +61,23 @@ def book_card(request, book_id):
                 request.user.student.save()
                 book.posses = True
                 book.save()
+    suggestions = []
+    try:
+        for adult in Adult.objects.all():
+            if len(suggestions) >= 3:
+                break
+            if adult != request.user.adult:
+                if book in adult.FavouriteBooks.all():
+                    for item in adult.FavouriteBooks.all():
+                        if item != book:
+                            suggestions.append(item)
+        print(suggestions)
+        suggestions = suggestions[:3]
+        suggestions = set(suggestions)
+    except:
+        pass
 
-    return render(request,'book_cataloge/book_card.html',{'book':book})
+    return render(request,'book_cataloge/book_card.html',{'book':book, 'suggestions': suggestions})
 
 
 
