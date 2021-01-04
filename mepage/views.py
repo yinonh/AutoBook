@@ -3,7 +3,7 @@ from book_catalog.models import Book
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from authentication.models import Student,Adult
-from homepage.models import Event
+from homepage.models import Event,HomePage
 
 
 def meadult(request):
@@ -103,7 +103,10 @@ def mestudentpossesses(request):
     return render(request, 'mepage/student/possessedbooks.html', {"possessBooks": possessBooks})
 
 def mestudentevents(request):
-    events = Event.objects.all()
+    try:
+        events = HomePage.objects.all()[0].events.all()
+    except:
+        events = None
     return render(request, 'mepage/student/events.html',{"events":events})
 
 def registerEvents(request, event_id):

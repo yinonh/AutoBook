@@ -18,9 +18,13 @@
 <br><br><br><br><br>
 
  <br><br><br><br>
-     <h2><u>this mounth events</u></h2>
 
+{% if events|length == 0 %}
+
+     <h2><u>There Are No Upcoming Events.</u></h2>
+{% else %}
  <table>
+  <h2><u>Upcoming Events</u></h2>
 	{% for event in events %}
 	<tr>
         {% if event.link != None %}
@@ -38,8 +42,7 @@
  <b>{{ event.date }}</b>
     	{% endfor %}
 </table>
-
- {{ event.date }}
+{% endif %}
 
 
 
