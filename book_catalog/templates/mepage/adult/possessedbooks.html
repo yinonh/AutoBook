@@ -22,15 +22,15 @@
         <button class="btn btn-warning" type="submit">Waiting For Admin Confirmation</button>
         <form method="POST" action="{% url 'meAdultReturn' book.id %}" >
     {% csrf_token %}
-        <button class="btn btn-primary" name="cancel" type="submit">Cancel Request</button>
+        <button class="btn btn-primary" name="cancelrequest" type="submit">Cancel Request</button>
     </form>
 
     {% else %}
         {% if book.returned == False  %}
             <button class="btn btn-warning" type="submit">Waiting For Admin Confirmation</button>
-        <form method="POST" action="{% url 'AdultCancel' book.id %}" >
+        <form method="POST" action="{% url 'meAdultReturn' book.id %}" >
     {% csrf_token %}
-        <button class="btn btn-primary" type="submit">Cancel Request</button>
+        <button class="btn btn-primary" name="cancelreturn" type="submit">Cancel Request</button>
     </form>
             {% else %}
     <form method="POST" action="{% url 'meAdultReturn' book.id %}" >
