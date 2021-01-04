@@ -45,7 +45,7 @@
             {% endif %}
             {% if user.is_superuser %}
             <li class="nav-item"  href="{% url "meadminpage" %}">
-        <a class="nav-link text-primary text size-12" href="{% url "meadminpage" %}">Reports</a>
+        <a class="nav-link text-primary text size-12" href="{% url "meadminpage" %}">Me</a>
             {% endif %}
       </li>
             <li class="nav-item"  href="{% url "logoutuser" %}">
@@ -83,3 +83,33 @@
 {%  block content %}{% endblock %}
 
 </html>
+
+
+
+ <style>
+.grid-container {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: auto auto auto;
+  background-color: white;
+  padding: 10px;
+}
+
+.grid-item {
+  background-color:white ;
+  border: 1px solid white(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.registration{
+    background-color:white;
+	margin:10px 500px;
+	position: "absolute";
+	left:200px;
+	top:100px;
+	padding:50px;
+	padding-left:150px;
+}
+</style>

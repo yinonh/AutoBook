@@ -27,12 +27,9 @@
       <li class="nav-item"  href="{% url "meadminpage" %}">
         <a class="nav-link text-primary text size-12" href="{% url "meadminpage" %}">Reports</a>
       </li>
-      <li class="nav-item" href="{% url "meadminpage" %}">
-        <a class="nav-link text-primary" href="{% url 'meadminpage' %}">Favourites</a>
-      </li>
         {% if user.is_authenticated %}
-            <li class="nav-item"  href="{% url "meadminpage" %}">
-        <a class="nav-link text-primary text size-12" href="{% url "meadminpage" %}">Possessed</a>
+            <li class="nav-item"  href="{% url "admin:index" %}">
+        <a class="nav-link text-primary text size-12" href="{% url "admin:index" %}">Admin Panel</a>
       </li>
             <li class="nav-item"  href="{% url "logoutuser" %}">
         <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>
