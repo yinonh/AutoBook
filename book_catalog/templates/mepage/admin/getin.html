@@ -2,20 +2,69 @@
 {% block content %}
     <br>
     <br>
-{% if books|length == 0 %}
-        <h1>Nothing To Perform</h1>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #E0FFFF;
+}
+</style>
+</head>
+<body>
+
+<h2>Books To Take In</h2>
+
+<table>
+  <tr>
+    <th>Book Name</th>
+    <th>Book ID</th>
+    <th>Done</th>
+
+
+  </tr>
+  <tr>
+      {% if books|length == 0 %}
+        <h1> </h1>
     {% else %}
     <form method="POST" >
     {% csrf_token %}
     {% for book in books %}
-    {{ book.id }}
-    {{ book.name }}
-        &emsp;Took In  <input type="checkbox" name="book.id" value="{{ book.id }}">
-        <br>
+    <td>{{ book.name }}</td>
+    <td>{{  book.id  }}</td>
+    <td>&emsp;Took In  <input type="checkbox" name="book.id" value="{{ book.id }}"
+  </tr>
+  <tr>
+         <br>
     {% endfor %}
-    <br>
-<input type="submit" value="Submit">
-</form>
     {% endif %}
+      </tr>
+</table>
+    <br><br>
+    <input type="submit" class="btn btn-success" value="Submit"></td>
+          </form>
+
+
+
 <a href={% url 'meadminpage' %}><button class="btn btn-primary">Back</button></a>
 {% endblock %}
+
+
+</body>
+</html>
+
+
