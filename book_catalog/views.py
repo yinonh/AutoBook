@@ -11,6 +11,9 @@ def home(request):
 def simple (request):
     return render(request, 'home/simple.html')
 
+def contact (request):
+    return render(request, 'home/contact.html')
+
 def bookcataloge (request):
     return render(request,'book_cataloge/bookcataloge.html',{'books': books})
 
