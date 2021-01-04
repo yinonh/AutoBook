@@ -12,6 +12,7 @@ urlpatterns = [
     path('Student/Possesses/<int:book_id>/', views.meStudentReturn, name="meStudentReturn"),
     path('Student/Possesses/Damaged/<int:book_id>/', views.meStudentDamage, name="meStudentDamage"),
     path('Student/Events/', views.mestudentevents, name="mestudentevents"),
+    path('Student/Events/<int:event_id>/', views.registerEvents, name="registerEvent"),
     path('Student/LendedBooks/', views.mestudentlendedbooks, name="melendedbooks"),
     path('Admin/Reports/', views.meadminpage, name="meadminpage"),
     path('getout/',views.getout,name="getout"),
