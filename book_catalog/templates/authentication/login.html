@@ -11,7 +11,7 @@
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="button" class="btn btn-primary">Login</button><br><br>
+    <button class="btn btn-primary" type="submit">Login</button><br><br>
 </form>
 
     <h3>dont have an account yet? <a href="{% url 'signupuser' %}" target="_blank">sign up</a></h3>
