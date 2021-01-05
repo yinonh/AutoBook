@@ -37,6 +37,9 @@
             <li class="nav-item" href="{% url "melendedbooks" %}">
         <a class="nav-link text-primary" href="{% url 'melendedbooks' %}">Lended Books</a>
       </li>
+            <li class="nav-item" href="{% url "teachers" %}">
+        <a class="nav-link text-primary" href="{% url 'teachers' %}">Teachers</a>
+      </li>
             <li class="nav-item"  href="{% url "logoutuser" %}">
         <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>
                     <form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
