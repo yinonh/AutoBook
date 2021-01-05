@@ -5,6 +5,7 @@
     <h1>Book Card:</h1>
     <br>
     <br>
+{% if book.study_book == False %}
 <a href="{% url 'all_review' book.id %}">
 {% for i in rank %}
     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" color="yellow" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16" style="float: right">
@@ -19,6 +20,7 @@
 
 {% endfor %}
 </a>
+{% endif %}
 
 {% if user.adult %}
     {% if book in user.adult.FavouriteBooks.all %}
@@ -46,8 +48,8 @@
 </form>
 
     <br>
-    <h2>{{ book.name }}
-    {{ book.author_name }}</h2>
+    <h2>{{ book.name }}</h2>
+<h4>{{ book.author_name }}</h4>
 
     <br>
     <br>
@@ -120,7 +122,7 @@
     <button class="btn btn-success">Available</button>
 
 {% endif %}
-{% if request.user.adult %}
+{% if request.user.adult and book.study_book == False %}
     <a href="{% url 'add_review' book.id %}" class="btn btn-info">add review</a>
 {% endif %}
 
