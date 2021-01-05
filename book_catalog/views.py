@@ -83,8 +83,8 @@ def book_card(request, book_id):
         suggestions = set(suggestions)
     except:
         pass
-
-    return render(request, 'book_cataloge/book_card.html', {'book': book, 'suggestions': suggestions, 'rank': rank/count if count > 0 else 0})
+    rank = rank//count if count > 0 else 0
+    return render(request, 'book_cataloge/book_card.html', {'book': book, 'suggestions': suggestions, 'rank': range(rank),"empty":range(5 - rank) })
 
 
 
