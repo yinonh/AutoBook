@@ -20,7 +20,7 @@ class Student(models.Model):
 
 class Adult(models.Model):
     user=models.OneToOneField(User, on_delete=models.SET_NULL,null=True,blank=True)
-    ID_Number=models.CharField(max_length=10,default=None)
+    ID_Number=models.CharField(max_length=9,default=None,validators=[MinLengthValidator(9)])
     type = models.CharField(max_length=50,default='Adult')
     Is_Banned = models.BooleanField(default=False)
     Security_Check = models.BooleanField(default=False)
