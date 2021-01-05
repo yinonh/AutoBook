@@ -32,11 +32,13 @@
     {% csrf_token %}
         <button class="btn btn-primary" name="cancelreturn" type="submit">Cancel Request</button>
     </form>
+            <a href="{% url 'add_review' book.id %}" class="btn btn-info">Write Review</a>
             {% else %}
     <form method="POST" action="{% url 'meAdultReturn' book.id %}" >
     {% csrf_token %}
         <button class="btn btn-primary" type="submit">Return Book</button>
     </form>
+
 {% endif %}
 {% if not book.Is_Damaged and book.returned == True %}
     <form method="POST" action="{% url 'meAdultDamage' book.id %}">

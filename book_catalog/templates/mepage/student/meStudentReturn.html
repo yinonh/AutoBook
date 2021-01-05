@@ -1,7 +1,9 @@
 {% extends "mepage/student/stylestudent.html" %}
 
 {% block content %}
-
+<div class="container text-center">
+    <br>
+    <br>
    <h2>{{ book.name }} by
     {{ book.author_name }}</h2>
 
@@ -10,10 +12,10 @@
     <img src="{{ book.image.url }}" height="220" width="180">
     <br>
     <br>
-    are you sure?
+    <h5 style="color: red">Are You Sure?</h5><br>
     <form method="POST" action="{% url 'meStudentReturn' book.id %}">
     {% csrf_token %}
-        <button class="btn btn-primary" name="yes" type="submit">yes</button>
+        <button class="btn btn-primary" name="yes" type="submit">Yes</button>
     </form>
     <form method="POST" action="{% url 'meStudentReturn' book.id %}">
     {% csrf_token %}
@@ -21,6 +23,5 @@
     </form>
 
 
-
-
+</div>
 {% endblock %}
