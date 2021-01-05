@@ -25,4 +25,11 @@ def addReview(request, book_id):
             return render(request, "review/addReview.html", {"form": ReviewForm(), "book_id": book_id,"error":"bad data"})
 
 
+def allReview(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    reviews = []
+    for review in Review.objects.all():
+        if (book in review.book.all()):
+            reviews.append(review)
 
+    return render(request, "review/allReview.html", {"book": book,"reviews":reviews})
