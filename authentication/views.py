@@ -9,7 +9,6 @@ from .forms import ExtendedUserCreationForm,UserProfileForm,AdultProfileForm
 def signupuser(request):
     if request.method == 'POST':
         ans = request.POST.get('kinduser')
-        print(ans)
         if ans == '1':
             return studentsignupuser(request)
 

@@ -34,6 +34,7 @@ urlpatterns = [
     path('Contact/', book_catalog_views.contact, name="contact"),
     path('Filtered/', book_catalog_views.filteredbooks, name="filteredbooks"),
 
+
     #Authentication
     path('signup/student/', authentication_views.studentsignupuser, name="signupstudent"),
     path('signup/adult/', authentication_views.adultsignupuser, name="signupadult"),

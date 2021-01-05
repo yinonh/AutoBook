@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'authentication',
     'mepage',
     'homepage',
+    'review',
 ]
 
 MIDDLEWARE = [

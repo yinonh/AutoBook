@@ -54,8 +54,9 @@
    </tbody>
 </table>
 
-
+{% if not user.adult %}
 Study Book: <input type="checkbox" name="Study_Book"><br>
+    {% endif %}
 Available:<input type="checkbox" name="Available" checked><br>
 
     <br>
