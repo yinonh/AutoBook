@@ -5,13 +5,15 @@ from book_catalog.models import Book
 
 def addReview(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
+    userReview = request.user.adult.reviews.filter(book=book)
     if request.method == "GET":
-        userReview = request.user.adult.reviews.filter(book=book)
         if(len(userReview) > 0):
-            return render(request, "book_cataloge/bookcataloge.html")
+            return render(request, "review/addReview.html", {"form": ReviewForm(instance=userReview[0]), "book_id": book_id})
         else:
             return render(request, "review/addReview.html", {"form": ReviewForm(), "book_id": book_id})
     elif request.method == "POST":
+        if(len(userReview) > 0):
+            Review.delete(userReview[0])
         form = ReviewForm(request.POST)
         if form.is_valid():
             newReview = form.save(commit=False)
