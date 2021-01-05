@@ -3,6 +3,7 @@ from .models import Book
 from authentication.models import Adult
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
+from review.models import Review
 
 
 #books = Book.objects.all()
@@ -42,6 +43,12 @@ def filteredbooks (request):
 
 def book_card(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
+    reviews = Review.objects.filter(book= book)
+    rank, count = 0, 0
+    for reviw in reviews:
+        rank += reviw.rank
+        count += 1
+
     if request.method == "POST":
         if "favourite" in request.POST:
             request.user.adult.FavouriteBooks.add(book)
@@ -77,7 +84,7 @@ def book_card(request, book_id):
     except:
         pass
 
-    return render(request,'book_cataloge/book_card.html',{'book':book, 'suggestions': suggestions})
+    return render(request, 'book_cataloge/book_card.html', {'book': book, 'suggestions': suggestions, 'rank': rank/count if count > 0 else 0})
 
 
 

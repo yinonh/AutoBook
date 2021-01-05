@@ -6,6 +6,8 @@
     <br>
     <br>
 
+{{ rank }}
+
 {% if user.adult %}
     {% if book in user.adult.FavouriteBooks.all %}
         <form method="POST" action="{% url 'book_card' book.id %}">
@@ -105,6 +107,9 @@
     {% else %}
     <button class="btn btn-success">Available</button>
 
+{% endif %}
+{% if request.user.adult %}
+    <a href="{% url 'add_review' book.id %}" class="btn btn-info">add review</a>
 {% endif %}
 
 <a href={% url 'bookcataloge' %}><button class="btn btn-primary">Back</button></a>
