@@ -1,0 +1,19 @@
+{% extends "mepage/student/stylestudent.html" %}
+
+{% block content %}
+    <br><br><br>
+    <h1 align="center">Teachers</h1>
+    <br><br>
+    {% for teacher in teachers %}
+        <div class="card bg-light mb-3" style="max-width: 100rem;">
+  <div class="card-header">
+<h5 class="card-header">{{ teacher.Teacher_Name }}</h5>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ teacher.title }}</h5>
+    <p class="card-text">{{ teacher.description }}</p>
+      <a href="{% url 'teachercard' teacher.id %}" class="btn btn-info"> More Info About {{ teacher.Teacher_Name }}</a>
+  </div>
+</div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'book_cataloge/style.html' %}
+{% block content %}
+    {% if books %}
+    <h2>Books For The Query '{{ query }}'</h2>
+<div class="grid-container">
+    {% for book in books %}
+            <div class="grid-item">
+                <div class="card" style="width: 12rem;">
+                    <img src="{{ book.image.url }}" class="card-img-top" alt="...">
+                    <h5 class="card-title">{{ book.name|truncatechars:15}}</h5>
+                    <div class="card-body"><h6>{{ book.author_name }}</h6>
+                    <a href="{% url 'book_card' book.id %}" class="btn btn-primary">overview</a>
+                </div>
+                </div>
+            </div>
+    {% endfor %}
+        </div>
+         <table>
+         {% else %}
+        <h2> No Books Found For The Query '{{ query }}'</h2>
+    {% endif %}
+         {% if events %}
+    <h2>Events For The Query '{{ query }}'</h2>
+
+	{% for event in events %}
+	<tr>
+        {% if event.link != None %}
+			</tr><br><br><br><br><br>
+    <td>
+        <td><tr align="left"><a href={{ event.link }} target="_blank"><img src="{{ event.image.url }}" height="200" width="250" align="right" hspace="20"></a></tr></td>
+        {% else %}
+    </tr><br><br><br><br><br><br><br><br>
+    <td>
+			<td><tr align="left"><img src="{{ event.image.url }}" height="200" width="250" align="right" hspace="20"></tr></td>
+		{% endif %}
+			<td><tr align="right" width="1000"><h5>{{ event.title }}</h5><br>{{ event.text }}</tr></td>
+	</td>
+        <br>
+ <b>{{ event.date }}</b>
+    	{% endfor %}
+</table>
+
+
+
+        {% else %}
+        <h2> No Events Found For The Query '{{ query }}'</h2>
+    {% endif %}
+
+
+{% endblock %}
