@@ -15,6 +15,7 @@ urlpatterns = [
     path('Student/Events/', views.mestudentevents, name="mestudentevents"),
     path('Student/Events/<int:event_id>/', views.registerEvents, name="registerEvent"),
     path('Student/Teachers/', teachersviews.teachers, name="teachers"),
+    path('Student/Teachers/<int:teacher_id>/', teachersviews.teachercard, name="teachercard"),
     path('Student/LendedBooks/', views.mestudentlendedbooks, name="melendedbooks"),
     path('Admin/Reports/', views.meadminpage, name="meadminpage"),
     path('getout/',views.getout,name="getout"),

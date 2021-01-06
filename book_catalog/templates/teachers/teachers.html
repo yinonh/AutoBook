@@ -7,11 +7,12 @@
     {% for teacher in teachers %}
         <div class="card bg-light mb-3" style="max-width: 100rem;">
   <div class="card-header">
-
+<h5 class="card-header">{{ teacher.Teacher_Name }}</h5>
   </div>
   <div class="card-body">
     <h5 class="card-title">{{ teacher.title }}</h5>
     <p class="card-text">{{ teacher.description }}</p>
+      <a href="{% url 'teachercard' teacher.id %}"> Go</a>
   </div>
 </div>
     {% endfor %}
