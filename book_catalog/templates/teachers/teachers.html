@@ -13,6 +13,7 @@
     <h5 class="card-title">{{ teacher.title }}</h5>
     <p class="card-text">{{ teacher.description }}</p>
       <a href="{% url 'teachercard' teacher.id %}" class="btn btn-info"> More Info About {{ teacher.Teacher_Name }}</a>
+  <h5 align="right">Posted At {{ teacher.Teacher_date }} </h5>
   </div>
 </div>
     {% endfor %}

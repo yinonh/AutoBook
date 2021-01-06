@@ -22,6 +22,8 @@ class Book (models.Model):
         ('Comic book', 'Comic book'), ('Adventure', 'Adventure'),
         ('Food', 'Food'),('Study Book', 'Study Book')
         )
+    adult_only = models.BooleanField(default=False)
+    kids = models.BooleanField(default=False)
     genre = models.CharField(default=True,max_length=100, choices=GENRE_CHOICES)
     posses = models.BooleanField(default=False)
     takenout = models.BooleanField(default=False)

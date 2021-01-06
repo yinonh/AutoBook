@@ -17,9 +17,16 @@ def simple (request):
 def bookcataloge (request):
     try:
         if request.user.adult:
-            books = Book.objects.filter(study_book=False)
+            books = Book.objects.filter(study_book=False,kids=False)
+
     except:
-        books = Book.objects.all()
+        try:
+            if request.user.student:
+                books = Book.objects.filter(adult_only=False)
+        except:
+            books = Book.objects.all()
+
+
     return render(request,'book_cataloge/bookcataloge.html',{'books': books})
 
 def contact (request):

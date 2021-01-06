@@ -13,3 +13,5 @@ class Teacher(models.Model):
         ('Zoom', 'Zoom'), ('Frontal', 'Frontal'),
     )
     LessonMethod= models.CharField(default=True, max_length=100, choices=METHOD_CHOICES)
+    def __str__(self):
+        return self.Teacher_Name
