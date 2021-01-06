@@ -20,7 +20,7 @@ from book_catalog import views as book_catalog_views
 from django.conf.urls.static import static
 from authentication import views as authentication_views
 from mepage import views as mepage_views
-
+from forum import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -46,6 +46,11 @@ urlpatterns = [
     # path('Me/Adult/', mepage_views.meadult, name="meadult"),
     # # path('Me/Adult/Favourites/', mepage_views.meadultfavourites, name="meadultfavourites"),
     # path('Me/Student/', mepage_views.mestudent, name="mestudent"),
+
+    #forum
+    path('forum/addInForum/', forum_views.addInForum, name='addInForum'),
+    path('forum/addInDiscussion/', forum_views.addInDiscussion, name='addInDiscussion'),
+
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
