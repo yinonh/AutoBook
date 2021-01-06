@@ -1,0 +1,20 @@
+{% extends "mepage/student/stylestudent.html" %}
+
+{% block content %}
+    <br><br><br>
+    <h1 align="center">{{ activity.title }}</h1>
+    <br><br>
+    {% for actvity in activities %}
+        <div class="card bg-light mb-3" style="max-width: 100rem;">
+  <div class="card-header">
+
+
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ activity.title }}</h5>
+      <h5 class="card-title">{{ activity.url }}</h5>
+    <p class="card-text">{{ activity.grade }}</p>
+  </div>
+</div>
+    {% endfor %}
+{% endblock %}

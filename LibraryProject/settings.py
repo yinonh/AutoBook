@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'mepage',
     'homepage',
     'review',
+    'Activite_stud',
 ]
 
 MIDDLEWARE = [
