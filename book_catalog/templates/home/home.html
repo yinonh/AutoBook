@@ -1,82 +1,194 @@
 
 {% extends 'home/style.html' %}
-
 {% block content %}
-    <br>
-    <br>
-    <br>
- <d class="container text-center">
-     <h1><b> {{ home.title }}</b></h1>
-<br><br>
-  <p align="justify">
- <img src="{{ home.image.url }}" height="250" width="400" align="right" hspace="20">
-      {{ home.description }}</p>
- {% if home.change_Book_date != None %}
-     <h6 align="left">next exchanging day:  {{ home.change_Book_date|date:'d/m/y, D' }} </h6>
 
- {% endif %}
+
+<style>
+    * {box-sizing: border-box;}
+    ul {list-style-type: none;}
+    body {font-family: Verdana, sans-serif;}
+
+    .month {
+      padding: 70px 25px;
+      width: 100%;
+      background: #ccebff;
+      text-align: center;
+    }
+
+    .month ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .month ul li {
+      color: black;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+
+    .weekdays {
+      margin: 0;
+      padding: 10px 0;
+      background-color: #ddd;
+    }
+
+    .weekdays li {
+      display: inline-block;
+      width: 13.6%;
+      color: #666;
+      text-align: center;
+    }
+
+    .days {
+      padding: 10px 0;
+      background: #eee;
+      margin: 0;
+    }
+
+    .days li {
+      list-style-type: none;
+      display: inline-block;
+      width: 13.6%;
+      text-align: center;
+      margin-bottom: 5px;
+      font-size:12px;
+      color: #777;
+    }
+
+    .days li .active {
+      padding: 5px;
+      background:#0099ff;
+      color: white !important
+    }
+
+    /* Add media queries for smaller screens */
+    @media screen and (max-width:720px) {
+      .weekdays li, .days li {width: 13.1%;}
+    }
+
+    @media screen and (max-width: 420px) {
+      .weekdays li, .days li {width: 12.5%;}
+      .days li .active {padding: 2px;}
+    }
+
+    @media screen and (max-width: 290px) {
+      .weekdays li, .days li {width: 12.2%;}
+    }
+</style>
+
+ <div class="tittle text-center">
+<br><br>
+ <h1><b><u>welcome to AotoBook</u></b></h1>
+ <br>
+ {% load static %}
+ <img src="{% static 'book_catalog/defult.png' %}" height="250" width="250" %}"></a>
 <br><br><br><br><br>
 
- <br><br><br><br>
 
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
 {% if events|length == 0 %}
-
-     <h2><u>There Are No Upcoming Events.</u></h2>
+    <h2><i>There Are No Upcoming Events.</i></h2>
 {% else %}
- <table>
-  <h2><u>Upcoming Events</u></h2>
-	{% for event in events %}
-	<tr>
-        {% if event.link != None %}
-			</tr><br><br><br><br><br><br><br><br>
-    <td>
-        <td><tr align="left"><a href={{ event.link }} target="_blank"><img src="{{ event.image.url }}" height="200" width="250" align="right" hspace="20"></a></tr></td>
-        {% else %}
-    </tr><br><br><br><br><br><br><br><br>
-    <td>
-			<td><tr align="left"><img src="{{ event.image.url }}" height="200" width="250" align="right" hspace="20"></tr></td>
-		{% endif %}
-			<td><tr align="right" width="1000"><h5>{{ event.title }}</h5><br>{{ event.text }}</tr></td>
-	</td>
-        <br>
- <b>{{ event.date }}</b>
-    	{% endfor %}
-</table>
+    <h2><i>Upcoming Events</i></h2>
+    <div class="grid-container">
+        {% for event in events %}
+            <img src="{{ event.image.url }}" height="300" width="500" hspace="20">
+            {% if event.link != None %}
+                 <a href={{ event.link }} target="_blank"><img src="{{ event.image.url }}" height="200" width="250" align="right" hspace="20"></a>
+            {% else %}
+                <br>
+            {% endif %}
+            <h3>{{ event.title }}</h3><br>{{ event.text }}<br><b>{{ event.date }}</b><br>
+        {% endfor %}
+    </div>
 {% endif %}
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
 
 
 
-        <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+<br><br><br><br><br>
 
 
-{#    {% for event in events %}#}
-{#            <br>#}
-{#  <tr>#}
-{#  {% if event.link != None %}#}
-{#      <th><a href="{{ event.link }}" target="_blank"><img src="{{ book.image.url }}" height="180" width="220"></a></th>#}
-{#      {% else %}#}
-{#    <td><img src="{{ event.image.url }}" height="180" width="220" align="left"></td>#}
-{#      {% endif %}#}
-{##}
-{#    <td align="right" width="600"><h5>{{ event.title }}</h5><br>{{ event.text }}</td>#}
-{#  </tr>#}
-{#      <br>#}
-{##}
-{#    {% endfor %}#}
-{##}
-{##}
+    <div class="month">
+      <ul>
+        <li>
+          August<br>
+          <span style="font-size:18px">2017</span>
+        </li>
+      </ul>
+    </div>
+
+    <ul class="weekdays">
+      <li>Su</li>
+      <li>Mo</li>
+      <li>Tu</li>
+      <li>We</li>
+      <li>Th</li>
+      <li>Fr</li>
+      <li>Sa</li>
+    </ul>
+
+    <ul class="days">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li><span class="active">5</span></li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+      <li>11</li>
+      <li>12</li>
+      <li>13</li>
+      <li>14</li>
+      <li>15</li>
+      <li>16</li>
+      <li>17</li>
+      <li>18</li>
+      <li>19</li>
+      <li>20</li>
+      <li>21</li>
+      <li>22</li>
+      <li>23</li>
+      <li>24</li>
+      <li>25</li>
+      <li>26</li>
+      <li>27</li>
+      <li>28</li>
+      <li>29</li>
+      <li>30</li>
+      <li>31</li>
+    </ul>
+
+<br><br><br><br><br>
+
+ </div>
 {% endblock %}
