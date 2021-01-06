@@ -47,7 +47,8 @@ urlpatterns = [
     # path('Me/Adult/', mepage_views.meadult, name="meadult"),
     # # path('Me/Adult/Favourites/', mepage_views.meadultfavourites, name="meadultfavourites"),
     # path('Me/Student/', mepage_views.mestudent, name="mestudent"),
-
+    #Search
+    path('Results/',homepage_views.searchresults,name='results')
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -12,7 +12,7 @@
   <div class="card-body">
     <h5 class="card-title">{{ teacher.title }}</h5>
     <p class="card-text">{{ teacher.description }}</p>
-      <a href="{% url 'teachercard' teacher.id %}"> Go</a>
+      <a href="{% url 'teachercard' teacher.id %}" class="btn btn-info"> More Info About {{ teacher.Teacher_Name }}</a>
   </div>
 </div>
     {% endfor %}

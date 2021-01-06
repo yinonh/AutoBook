@@ -109,9 +109,12 @@
           <h7 style="color: dodgerblue">Hello {{ user.username }} </h7> &ensp;
 
 {% endif %}
-    <input class="form-control mr-sm-2" type="search" placeholder="lookin for something?" aria-label="Search">
-    <button class="btn text-primary my-2 my-sm-0" type="submit">Search</button>
   </form>
+      <form method="POST" action="{% url 'results' %}">
+          {% csrf_token %}
+      <input type="text" name="query" value="Search In Site">
+  <button class="btn btn-primary" type="submit">GO</button>
+</form>
   </div>
 </nav>
 
