@@ -20,7 +20,7 @@ def addReview(request, book_id):
             newReview.save()
             newReview.book.add(book)
             request.user.adult.reviews.add(newReview)
-            return redirect("homepage")
+            return redirect("book_card", book_id)
         else:
             return render(request, "review/addReview.html", {"form": ReviewForm(), "book_id": book_id,"error":"bad data"})
 
