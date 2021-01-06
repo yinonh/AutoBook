@@ -2,17 +2,19 @@
 
 {% block content %}
     <br><br><br>
-    <h1 align="center">{{ activity.title }}</h1>
+<h1 align="center">Activities</h1>
+    {% for activity in activities %}
+
     <br><br>
-    {% for actvity in activities %}
         <div class="card bg-light mb-3" style="max-width: 100rem;">
   <div class="card-header">
 
+<h5 class="card-title">{{ activity.title }}</h5>
 
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{ activity.title }}</h5>
-      <h5 class="card-title">{{ activity.url }}</h5>
+
+      <a href="{{ activity.link }}" target="_blank">link</a>
     <p class="card-text">{{ activity.grade }}</p>
   </div>
 </div>

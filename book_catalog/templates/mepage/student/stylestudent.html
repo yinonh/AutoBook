@@ -30,6 +30,9 @@
       <li class="nav-item" href="{% url "mestudentevents" %}">
         <a class="nav-link text-primary" href="{% url 'mestudentevents' %}">Library Events</a>
       </li>
+    <li class="nav-item" href="{% url "activity" %}">
+        <a class="nav-link text-primary" href="{% url 'activity' %}">Activities</a>
+      </li>
         {% if user.is_authenticated %}
             <li class="nav-item"  href="{% url "mestudentpossesses" %}">
         <a class="nav-link text-primary text size-12" href="{% url "mestudentpossesses" %}">Possessed</a>
