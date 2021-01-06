@@ -4,6 +4,7 @@ from authentication.models import Adult
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from review.models import Review
+import datetime
 
 
 
@@ -75,11 +76,13 @@ def book_card(request, book_id):
                 request.user.adult.Adultposses.add(book)
                 request.user.adult.save()
                 book.posses = True
+                book.Take_Date=datetime.datetime.now()
                 book.save()
             except ObjectDoesNotExist:
                 request.user.student.Studentposses.add(book)
                 request.user.student.save()
                 book.posses = True
+                book.Take_Date = datetime.datetime.now()
                 book.save()
     suggestions = []
     try:

@@ -21,5 +21,6 @@ urlpatterns = [
     path('getout/',views.getout,name="getout"),
     path('getin/',views.getin,name="getin"),
     path('damaged/',views.damaged,name="damaged"),
+    path('delayed/',views.delayed,name="delayed"),
 
 ]

@@ -6,6 +6,7 @@ from authentication.models import Student,Adult
 from homepage.models import Event,HomePage
 from django.http import HttpResponse
 from authentication.forms import AdultProfileForm,UserCreationForm,ExtendedUserCreationForm
+import datetime
 
 
 def meadult(request):
@@ -20,39 +21,6 @@ def meadult(request):
             return redirect('homepage')
         except ValueError:
             return render(request,'mepage/adult/mepageadult.html',{'form1': form1,'error':'Invalid Username Or Password Please Try Again'})
-
-
-    # if request.method=='POST' :
-    #     # form2 = ExtendedUserCreationForm(request.POST,instance=request.user)
-    #     form = AdultProfileForm(request.POST,instance=request.user)
-    #     # print(user.adult.ID_Number)
-    #     print(request.user.adult.ID_Number)
-    #     if form.is_valid():
-    #         # user=form2.save(commit=False)
-    #         user1 = form.save(commit=False)
-    #         print(request.user.adult.ID_Number)
-    #         request.user.adult.ID_Number=user1.adult.ID_Number
-    #         # user.set_password(form.cleaned_data['password'])
-    #         user1.save()
-    #         return redirect('meadult')
-    # else:
-    #         # form2 = ExtendedUserCreationForm(request.POST, instance=request.user)
-    #         # print(user.adult.ID_Number)
-    #         print(request.user.adult.ID_Number)
-    #         form = AdultProfileForm(request.POST, instance=request.user)
-    # return render(request, 'mepage/adult/mepageadult.html', {'form': form()})
-# def edit_profile(request):
-#     if request.method == 'POST':
-#         form = EditProfileForm(request.POST, instance=request.user)
-#         if form.is_valid():
-#             user = form.save(commit=False)
-#             user.set_password(form.cleaned_data['password'])
-#             user.save()
-#             return redirect('signupapp:profile')
-#     else:
-#         form=EditProfileForm(instance=request.user)
-#     return render(request, "signupapp/edit_profile.html", {'form':form })
-
 
 def meadultfavourites(request):
     return render(request, 'mepage/adult/favouritebooks.html')
@@ -219,6 +187,7 @@ def getin(request):
                     book.takenout = False
                     book.returned = True
                     book.posses = False
+                    book.Take_Date=None
                     book.save()
             for user1 in Adult.objects.all():
                 if book in user1.Adultposses.all():
@@ -227,6 +196,7 @@ def getin(request):
                     book.takenout = False
                     book.returned = True
                     book.posses = False
+                    book.Take_Date = None
                     book.save()
     books = Book.objects.filter(returned=False)
     books = list(filter(lambda x:not x.returned,books))
@@ -242,4 +212,26 @@ def damaged (request):
             book.save()
     books = Book.objects.filter(Is_Damaged=True)
     return render(request, 'mepage/admin/damaged.html',{'books':books})
+def delayed (request):
+    books=Book.objects.all()
+    temp=datetime.datetime.now()
+    nowtime = datetime.date(temp.year, temp.month, temp.day)
+    delayedbooks=[]
+    for book in books:
+        if book.Take_Date!=None:
+            delta = nowtime-book.Take_Date
+            print(delta.days)
+            if delta.days>30:
+                students=Student.objects.all()
+                adults=Adult.objects.all()
+                for student in students:
+                    if book in student.Studentposses.all():
+                        delayedbooks.append((book, delta.days,student.user.username))
+                for adult in adults:
+                    if book in adult.Adultposses.all():
+                        delayedbooks.append((book, delta.days, adult.user.username))
+
+    print(delayedbooks)
+    return render(request, 'mepage/admin/delayed.html',{'books':delayedbooks})
+
 
