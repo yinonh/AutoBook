@@ -12,7 +12,6 @@ class Book (models.Model):
     #location =NOT RELLEVANT YET
     study_book = models.BooleanField(default=False)
     key_words =models.CharField(max_length=100)
-    length = models.IntegerField(blank=True)
     reader_name = models.CharField(max_length=50, blank=True)
     GENRE_CHOICES = (
         ('Drama','Drama'),('Roman','Roman'),

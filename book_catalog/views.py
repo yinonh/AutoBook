@@ -75,6 +75,7 @@ def book_card(request, book_id):
                 book.save()
     suggestions = []
     try:
+        bookPosses = request.user.adult.Adultposses.count()
         for adult in Adult.objects.all():
             if len(suggestions) >= 3:
                 break
@@ -86,9 +87,12 @@ def book_card(request, book_id):
         suggestions = suggestions[:3]
         suggestions = set(suggestions)
     except:
-        pass
+        try:
+            bookPosses = request.user.student.Studentposses.count()
+        except:
+            bookPosses=0
     rank = rank//count if count > 0 else 0
-    return render(request, 'book_cataloge/book_card.html', {'book': book, 'suggestions': suggestions, 'rank': range(rank),"empty":range(5 - rank) })
+    return render(request, 'book_cataloge/book_card.html', {'book': book, 'suggestions': suggestions, 'rank': range(rank),"empty":range(5 - rank),"bookPosses": bookPosses })
 
 
 
