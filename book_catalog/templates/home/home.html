@@ -80,20 +80,15 @@
 
  <div class="tittle text-center">
 <br><br>
- <h1><b><u>welcome to AotoBook</u></b></h1>
+ <h1 style=" text-shadow: 2px 2px 5px dodgerblue;"><b><u>welcome to AotoBook</u></b></h1>
  <br>
  {% load static %}
- <img src="{% static 'book_catalog/defult.png' %}" height="250" width="250" %}"></a>
+ <img src="{% static 'book_catalog/defult.png' %}" height="350" width="350" %}"></a>
 <br><br><br><br><br>
 
 
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
+ <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
 {% if events|length == 0 %}
@@ -102,7 +97,7 @@
     <h2><i>Upcoming Events</i></h2>
     <div class="grid-container">
         {% for event in events %}
-            <img src="{{ event.image.url }}" height="300" width="500" hspace="20">
+            <img src="{{ event.image.url }}" height="400" width="700" hspace="20">
             {% if event.link != None %}
                  <a href={{ event.link }} target="_blank"><img src="{{ event.image.url }}" height="200" width="250" align="right" hspace="20"></a>
             {% else %}
@@ -114,16 +109,15 @@
 {% endif %}
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
-
 
 
 
