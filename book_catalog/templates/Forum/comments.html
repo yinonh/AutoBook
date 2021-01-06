@@ -1,0 +1,22 @@
+{% extends "mepage/student/stylestudent.html" %}
+{% block content %}
+
+     <div class="card" style="width: 100rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ forum.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ forum.student.user.username }}</h6>
+    <p class="card-text">{{ forum.text }}</p>
+
+  </div>
+</div>
+    {% for comment in commentim %}
+          <div class="card" style="width: 100rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ comment.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ comment.student.user.username }}</h6>
+    <p class="card-text">{{ comment.text }}</p>
+
+  </div>
+</div>
+    {% endfor %}
+{% endblock %}
