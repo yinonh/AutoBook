@@ -1,8 +1,27 @@
 {% extends "mepage/student/stylestudent.html" %}
 
 {% block content %}
-    <div class="container text-left">
-    <h1>Lended Books</h1><br>
 
+    <br><br><h2> Book For Your Grade : {{ user.student.grade }}</h2><br><br>
+<div class="container text-center">
+<div class="grid-container">
+
+    {% for book in books %}
+     {% if book.Grade == user.student.grade %}
+            <div class="grid-item">
+                <div class="card" style="width: 12rem;">
+                    <img src="{{ book.image.url }}" class="card-img-top" alt="...">
+                    <h5 class="card-title">{{ book.name|truncatechars:15}}</h5>
+                    <div class="card-body"><h6>{{ book.author_name }}</h6>
+                    <a href="{% url 'book_card' book.id %}" class="btn btn-primary">overview</a>
+                </div>
+                </div>
+         </div>
+        {% endif %}
+    {% endfor %}
 </div>
+</div>
+
 {% endblock %}
+
+

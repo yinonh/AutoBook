@@ -168,7 +168,11 @@ def registerEvents(request, event_id):
     return render(request, 'mepage/student/registerEvent.html', {"event": event})
 
 def mestudentlendedbooks(request):
-    return render(request, 'mepage/student/lendedbooks.html')
+    # //lended = request.user.student.Studentlend.all()
+    books=Book.objects.all()
+    return render(request, 'mepage/student/lendedbooks.html',{"books": books})
+
+    return render(request, 'mepage/student/possessedbooks.html', {"possessBooks": possessBooks})
 
 def meadminpage(request):
     return render(request, 'mepage/admin/reports.html')

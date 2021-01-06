@@ -30,10 +30,10 @@ class Book (models.Model):
     returned = models.BooleanField(default=True)
     Is_Damaged=models.BooleanField(default=False)
     Damage_Description=models.TextField(max_length=200,default=None,blank=True,null=True)
-    # Grade_CHOICES = (
-    #     (1, 1), (2, 2),(3, 3),(4, 4),(5, 5),(6, 6),(7, 7),(8, 8),(9, 9),(10, 10),(11, 11),(12, 12)
-    # )
-    # Grade = models.CharField(default=, max_length=100, choices=GENRE_CHOICES)
+    Grade_CHOICES = (
+        (1, 1), (2, 2),(3, 3),(4, 4),(5, 5),(6, 6),(7, 7),(8, 8),(9, 9),(10, 10),(11, 11),(12, 12)
+    )
+    Grade = models.IntegerField(default=None, max_length=100, choices=Grade_CHOICES,null=True,blank=True)
 
 
     def __str__(self):
