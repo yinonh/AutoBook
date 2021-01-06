@@ -6,6 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from review.models import Review
 
 
+
 #books = Book.objects.all()
 def home(request):
     return render(request, 'home/home.html')

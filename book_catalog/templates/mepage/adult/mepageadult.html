@@ -1,9 +1,12 @@
 {% extends "mepage/adult/styleadult.html" %}
 
 {% block content %}
-<div class="container text-left">
-    <h1>Edit Profile</h1><br>
-
-</div>
+    <h2 style="color: red">{{ error }} </h2>
+    <form method="POST">
+    {% csrf_token %}
+    {{ form1.as_p }}
+{#     {{ form2.as_p }}#}
+    <button type="submit"> Save</button>
+    </form>
 
 {% endblock %}

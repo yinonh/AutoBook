@@ -135,7 +135,7 @@
 {% endif %}
 
 {% if request.user.adult and book.study_book == False %}
-    <a href="{% url 'add_review' book.id %}" class="btn btn-info">add review</a>
+    <a href="{% url 'add_review' book.id %}" class="btn btn-info">Write Review</a>
 {% endif %}
 
 <a href={% url 'bookcataloge' %}><button class="btn btn-primary">Back</button></a>

@@ -4,10 +4,55 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from authentication.models import Student,Adult
 from homepage.models import Event,HomePage
+from django.http import HttpResponse
+from authentication.forms import AdultProfileForm,UserCreationForm,ExtendedUserCreationForm
 
 
 def meadult(request):
-    return render(request, 'mepage/adult/mepageadult.html')
+    if request.method == 'GET':
+        form1 = ExtendedUserCreationForm(instance=request.user)
+        form2 = AdultProfileForm(instance=request.user.adult)
+        return render(request, 'mepage/adult/mepageadult.html', {'form1': form1})
+    if request.method == 'POST':
+        try:
+            form1 = ExtendedUserCreationForm(request.POST,instance=request.user)
+            form1.save()
+            return redirect('homepage')
+        except ValueError:
+            return render(request,'mepage/adult/mepageadult.html',{'form1': form1,'error':'Invalid Username Or Password Please Try Again'})
+
+
+    # if request.method=='POST' :
+    #     # form2 = ExtendedUserCreationForm(request.POST,instance=request.user)
+    #     form = AdultProfileForm(request.POST,instance=request.user)
+    #     # print(user.adult.ID_Number)
+    #     print(request.user.adult.ID_Number)
+    #     if form.is_valid():
+    #         # user=form2.save(commit=False)
+    #         user1 = form.save(commit=False)
+    #         print(request.user.adult.ID_Number)
+    #         request.user.adult.ID_Number=user1.adult.ID_Number
+    #         # user.set_password(form.cleaned_data['password'])
+    #         user1.save()
+    #         return redirect('meadult')
+    # else:
+    #         # form2 = ExtendedUserCreationForm(request.POST, instance=request.user)
+    #         # print(user.adult.ID_Number)
+    #         print(request.user.adult.ID_Number)
+    #         form = AdultProfileForm(request.POST, instance=request.user)
+    # return render(request, 'mepage/adult/mepageadult.html', {'form': form()})
+# def edit_profile(request):
+#     if request.method == 'POST':
+#         form = EditProfileForm(request.POST, instance=request.user)
+#         if form.is_valid():
+#             user = form.save(commit=False)
+#             user.set_password(form.cleaned_data['password'])
+#             user.save()
+#             return redirect('signupapp:profile')
+#     else:
+#         form=EditProfileForm(instance=request.user)
+#     return render(request, "signupapp/edit_profile.html", {'form':form })
+
 
 def meadultfavourites(request):
     return render(request, 'mepage/adult/favouritebooks.html')

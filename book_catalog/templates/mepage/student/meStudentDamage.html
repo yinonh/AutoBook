@@ -1,7 +1,9 @@
 {% extends "mepage/student/stylestudent.html" %}
 
 {% block content %}
-
+<div class="container text-center">
+    <br>
+    <br>
    <h2>{{ book.name }} by
     {{ book.author_name }}</h2>
 
@@ -10,20 +12,21 @@
     <img src="{{ book.image.url }}" height="220" width="180">
     <br>
     <br>
-    are you sure?
-    <form method="POST" action="{% url 'meStudentDamage' book.id %}">
-    {% csrf_token %}
-        <input type="text" name="damagetext">Damage Description:<br>
-        <button class="btn btn-primary" name="yes" type="submit">yes</button>
-    </form>
 
     <form method="POST" action="{% url 'meStudentDamage' book.id %}">
+        {% csrf_token %}
+  <textarea name="damagetext" rows="5" cols="50">Please Enter Damage Description.</textarea>
+  <br><br>
+  <button class="btn btn-primary" name="yes" type="submit">Submit</button>
+</form>
+
+    <form method="POST" action="{% url 'meStudentDamage' book.id %}">
     {% csrf_token %}
-        <button class="btn btn-danger" name="no" type="submit">No</button>
+        <button class="btn btn-danger" name="no" type="submit">Cancel</button>
     </form>
 
 
 
 
-
+</div>
 {% endblock %}

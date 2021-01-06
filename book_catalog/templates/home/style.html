@@ -37,7 +37,7 @@
         {% if user.is_authenticated %}
             {% if user.adult.ID_Number %}
             <li class="nav-item"  href="{% url "meadult" %}">
-        <a class="nav-link text-primary text size-12" href="{% url "meadult" %}">Me</a>
+        <a class="nav-link text-primary text size-12" href="{% url "meadultpossesses" %}">Me</a>
             {% endif %}
             {% if user.student.grade %}
             <li class="nav-item"  href="{% url "mestudent" %}">
@@ -69,15 +69,27 @@
       </li>
         {% endif %}
      </ul>
+      <form class="form-inline">
+     {% if user.student %}
+          <h7 style="text-align:center">Student Mode </h7> &ensp;
+      {% elif user.adult %}
+      <h7 style="text-align:center">Adult Mode </h7> &ensp;
+      {% elif user.superuser %}
+      <h7 style="text-align:center">Admin Mode </h7> &ensp;
+{% endif %}
+      </form>
   <form class="form-inline">
+      {% if user.is_authenticated %}
+          <h7 style="color: dodgerblue">Hello {{ user.username }} </h7> &ensp;
+
+{% endif %}
     <input class="form-control mr-sm-2" type="search" placeholder="lookin for something?" aria-label="Search">
     <button class="btn text-primary my-2 my-sm-0" type="submit">Search</button>
   </form>
   </div>
+
 </nav>
-{% if user.is_authenticated %}
-    hello {{ user.username }}
-{% endif %}
+
 
 
 {%  block content %}{% endblock %}
@@ -85,31 +97,3 @@
 </html>
 
 
-
- <style>
-.grid-container {
-  display: grid;
-  grid-gap: 30px;
-  grid-template-columns: auto auto auto;
-  background-color: white;
-  padding: 10px;
-}
-
-.grid-item {
-  background-color:white ;
-  border: 1px solid white(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
-}
-
-.registration{
-    background-color:white;
-	margin:10px 500px;
-	position: "absolute";
-	left:200px;
-	top:100px;
-	padding:50px;
-	padding-left:150px;
-}
-</style>
