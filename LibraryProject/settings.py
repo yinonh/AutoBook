@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'review',
     'teachers',
     'Forum',
+    'Activite_stud',
+
 ]
 
 MIDDLEWARE = [

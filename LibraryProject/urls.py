@@ -42,6 +42,9 @@ urlpatterns = [
     path('logoutuser/', authentication_views.logoutuser, name="logoutuser"),
     path('loginU/', authentication_views.loginU, name="loginU"),
 
+
+
+
     #Me page
     path('Me/', include('mepage.urls')),
     # path('Me/Adult/', mepage_views.meadult, name="meadult"),
@@ -50,6 +53,8 @@ urlpatterns = [
     #Search
     path('Results/',homepage_views.searchresults,name='results'),
     path('Forum/', include('Forum.urls')),
+
+
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
