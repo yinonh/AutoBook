@@ -15,7 +15,7 @@ def signupuser(request):
         elif ans == '2':
             return adultsignupuser(request)
         else:
-            return render(request,"home/home.html")
+            return redirect("homepage")
 
     else:
         return render(request, 'authentication/signup2.html')
@@ -37,7 +37,7 @@ def studentsignupuser(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             print("befor")
-            return render(request, 'home/home.html')
+            return redirect("homepage")
         print("after")
     else:
         form = ExtendedUserCreationForm()

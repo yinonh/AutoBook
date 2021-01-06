@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'homepage',
     'review',
     'teachers',
+    'Forum',
 ]
 
 MIDDLEWARE = [
