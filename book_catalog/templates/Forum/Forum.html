@@ -14,5 +14,15 @@
   </div>
 </div>
     {% endfor %}
+        <br><br>
+        <h5>add Forum:</h5>
+        <form method="POST">
+        {% csrf_token %}
+            {{ error }}
+            {{ form.as_p }}
+
+        <button type="submit">submit</button>
+        </form>
+
 
 {% endblock %}
