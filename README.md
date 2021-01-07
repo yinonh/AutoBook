@@ -120,7 +120,8 @@ System management and database changes are all managed by the librarian without 
     ##### Student reports:
 
     - [x] Upcoming library events
-    - [x] Tutor Board
+    - [x] Teacher Board
+    - [ ] Leanded books
 
 #### General
 - [x] Register
