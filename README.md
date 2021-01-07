@@ -64,6 +64,7 @@ System management and database changes are all managed by the librarian without 
 - [x] Publish recommended books 
 - [x] Edit all databases
 - [x] Easy search in databases
+- [x] Easy search in databases
 - [x] Banned adult user
 - [x] Banned student from forum
 
@@ -72,14 +73,14 @@ System management and database changes are all managed by the librarian without 
     - [x] Late users 
     - [x] Books borrowed this month 
     - [x] Dameged books
-    - [ ] banned users 
+    - [x] banned users 
     - [ ] Books that people asked for
 
 #### Adult
 
 - [x] Write books reviws
 - [x] Rate books
-- [x] הצעות לספרים דומים
+- [x] Books Suggestions 
 - [x] Write book review
 - [x] Send message about damaged book
 - [x] Favor books
@@ -112,7 +113,9 @@ System management and database changes are all managed by the librarian without 
 - [x] Lending textbooks
 - [x] Hiding adult only books
 - [x] Adio books 
-- [ ] Filter textbook by age
+- [x] Filter textbook by age
+- [x] Student activities 
+- [x] Audio Books
 
     ##### Student reports:
 
