@@ -200,6 +200,7 @@ def getin(request):
                     book.save()
     books = Book.objects.filter(returned=False)
     books = list(filter(lambda x:not x.returned,books))
+
     return render(request, 'mepage/admin/getin.html',{'books':books})
 
 def damaged (request):
