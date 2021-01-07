@@ -1,31 +1,13 @@
 {% extends 'book_cataloge/style.html' %}
 {% block content %}
-	<div class="container text-center">
-	<form action={% url "filteredbooks" %}>
 
 
-<h2>Librarian's Favorites</h2>
-<div class="grid-container">
-    {% for book in books %}
-        {% if book.librarian_favourite == True %}
-            <div class="grid-item">
-                <div class="card" style="width: 12rem;">
-                    <img src="{{ book.image.url }}" class="card-img-top" alt="...">
-                    <h5 class="card-title">{{ book.name|truncatechars:15}}</h5>
-                    <div class="card-body size"><h6>{{ book.author_name }}</h6>
-                    <a href="{% url 'book_card' book.id %}" class="btn btn-info">overview</a>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-    {% endfor %}
-</div>
 
-<br><br><br><br>
+<div class="grid-container" align="center">
+<br><br>
+<h1>catalog</h1>
+<br>
 
-    <h1>catalog</h1>
-
-<div class="grid-container">
     {% for book in books %}
             <div class="grid-item">
                 <div class="card" style="width: 12rem;">
@@ -38,10 +20,19 @@
             </div>
     {% endfor %}
 </div>
+    <br>
+    <div class="container text-center">
 
-    <a href="{% url 'bookPage' 1 %}" class="btn btn-danger">next page</a>
-    <br><br>
-
+<a href="{% url 'bookPage' minus   %}" class="btn btn-danger">previous page</a>
+{#        {% if books|length == 3%}#}
+        {% if not last %}
+<a href="{% url 'bookPage' plus   %}" class="btn btn-danger">next page</a>
+    {% endif %}
+    </div>
+    <br>
+    <br>
+<div class="container text-center">
+	<form action={% url "filteredbooks" %}>
 
 <h2>filter by:</h2>
 <table class="table table-bordered text-center">
@@ -59,23 +50,6 @@
 
 {% if not user.adult %}
 Study Book: <input type="checkbox" name="Study_Book"><br>
-    {% endif %}
-    {% if user.student %}
-    Grade<select  name="grade" >
-        <option value="" selected disabled hidden></option>
-            <option value=1>1</option>
-            <option value=2>2</option>
-            <option value=3>3</option>
-            <option value=4>4</option>
-            <option value=5>5</option>
-            <option value=6>6</option>
-            <option value=7 >7</option>
-            <option value=8>8</option>
-            <option value=9>9</option>
-            <option value=10>10</option>
-            <option value=11>11</option>
-            <option value=12>12</option>
-        </select><br>
     {% endif %}
 Available:<input type="checkbox" name="Available" checked><br>
 
