@@ -49,6 +49,8 @@ def filteredbooks (request):
         books = list(filter(lambda x: x.study_book == True, books))
     else:
         books = list(filter(lambda x: x.study_book == False, books))
+    if request.GET.get("grade") != None:
+        books = list(filter(lambda x: str(x.Grade) == str(request.GET.get("grade")), books))
     if books == []:
         books = -1
 
