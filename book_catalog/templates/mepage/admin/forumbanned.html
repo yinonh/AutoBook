@@ -1,0 +1,70 @@
+{% extends "mepage/admin/styleadmin.html" %}
+{% block content %}
+    <br>
+    <br>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #E0FFFF;
+}
+</style>
+</head>
+<body>
+{% if students|length == 0 %}
+    <h1>No Banned Students!</h1>
+    {% else %}
+<h2>Banned Students</h2>
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Username</th>
+    <th>UnBan</th>
+
+
+  </tr>
+  <tr>
+  <form method="POST" >
+    {% csrf_token %}
+    {% for student in students %}
+    <td>{{ student.user.first_name}}</td>
+    <td>{{  student.user.last_name  }}</td>
+    <td> {{ student.user.username }}</td>
+     <td><input type="checkbox" name="studentfirst" value="{{ student.user.first_name }}"></td>
+
+<tr>
+         <br>
+    {% endfor %}
+</tr>
+
+    <br>
+  </table>
+<input type="submit" class="btn btn-success" value="Submit">
+          </form>
+
+    {% endif %}
+      </tr>
+
+
+</body>
+</html>
+<a href={% url 'meadminpage' %}><button class="btn btn-primary">Back</button></a>
+{% endblock %}
+}
