@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from book_catalog.models import Book
+from book_catalog.models import Book,AudioBook
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from authentication.models import Student,Adult
@@ -257,4 +257,6 @@ def adultbanned (request):
                     bannedadults=Adult.objects.filter(Is_Banned=True)
     return render(request, 'mepage/admin/adultbanned.html',{'adults':bannedadults})
 
-
+def audobooks(request):
+    books = AudioBook.objects.all()
+    return render(request, "mepage/student/audiobooks.html",{"books":books})

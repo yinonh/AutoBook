@@ -1,0 +1,21 @@
+{% extends 'book_cataloge/style.html' %}
+{% block content %}
+	<div class="container text-center">
+
+<h2>Audio Books</h2>
+<div class="grid-container">
+    {% for book in books %}
+            <div class="grid-item">
+                <div class="card" style="width: 12rem;">
+                    <img src="{{ book.image.url }}" class="card-img-top" alt="...">
+                    <h5 class="card-title">{{ book.name|truncatechars:25}}</h5>
+                    <div class="card-body size"><h6>{{ book.reader_name }}</h6>
+                        <div class="card-body size"><h5>{{ book.length }} minutes</h5>
+                        <a href={{ book.link }} target="_blank" class="btn btn-info">Listen Now!</a>
+                    </div>
+                </div>
+            </div>
+    {% endfor %}
+</div>
+    </div>
+{% endblock %}

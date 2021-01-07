@@ -125,3 +125,5 @@ def bookPage(request, page_num):
         return render(request, "book_cataloge/bookPages.html", {"books": books, "plus": page_num, "minus": page_num-1,"last": True})
 
     return render(request, "book_cataloge/bookPages.html",{"books": books, "plus": page_num + 1, "minus": page_num - 1, "last": False})
+
+
