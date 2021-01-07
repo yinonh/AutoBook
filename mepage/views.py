@@ -251,16 +251,26 @@ def delayed (request):
     for book in books:
         if book.Take_Date!=None:
             delta = nowtime-book.Take_Date
-            print(delta.days)
-            if delta.days>30:
-                students=Student.objects.all()
-                adults=Adult.objects.all()
-                for student in students:
-                    if book in student.Studentposses.all():
-                        delayedbooks.append((book, delta.days,student.user.username))
-                for adult in adults:
-                    if book in adult.Adultposses.all():
-                        delayedbooks.append((book, delta.days, adult.user.username))
+            if book.study_book:
+                if delta.days>365:
+                    students=Student.objects.all()
+                    adults=Adult.objects.all()
+                    for student in students:
+                        if book in student.Studentposses.all():
+                            delayedbooks.append((book, delta.days-365,student.user.username))
+                    for adult in adults:
+                        if book in adult.Adultposses.all():
+                            delayedbooks.append((book, delta.days-365, adult.user.username))
+            else:
+                if delta.days>30:
+                    students=Student.objects.all()
+                    adults=Adult.objects.all()
+                    for student in students:
+                        if book in student.Studentposses.all():
+                            delayedbooks.append((book, delta.days-30,student.user.username))
+                    for adult in adults:
+                        if book in adult.Adultposses.all():
+                            delayedbooks.append((book, delta.days-30, adult.user.username))
 
     print(delayedbooks)
     return render(request, 'mepage/admin/delayed.html',{'books':delayedbooks})

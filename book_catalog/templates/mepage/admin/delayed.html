@@ -33,7 +33,8 @@ tr:nth-child(even) {
   <tr>
     <th>Book Name</th>
     <th>Id book</th>
-    <th>Days Passed</th>
+    <th>Days Delayed</th>
+      <th>Type</th>
     <th>Username</th>
 
 
@@ -47,6 +48,13 @@ tr:nth-child(even) {
     <td>{{ book.0.name }}</td>
     <td>{{  book.0.id  }}</td>
     <td> {{ book.1 }}</td>
+        {% if book.0.study_book %}
+            <td> Annual Loan</td>
+        {% else %}
+            <td>Standard</td>
+
+        {% endif %}
+
         <td> {{ book.2 }}</td>
 
 
