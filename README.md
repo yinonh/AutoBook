@@ -1,6 +1,6 @@
 # Library Project
 
-![Project Image](https://ibb.co/CwjpnNX"><img src="https://i.ibb.co/9pxmqzf/defult.png)
+![Project Image](https://i.ibb.co/9pxmqzf/defult.png)
 
 >  Library management system during corona time
 
