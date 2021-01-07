@@ -133,8 +133,7 @@ System management and database changes are all managed by the librarian without 
 
 ## UML
 
-![UML Image](<a href="http://www.up2me.co.il/v.php?file=22159576.png"><img src="http://www.up2me.co.il/thumbs/22159576.png" alt="Up2Me העלאת תמונות"  border="0" /></a>)
-
+![UML image](https://i.imagesup.co/images2/5dbc6d72919f5ee6520dd3283856ca126f05b722.png)
 
 [Back To The Top](#library-project)
 
