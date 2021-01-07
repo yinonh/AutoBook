@@ -89,7 +89,7 @@
 
                 {% endif %}
 
-            {% elif bookPosses < 3 %}
+            {% elif countbooks < 3 %}
                 <button class="btn btn-success" name="posses" onclick="myFunction()" type="submit">Take Book</button>
                 <script>
     function myFunction() {
@@ -152,7 +152,7 @@
 {% if request.user.adult and book.study_book == False %}
     <a href="{% url 'add_review' book.id %}" class="btn btn-info">Write Review</a>
 {% endif %}
-
+<br>
 <a href={% url 'bookcataloge' %}><button class="btn btn-primary">Back</button></a>
     <br>
     <br><br>
