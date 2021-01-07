@@ -58,7 +58,9 @@
       <li class="nav-item" href="{% url "simple" %}">
         <a class="nav-link text-primary" href="{% url 'simple' %}">simple mode</a>
       </li>
-
+<li class="nav-item" href="{% url "contact" %}">
+        <a class="nav-link text-primary" href="{% url 'contact' %}">Contact Us</a>
+      </li>
     {% endif %}
         {% if user.is_authenticated %}
             {% if user.adult.ID_Number %}

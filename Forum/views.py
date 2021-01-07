@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from Forum.models import Comments, Forum as forum
 from Forum.forms import ForumForm,CommitForum
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def Forum(request):
     forums = forum.objects.all()
     if request.method == "GET":
@@ -17,7 +18,7 @@ def Forum(request):
         else:
             return render(request, 'Forum/Forum.html', {'forums': forums, "form": ForumForm(),"error":"bad data"})
 
-
+@login_required
 def comments(request,forum_id):
     currentForum = get_object_or_404(forum, pk=forum_id)
     if request.method == "GET":
@@ -32,4 +33,4 @@ def comments(request,forum_id):
             newComment.save()
             return redirect("comments", forum_id)
         else:
-            return render(request, 'Forum/comments.html', {'forums': forums, "form": ForumForm(), "error": "bad data"})
+            return render(request, 'Forum/comments.html', {'forums': forum, "form": ForumForm(), "error": "bad data"})

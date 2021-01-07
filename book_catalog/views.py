@@ -8,7 +8,7 @@ import datetime
 
 
 
-#books = Book.objects.all()
+
 def home(request):
     return render(request, 'home/home.html')
 

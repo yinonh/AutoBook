@@ -46,7 +46,7 @@ def studentsignupuser(request):
     context = {'form': form, 'profile_form': profile_form}
 
     return render(request, 'authentication/signupuserstudent.html', context)
-########################### adult
+
 
 
 
@@ -77,7 +77,7 @@ def adultsignupuser(request):
 
     return render(request, 'authentication/signupuseradult.html', context)
 
-
+@login_required
 def logoutuser(request):
     if request.method == "POST":
         logout(request)

@@ -7,8 +7,9 @@ from homepage.models import Event,HomePage
 from django.http import HttpResponse
 from authentication.forms import AdultProfileForm,UserCreationForm,ExtendedUserCreationForm
 import datetime
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def meadult(request):
     if request.method == 'GET':
         form1 = ExtendedUserCreationForm(instance=request.user)
@@ -21,14 +22,14 @@ def meadult(request):
             return redirect('homepage')
         except ValueError:
             return render(request,'mepage/adult/mepageadult.html',{'form1': form1,'error':'Invalid Username Or Password Please Try Again'})
-
+@login_required
 def meadultfavourites(request):
     return render(request, 'mepage/adult/favouritebooks.html')
-
+@login_required
 def meAdultPossesses(request):
     possessBooks = request.user.adult.Adultposses.all()
     return render(request, 'mepage/adult/possessedbooks.html',{"possessBooks":possessBooks})
-
+@login_required
 def meAdultReturn(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     if request.method == "POST":
@@ -54,7 +55,7 @@ def meAdultReturn(request, book_id):
             return redirect("meadultpossesses")
 
     return render(request, 'mepage/adult/meAdultReturn.html',{"book":book})
-
+@login_required
 def meAdultDamage(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     if request.method == "POST":
@@ -68,7 +69,7 @@ def meAdultDamage(request, book_id):
         elif 'no' in request.POST:
             return redirect("meadultpossesses")
     return render(request, 'mepage/adult/meAdultDamage.html',{"book":book})
-
+@login_required
 def meStudentDamage(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     if request.method == "POST":
@@ -82,6 +83,7 @@ def meStudentDamage(request, book_id):
         elif 'no' in request.POST:
             return redirect("mestudentpossesses")
     return render(request, 'mepage/student/meStudentDamage.html',{"book":book})
+@login_required
 def meStudentReturn(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     if request.method == "POST":
@@ -107,21 +109,21 @@ def meStudentReturn(request, book_id):
             return redirect("mestudentpossesses")
 
     return render(request, 'mepage/student/meStudentReturn.html', {"book": book})
-
+@login_required
 def mestudent(request):
     return render(request, 'mepage/student/mepagestudent.html')
-
+@login_required
 def mestudentpossesses(request):
     possessBooks = request.user.student.Studentposses.all()
     return render(request, 'mepage/student/possessedbooks.html', {"possessBooks": possessBooks})
-
+@login_required
 def mestudentevents(request):
     try:
         events = HomePage.objects.all()[0].events.all()
     except:
         events = None
     return render(request, 'mepage/student/events.html',{"events":events})
-
+@login_required
 def registerEvents(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
     if request.method == "POST":
@@ -134,17 +136,16 @@ def registerEvents(request, event_id):
         return redirect("mestudentevents")
 
     return render(request, 'mepage/student/registerEvent.html', {"event": event})
-
+@login_required
 def mestudentlendedbooks(request):
     # //lended = request.user.student.Studentlend.all()
     books=Book.objects.all()
     return render(request, 'mepage/student/lendedbooks.html',{"books": books})
 
-    return render(request, 'mepage/student/possessedbooks.html', {"possessBooks": possessBooks})
-
+@login_required
 def meadminpage(request):
     return render(request, 'mepage/admin/reports.html')
-
+@login_required
 def getout(request):
     if request.method == 'POST':
         id_list = request.POST.getlist('book.id')
@@ -174,7 +175,7 @@ def getout(request):
     books = Book.objects.filter(posses=True,takenout=False)
     books = list(filter(lambda x:not x.takenout,books))
     return render(request, 'mepage/admin/getout.html',{'books':books})
-
+@login_required
 def getin(request):
     if request.method == 'POST':
         id_list = request.POST.getlist('book.id')
@@ -202,7 +203,7 @@ def getin(request):
     books = list(filter(lambda x:not x.returned,books))
 
     return render(request, 'mepage/admin/getin.html',{'books':books})
-
+@login_required
 def damaged (request):
     if request.method == 'POST':
         id_list = request.POST.getlist('book.id')
@@ -213,6 +214,7 @@ def damaged (request):
             book.save()
     books = Book.objects.filter(Is_Damaged=True)
     return render(request, 'mepage/admin/damaged.html',{'books':books})
+@login_required
 def delayed (request):
     books=Book.objects.all()
     temp=datetime.datetime.now()
@@ -234,6 +236,7 @@ def delayed (request):
 
     print(delayedbooks)
     return render(request, 'mepage/admin/delayed.html',{'books':delayedbooks})
+@login_required
 def forumbanned (request):
     bannedstudents=Student.objects.filter(Forum_Banned=True)
     if request.method == 'POST':
@@ -245,6 +248,7 @@ def forumbanned (request):
                     student.save()
                     bannedstudents = Student.objects.filter(Forum_Banned=True)
     return render(request, 'mepage/admin/forumbanned.html',{'students':bannedstudents})
+@login_required
 def adultbanned (request):
     bannedadults=Adult.objects.filter(Is_Banned=True)
     if request.method == 'POST':

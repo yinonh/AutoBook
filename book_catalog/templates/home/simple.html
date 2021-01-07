@@ -4,21 +4,25 @@
 {% block content %}
 <body>
 
-
+<br><br><br><br><br><br><br>
     <div class="row align-items-center justify-content-center">
         <table class="tittle text-center">
 
             <tr>
                 <td>
-                    <a href="{% url "bookcataloge" %}"> <input type="submit" value="Take Book"></a>
+                    <a href="{% url "bookcataloge" %}"> <input type="submit" value="Take Book" style="font-size : 60px;height:150px; width:400px" class="btn btn-success"></a>
                 </td>
                 {% if user.adult %}
                 <td>
-                    <a href="{% url "meadultpossesses" %}"><input type="submit" value="Return Book"></a>
+                    <a href="{% url "meadultpossesses" %}"><input type="submit" value="Return Book" style="font-size : 60px;height:150px; width:400px" class="btn btn-danger"></a>
+                </td>
+                    {% elif user.student %}
+                <td>
+                    <a href="{% url "mestudentpossesses" %}"><input type="submit" value="Return Book" style="font-size : 60px;height:150px; width:400px" class="btn btn-danger"></a>
                 </td>
                     {% else %}
-                <td>
-                    <a href="{% url "mestudentpossesses" %}"><input type="submit" value="Return Book"></a>
+                    <td>
+                    <a><input type="submit" value="Return Book" style="font-size : 60px;height:150px; width:400px" class="btn btn-danger"></a>
                 </td>
                 {% endif %}
             </tr>

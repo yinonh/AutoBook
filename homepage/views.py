@@ -3,6 +3,7 @@ from homepage.models import Event,HomePage
 from book_catalog.models import Book
 from django.shortcuts import render, get_object_or_404,redirect
 
+
 def homepage(request):
     try:
         current = HomePage.objects.all()[0]
@@ -11,6 +12,7 @@ def homepage(request):
     except:
         books = Book.objects.all()
         return render(request,"book_cataloge/bookcataloge.html",{"books" : books})
+
 def searchresults(request):
     if request.method=='POST':
         books = Book.objects.all()

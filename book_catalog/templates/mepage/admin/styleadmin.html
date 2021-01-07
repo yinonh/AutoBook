@@ -31,6 +31,9 @@
             <li class="nav-item"  href="{% url "admin:index" %}">
         <a class="nav-link text-primary text size-12" href="{% url "admin:index" %}">Admin Panel</a>
       </li>
+            <li class="nav-item" href="{% url "contact" %}">
+        <a class="nav-link text-primary" href="{% url 'contact' %}">Contact Us</a>
+      </li>
             <li class="nav-item"  href="{% url "logoutuser" %}">
         <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>
                     <form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
