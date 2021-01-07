@@ -4,9 +4,11 @@
 
 <tr>
         {% if event.link != None %}
-			<td><img src="{{ book.image.url }}" height="180" align="left" width="220"  hspace="20"></a><th><a href="{{ event.link }}" target="_blank"><\th></td>
+			</tr><br><br><br><br><br><br><br><br>
+    <td>
+        <td><tr align="left"><a href={{ event.link }} target="_blank"><img src="{{ event.image.url }}" height="200" width="250" align="right" hspace="20"></a></tr></td>
         {% else %}
-    </tr><br><br><br><br><br>
+    </tr><br><br><br><br><br><br><br><br>
     <td>
 			<td><tr align="left"><img src="{{ event.image.url }}" height="200" width="250" align="right" hspace="20"></tr></td>
 		{% endif %}
