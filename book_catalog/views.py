@@ -18,19 +18,19 @@ def simple (request):
 def bookcataloge (request):
     try:
         if request.user.adult:
-            books = Book.objects.filter(study_book=False,kids=False)
+            books = list(Book.objects.filter(study_book=False,kids=False))[:4]
 
     except:
         try:
             if request.user.student:
-                books = Book.objects.filter(adult_only=False)
+                books = list(Book.objects.filter(adult_only=False))[:4]
         except:
-            books = Book.objects.all()
+            books = list(Book.objects.all())[:4]
 
 
     return render(request,'book_cataloge/bookcataloge.html',{'books': books})
 
-def contact (request):
+def contact(request):
     return render(request,'contact/contact.html')
 
 def filteredbooks (request):
@@ -106,4 +106,20 @@ def book_card(request, book_id):
     return render(request, 'book_cataloge/book_card.html', {'book': book, 'suggestions': suggestions, 'rank': range(rank),"empty":range(5 - rank),"bookPosses": bookPosses })
 
 
+def bookPage(request, page_num):
+    if (page_num < 1):
+        return redirect("bookcataloge")
+    try:
+        if request.user.adult:
+            books = list(Book.objects.filter(study_book=False,kids=False))[4*page_num:4*page_num+4]
 
+    except:
+        try:
+            if request.user.student:
+                books = list(Book.objects.filter(adult_only=False))[4*page_num:4*page_num+4]
+        except:
+            books = list(Book.objects.all())[4*page_num:4*page_num+4]
+    if len(list(Book.objects.all())[4*(page_num+1):4*(page_num+1)+4]) < 1:
+        return render(request, "book_cataloge/bookPages.html", {"books": books, "plus": page_num, "minus": page_num-1,"last": True})
+
+    return render(request, "book_cataloge/bookPages.html",{"books": books, "plus": page_num + 1, "minus": page_num - 1, "last": False})
