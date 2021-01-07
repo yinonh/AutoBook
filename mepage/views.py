@@ -233,5 +233,27 @@ def delayed (request):
 
     print(delayedbooks)
     return render(request, 'mepage/admin/delayed.html',{'books':delayedbooks})
+def forumbanned (request):
+    bannedstudents=Student.objects.filter(Forum_Banned=True)
+    if request.method == 'POST':
+        firstnames = request.POST.getlist('studentfirst')
+        for firstname in firstnames:
+            for student in bannedstudents:
+                if student.user.first_name == firstname:
+                    student.Forum_Banned=False
+                    student.save()
+                    bannedstudents = Student.objects.filter(Forum_Banned=True)
+    return render(request, 'mepage/admin/forumbanned.html',{'students':bannedstudents})
+def adultbanned (request):
+    bannedadults=Adult.objects.filter(Is_Banned=True)
+    if request.method == 'POST':
+        firstnames = request.POST.getlist('adultfirst')
+        for firstname in firstnames:
+            for adult in bannedadults:
+                if adult.user.first_name == firstname:
+                    adult.Is_Banned=False
+                    adult.save()
+                    bannedadults=Adult.objects.filter(Is_Banned=True)
+    return render(request, 'mepage/admin/adultbanned.html',{'adults':bannedadults})
 
 

@@ -22,5 +22,7 @@ urlpatterns = [
     path('getin/',views.getin,name="getin"),
     path('damaged/',views.damaged,name="damaged"),
     path('delayed/',views.delayed,name="delayed"),
+    path('forumbanned/',views.forumbanned,name="forumbanned"),
+    path('adultsbanned/',views.adultbanned,name="adultbanned"),
 
 ]
