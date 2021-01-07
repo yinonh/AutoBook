@@ -114,7 +114,6 @@ def bookPage(request, page_num):
     try:
         if request.user.adult:
             books = list(Book.objects.filter(study_book=False,kids=False))[4*page_num:4*page_num+4]
-
     except:
         try:
             if request.user.student:
