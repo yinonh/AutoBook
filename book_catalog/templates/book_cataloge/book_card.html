@@ -73,7 +73,23 @@
     <a href="{% url 'contact' %}" style="color: #FFFFFF">You Don't Have Security Check<br>Click To Contact Us</a>
 </button>
         {% else %}
-            {% if bookPosses < 3 %}
+            {% if book.study_book %}
+                {% if user.student.grade == book.Grade  %}
+                    <button class="btn btn-success" name="posses" onclick="myFunction()" type="submit">Lend Book for 1 Year</button>
+                <script>
+    function myFunction() {
+      alert("Good Luck ! This Book Will Wait you in the Library in the next exchanging day Thank You");
+    }
+    </script>
+
+                {% else %}
+                    <button type="button" class="btn btn-danger">
+    <a style="color: #FFFFFF">Not For Your Grade</a>
+        </button>
+
+                {% endif %}
+
+            {% elif bookPosses < 3 %}
                 <button class="btn btn-success" name="posses" onclick="myFunction()" type="submit">Take Book</button>
                 <script>
     function myFunction() {

@@ -33,7 +33,6 @@ tr:nth-child(even) {
   <tr>
     <th>Book Name</th>
     <th>Book ID</th>
-      <th>UserName</th>
     <th>Done</th>
 
 
@@ -48,17 +47,18 @@ tr:nth-child(even) {
     <td>{{ book.name }}</td>
     <td>{{  book.id  }}</td>
         <td>Took In  <input type="checkbox" name="book.id" value="{{ book.id }}"></td>
-
+<tr>
          <br>
     {% endfor %}
 
+    <br>
+
     {% endif %}
-
-
-
+</tr>
+</td>
+</table>
     <br><br>
 
-    </table>
     <input type="submit" class="btn btn-success" value="Submit">
           </form>
 
