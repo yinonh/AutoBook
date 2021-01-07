@@ -158,9 +158,17 @@ def registerEvents(request, event_id):
     return render(request, 'mepage/student/registerEvent.html', {"event": event})
 @user_passes_test(is_student)
 def mestudentlendedbooks(request):
-    # //lended = request.user.student.Studentlend.all()
     books=Book.objects.all()
-    return render(request, 'mepage/student/lendedbooks.html',{"books": books})
+    lendbooks= list(request.user.student.Studentposses.all())
+    res=[]
+    print(lendbooks)
+    for book in lendbooks:
+        if book.study_book==True:
+            res.append(book)
+    print(res)
+
+
+    return render(request, 'mepage/student/lendedbooks.html',{"books": books,'lendbooks':res})
 
 @user_passes_test(is_admin)
 def meadminpage(request):

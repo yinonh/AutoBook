@@ -60,10 +60,16 @@ def book_card(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     reviews = Review.objects.filter(book= book)
     rank, count = 0, 0
+    countbooks = 0
     for reviw in reviews:
         rank += reviw.rank
         count += 1
-
+    try:
+        for book1 in request.user.student.Studentposses.all():
+            if book1.study_book == False:
+                countbooks += 1
+    except:
+        pass
     if request.method == "POST":
         if "favourite" in request.POST:
             request.user.adult.FavouriteBooks.add(book)
@@ -105,7 +111,10 @@ def book_card(request, book_id):
         except:
             bookPosses=0
     rank = rank//count if count > 0 else 0
-    return render(request, 'book_cataloge/book_card.html', {'book': book, 'suggestions': suggestions, 'rank': range(rank),"empty":range(5 - rank),"bookPosses": bookPosses })
+
+
+
+    return render(request, 'book_cataloge/book_card.html', {'book': book, 'suggestions': suggestions, 'rank': range(rank),"empty":range(5 - rank),"bookPosses": bookPosses,'countbooks':countbooks})
 
 
 def bookPage(request, page_num):
