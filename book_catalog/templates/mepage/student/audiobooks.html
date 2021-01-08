@@ -1,8 +1,12 @@
 {% extends "mepage/student/stylestudent.html" %}
 {% block content %}
+    <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
 	<div class="container text-center">
-
-<h2>Audio Books</h2>
+<br><br>
+   <h1>Audio Books  <i class="far fa-file-audio" style="font-size:60px;"></i></h1>
 <div class="grid-container">
     {% for book in books %}
             <div class="grid-item">
@@ -14,12 +18,12 @@
                     {% else %}
                         <div class="card-body"><h6>  </h6>
                     {% endif %}
-                    <a href="{{ book.link }}" class="btn btn-info">Listen Now !</a>
+                    <a href="{{ book.link }}" class="btn btn-primary"><i class="fas fa-play" style="font-size:60px; color:aliceblue;"></i></a>
                 </div>
                 </div>
             </div>
     {% endfor %}
 </div>
     </div>
-
+</div>
 {% endblock %}

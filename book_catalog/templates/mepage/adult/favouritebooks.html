@@ -5,19 +5,19 @@
 .rcorners {
   border-radius: 25px;
   padding: 20px;
-  background: #e6e6e6;
+  background: #E2E3E5;
   width: 100%
 }
 .grid-container {
   display: grid;
   grid-gap: 30px;
   grid-template-columns: auto auto auto;
-  background-color: #e6e6e6;
+  background-color: #E2E3E5;
   padding: 10px;
 }
 
 .grid-item {
-  background-color:#e6e6e6 ;
+  background-color:#E2E3E5 ;
   border: 1px solid white(0, 0, 0, 0.8);
   padding: 20px;
   font-size: 30px;
@@ -36,11 +36,12 @@
                 {% else %}
                     {% for book in user.adult.FavouriteBooks.all %}
                             <div class="grid-item">
-                                <div class="card" style="width: 12rem;">
-                                    <img src="{{ book.image.url }}" class="card-img-top" alt="..."></div>
+                                <div class="card alert-secondary" style="width: 12rem;">
+                                    <img src="{{ book.image.url }}" class="card-img-top" alt="...">
                                     <h5 class="card-title">{{ book.name|truncatechars:15}}</h5>
                                     <div class="card-body"><h6>{{ book.author_name }}</h6>
                                     <a href="{% url 'book_card' book.id %}" class="btn btn-primary">Overview</a>
+                                    </div>
                                 </div>
                             </div>
                 {% endfor %}

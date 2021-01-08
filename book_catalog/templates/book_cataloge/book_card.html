@@ -90,7 +90,7 @@
                 {% endif %}
 
             {% elif countbooks < 3 %}
-                <button class="btn btn-success" name="posses" onclick="myFunction()" type="submit">Take Book</button>
+                <button class="btn btn-success" name="posses" onclick="myFunction()" type="submit">Take Book</button><br><br>
                 <script>
     function myFunction() {
       alert("This Book Will Wait you in the Library in the next exchanging day Thank You");
@@ -103,12 +103,12 @@
     {% elif request.user.adult %}
         {% if user.adult.Is_Banned == True %}
             <button type="button" class="btn btn-danger">
-    <a href="{% url 'contact' %}" style="color: #FFFFFF">You Are Banned<br>Click To Contact Us</a>
+    <a href="{% url 'contact' %}" style="color: #FFFFFF">You Are Banned<br>Click To Contact Us</a><br><br>
         </button>
         {% else %}
              {% if user.adult.Security_Check == True %}
                  {% if bookPosses < 3 %}
-                        <button class="btn btn-success" name="posses" onclick="myFunction()" type="submit">Take Book</button>
+                        <button class="btn btn-success" name="posses" onclick="myFunction()" type="submit">Take Book</button><br><br>
                      {% else %}
                      <a href="{% url 'meadultpossesses' %}" class="btn btn-danger">You Already Posses 3 Books</a>
                      {% endif %}
@@ -121,15 +121,15 @@
 
 
 <button type="button" class="btn btn-danger">
-    <a href="{% url 'contact' %}" style="color: #FFFFFF">You Don't Have Security Check<br>Click To Contact Us</a>
-</button>
+    <a href="{% url 'contact' %}" style="color: #FFFFFF">You Don't Have Security Check<br>Click To Contact Us</a><br><br>
+</button><br><br>
         {% endif %}
         {% endif %}
    {% endif %}
 
     {% else %}
 
-                            <button class="btn btn-success" name="posses" onclick="myFunction1()" type="submit">Take Book</button>
+       <button class="btn btn-success" name="posses" onclick="myFunction1()" type="submit">Take Book</button><br><br>
 
     <script>
     function myFunction1() {
@@ -140,19 +140,19 @@
 </form>
 
     {% else %}
-<button class="btn btn-danger">This Book Already Taken</button>
+<button class="btn btn-danger">This Book Already Taken</button><br><br>
     {% endif %}
     {% elif book.posses %}
-    <button class="btn btn-danger">Taken</button>
+    <button class="btn btn-danger">Taken</button><br><br>
     {% else %}
-    <button class="btn btn-success">Available</button>
+    <button class="btn btn-success">Available</button><br><br>
 
 {% endif %}
 
 {% if request.user.adult and book.study_book == False %}
     <a href="{% url 'add_review' book.id %}" class="btn btn-info">Write Review</a>
 {% endif %}
-<br>
+<br><br>
 <a href={% url 'bookcataloge' %}><button class="btn btn-primary">Back</button></a>
     <br>
     <br><br>
