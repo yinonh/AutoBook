@@ -137,7 +137,7 @@ System management and database changes are all managed by the librarian without 
 
 ## UML
 
-![UML image](https://i.imagesup.co/images2/5dbc6d72919f5ee6520dd3283856ca126f05b722.png)
+![UML image](https://i.ibb.co/0h8CWRX/Library.png)
 
 [Back To The Top](#library-project)
 
