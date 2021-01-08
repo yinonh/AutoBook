@@ -18,12 +18,12 @@ def simple (request):
 def bookcataloge (request):
     try:
         if request.user.adult:
-            books = list(Book.objects.filter(study_book=False,kids=False))[:4]
+            books = list(Book.objects.filter(study_book=False,kids=False))[:6]
 
     except:
         try:
             if request.user.student:
-                books = list(Book.objects.filter(adult_only=False))[:4]
+                books = list(Book.objects.filter(adult_only=False))[:6]
         except:
             books = list(Book.objects.all())[:4]
 
@@ -122,14 +122,14 @@ def bookPage(request, page_num):
         return redirect("bookcataloge")
     try:
         if request.user.adult:
-            books = list(Book.objects.filter(study_book=False,kids=False))[4*page_num:4*page_num+4]
+            books = list(Book.objects.filter(study_book=False,kids=False))[6*page_num:6*page_num+6]
     except:
         try:
             if request.user.student:
-                books = list(Book.objects.filter(adult_only=False))[4*page_num:4*page_num+4]
+                books = list(Book.objects.filter(adult_only=False))[6*page_num:6*page_num+6]
         except:
-            books = list(Book.objects.all())[4*page_num:4*page_num+4]
-    if len(list(Book.objects.all())[4*(page_num+1):4*(page_num+1)+4]) < 1:
+            books = list(Book.objects.all())[6*page_num:6*page_num+6]
+    if len(list(Book.objects.all())[6*(page_num+1):6*(page_num+1)+6]) < 1:
         return render(request, "book_cataloge/bookPages.html", {"books": books, "plus": page_num, "minus": page_num-1,"last": True})
 
     return render(request, "book_cataloge/bookPages.html",{"books": books, "plus": page_num + 1, "minus": page_num - 1, "last": False})

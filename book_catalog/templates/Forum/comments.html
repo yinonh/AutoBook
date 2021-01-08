@@ -2,22 +2,33 @@
 {% block content %}
 
 <div class="container text-center">
-
-     <div class="card" style="width: 70rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{ forum.title }}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">{{ forum.student.user.username }}</h6>
-    <p class="card-text">{{ forum.text }}</p>
+    <div class="container text-center">
 <br><br>
+
+<br>
+        <h1 align="center">Student Forum</h1>
+    <br><br>
+        <div class="card bg-light mb-3" style="max-width: 100rem;">
+  <div class="card-header">
+<h5 align="center">Topic:</h5><h5 class="card-header">{{ forum.title }}</h5>
+  </div>
+  <div class="card-body">
+    <h6 class="card-title">{{ forum.text }}</h6>
+    <p class="card-text" align="left">Posted by: {{ forum.student.user.username }}</p>
+      <p class="card-text" align="right"> {{ forum.forumdate }}</p>
+  </div>
+</div>
+  <h3 style="color: #205067">Comments</h3>
       {% for comment in commentim %}
 
         <div class="card">
   <div class="card-header">
-    {{ comment.student.user.username }}
+    <h5>{{ comment.title }}</h5>
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{ comment.title }}</h5>
-      <p class="card-text">{{ comment.text }}</p>
+    <h6 class="card-title">{{ comment.text }}</h6>
+      <p class="card-text" align="left"> Posted by: {{ comment.student.user.username }}</p>
+      <p class="card-text" align="right"> {{ comment.commentdate }}</p>
   </div>
 </div>
     {% endfor %}
@@ -28,15 +39,19 @@
 </button>
   {% else %}
         <br>
-        <h5>add commit:</h5>
+        <h5>Add Comment:</h5>
         <form method="POST">
         {% csrf_token %}
             {{ error }}
             {{ form.as_p }}
 
-        <button type="submit" class="btn btn-primary">submit</button>
+        <button type="submit" class="btn btn-primary">Post</button>
         </form>
   {% endif %}
+    <br><a href="{% url 'Forum' %}" class="btn btn-info">Back To Forum</a>
   </div>
 <br><br>
+
+</div>
+
 {% endblock %}
