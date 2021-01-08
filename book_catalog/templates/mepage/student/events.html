@@ -1,9 +1,12 @@
 {% extends "mepage/student/stylestudent.html" %}
 
 {% block content %}
+    <br><br>
 {% if events|length == 0 %}
+    <br><br>
     <h2 align="center"><u>There Are No Upcoming Events.</u></h2>
     {% else %}
+    <br><br>
     <h2 align="center"><u>Upcoming Events</u></h2>
    {% for event in events %}
 	<tr>
@@ -18,7 +21,7 @@
 		{% endif %}
 			<td><tr align="right" width="1000"><h5>{{ event.title }}
             {% if request.user.student in event.registerstudent.all %}
-               <h5 class="text-success"> registerd</h5>
+               <h5 class="text-success"> Registered</h5>
                 {% endif %}
 
             </h5><br>{{ event.text|truncatechars:100 }}</tr></td>
@@ -29,7 +32,7 @@
        <form method="GET" action="{% url 'registerEvent' event.id %}" name="takeBook">
                         {% csrf_token %}
 
-                        <button class="btn btn-primary" name="posses" onclick="myFunction()" type="submit">overview</button>
+                        <button class="btn btn-primary" name="posses" onclick="myFunction()" type="submit">Overview</button>
        </form>
 
     	{% endfor %}

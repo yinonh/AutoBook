@@ -15,9 +15,11 @@
   <div class="card-body">
     <h6 class="card-title">{{ forum.text }}</h6>
     <p class="card-text" align="left">Posted by: {{ forum.student.user.username }}</p>
+      <p class="card-text" align="right"> {{ forum.forumdate }}</p>
       <a href="{% url 'comments' forum.id %}" class="btn btn-info">comments</a>
   </div>
 </div>
+        <br><br>
     {% endfor %}
         <br><br>
 
@@ -26,13 +28,13 @@
     <a href="{% url 'contact' %}" style="color: #FFFFFF">You are band<br>Click To Contact Us</a>
 </button>
     {% else %}
-        <h5>add Forum:</h5>
+        <h5>Add Thread:</h5>
         <form method="POST">
         {% csrf_token %}
             {{ error }}
             {{ form.as_p }}
 
-        <button type="submit" class="btn btn-primary">submit</button>
+        <button type="submit" class="btn btn-primary">Post</button>
         </form>
     {% endif %}
 

@@ -38,6 +38,7 @@
 	padding-left:150px;
 }
 </style>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     {% load static %}
 <a class="navbar-brand" href="{% url "homepage" %}"><img src="{% static 'book_catalog/defult.png' %}" height="60" width="60" href="{% url "homepage" %}"></a>
@@ -48,15 +49,15 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link text-primary" href="{% url "homepage" %}">home <span class="sr-only" href="{% url "homepage" %}">home</span></a>
+        <a class="nav-link text-primary" href="{% url "homepage" %}">Home <span class="sr-only" href="{% url "homepage" %}">Home</span></a>
       </li>
       <li class="nav-item"  href="{% url "bookcataloge" %}">
-        <a class="nav-link text-primary text size-12" href="{% url "bookcataloge" %}">books catalog</a>
+        <a class="nav-link text-primary text size-12" href="{% url "bookcataloge" %}">Books Catalog</a>
       </li>
     {% if not user.is_superuser %}
 
       <li class="nav-item" href="{% url "simple" %}">
-        <a class="nav-link text-primary" href="{% url 'simple' %}">simple mode</a>
+        <a class="nav-link text-primary" href="{% url 'simple' %}">Simple Mode</a>
       </li>
 <li class="nav-item" href="{% url "contact" %}">
         <a class="nav-link text-primary" href="{% url 'contact' %}">Contact Us</a>
@@ -77,7 +78,7 @@
             {% endif %}
       </li>
             <li class="nav-item"  href="{% url "logoutuser" %}">
-        <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>
+        <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">LogOut</a>
                     <form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
                         {% csrf_token %}
                         <button id="signOutBtn" type="submit">Logout</button>
@@ -86,13 +87,13 @@
         {% else %}
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          sign in
+          Sign In
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item"href="{% url 'loginU' %}">log in</a>
-          <a class="dropdown-item"href="{% url 'signupuser' %}">register</a>
+          <a class="dropdown-item"href="{% url 'loginU' %}">Login</a>
+          <a class="dropdown-item"href="{% url 'signupuser' %}">Register</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item"href="{% url 'admin:index' %}">admin</a>
+          <a class="dropdown-item"href="{% url 'admin:index' %}">Admin</a>
         </div>
       </li>
         {% endif %}

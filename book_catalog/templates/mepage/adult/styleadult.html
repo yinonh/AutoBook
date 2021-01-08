@@ -38,7 +38,7 @@
         <a class="nav-link text-primary" href="{% url 'contact' %}">Contact Us</a>
       </li>
             <li class="nav-item"  href="{% url "logoutuser" %}">
-        <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>
+        <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">LogOut</a>
                     <form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
                         {% csrf_token %}
                         <button id="signOutBtn" type="submit">Logout</button>

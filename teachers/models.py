@@ -5,7 +5,7 @@ class Teacher(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField(max_length=500)
     HourRate = models.IntegerField(null=True, default='25')
-
+    email= models.EmailField(null=True,default=None)
     About = models.TextField(max_length=500,null=True, default='None')
     Teacher_Name= models.CharField(max_length=40,null=True, default=None)
     Teacher_date = models.DateField(blank=True, null=True, default=None)

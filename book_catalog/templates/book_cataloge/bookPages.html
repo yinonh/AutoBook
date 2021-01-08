@@ -3,30 +3,31 @@
 
 
 
-<div class="grid-container" align="center">
+<div class="container text-center">
 <br><br>
 <h1>catalog</h1>
 <br>
-
+<div class="grid-container">
     {% for book in books %}
             <div class="grid-item">
                 <div class="card" style="width: 12rem;">
                     <img src="{{ book.image.url }}" class="card-img-top" alt="...">
                     <h5 class="card-title">{{ book.name|truncatechars:15}}</h5>
                     <div class="card-body"><h6>{{ book.author_name }}</h6>
-                    <a href="{% url 'book_card' book.id %}" class="btn btn-primary">overview</a>
+                    <a href="{% url 'book_card' book.id %}" class="btn btn-primary">Overview</a>
                 </div>
                 </div>
             </div>
     {% endfor %}
 </div>
+</div>
     <br>
     <div class="container text-center">
 
-<a href="{% url 'bookPage' minus   %}" class="btn btn-danger">previous page</a>
+<a href="{% url 'bookPage' minus   %}" class="btn btn-danger">Previous Page</a>
 {#        {% if books|length == 3%}#}
         {% if not last %}
-<a href="{% url 'bookPage' plus   %}" class="btn btn-danger">next page</a>
+<a href="{% url 'bookPage' plus   %}" class="btn btn-danger">Next Page</a>
     {% endif %}
     </div>
     <br>

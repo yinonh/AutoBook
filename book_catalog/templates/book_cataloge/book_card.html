@@ -89,7 +89,7 @@
 
                 {% endif %}
 
-            {% elif bookPosses < 3 %}
+            {% elif countbooks < 3 %}
                 <button class="btn btn-success" name="posses" onclick="myFunction()" type="submit">Take Book</button>
                 <script>
     function myFunction() {
@@ -97,7 +97,7 @@
     }
     </script>
                 {% else %}
-                <a href="{% url 'mestudentpossesses' %}" class="btn btn-danger">you already posses 3 books</a>
+                <a href="{% url 'mestudentpossesses' %}" class="btn btn-danger">You Already Posses 3 Books</a>
                 {% endif %}
             {% endif %}
     {% elif request.user.adult %}
@@ -110,7 +110,7 @@
                  {% if bookPosses < 3 %}
                         <button class="btn btn-success" name="posses" onclick="myFunction()" type="submit">Take Book</button>
                      {% else %}
-                     <a href="{% url 'meadultpossesses' %}" class="btn btn-danger">you already posses 3 books</a>
+                     <a href="{% url 'meadultpossesses' %}" class="btn btn-danger">You Already Posses 3 Books</a>
                      {% endif %}
 <script>
     function myFunction() {
@@ -152,7 +152,7 @@
 {% if request.user.adult and book.study_book == False %}
     <a href="{% url 'add_review' book.id %}" class="btn btn-info">Write Review</a>
 {% endif %}
-
+<br>
 <a href={% url 'bookcataloge' %}><button class="btn btn-primary">Back</button></a>
     <br>
     <br><br>
@@ -171,7 +171,7 @@
                     <h5 class="card-title">{{ suggestion.name|truncatechars:15}}</h5>
 
                     <div class="card-body size"><h6>{{ suggestion.author_name }}</h6>
-                    <a href="{% url 'book_card' suggestion.id %}" class="btn btn-info">overview</a>
+                    <a href="{% url 'book_card' suggestion.id %}" class="btn btn-info">Overview</a>
                     </div>
                 </div>
             </div>

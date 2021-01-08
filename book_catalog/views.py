@@ -18,14 +18,14 @@ def simple (request):
 def bookcataloge (request):
     try:
         if request.user.adult:
-            books = list(Book.objects.filter(study_book=False,kids=False))[:4]
+            books = list(Book.objects.filter(study_book=False,kids=False))[:6]
 
     except:
         try:
             if request.user.student:
-                books = list(Book.objects.filter(adult_only=False))[:4]
+                books = list(Book.objects.filter(adult_only=False))[:6]
         except:
-            books = list(Book.objects.all())[:4]
+            books = list(Book.objects.all())[:6]
 
 
     return render(request,'book_cataloge/bookcataloge.html',{'books': books})
@@ -60,10 +60,16 @@ def book_card(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     reviews = Review.objects.filter(book= book)
     rank, count = 0, 0
+    countbooks = 0
     for reviw in reviews:
         rank += reviw.rank
         count += 1
-
+    try:
+        for book1 in request.user.student.Studentposses.all():
+            if book1.study_book == False:
+                countbooks += 1
+    except:
+        pass
     if request.method == "POST":
         if "favourite" in request.POST:
             request.user.adult.FavouriteBooks.add(book)
@@ -105,7 +111,10 @@ def book_card(request, book_id):
         except:
             bookPosses=0
     rank = rank//count if count > 0 else 0
-    return render(request, 'book_cataloge/book_card.html', {'book': book, 'suggestions': suggestions, 'rank': range(rank),"empty":range(5 - rank),"bookPosses": bookPosses })
+
+
+
+    return render(request, 'book_cataloge/book_card.html', {'book': book, 'suggestions': suggestions, 'rank': range(rank),"empty":range(5 - rank),"bookPosses": bookPosses,'countbooks':countbooks})
 
 
 def bookPage(request, page_num):
@@ -113,15 +122,17 @@ def bookPage(request, page_num):
         return redirect("bookcataloge")
     try:
         if request.user.adult:
-            books = list(Book.objects.filter(study_book=False,kids=False))[4*page_num:4*page_num+4]
-
+            books = list(Book.objects.filter(study_book=False,kids=False))[6*page_num:6*page_num+6]
     except:
         try:
             if request.user.student:
-                books = list(Book.objects.filter(adult_only=False))[4*page_num:4*page_num+4]
+                books = list(Book.objects.filter(adult_only=False))[6*page_num:6*page_num+6]
         except:
-            books = list(Book.objects.all())[4*page_num:4*page_num+4]
-    if len(list(Book.objects.all())[4*(page_num+1):4*(page_num+1)+4]) < 1:
+            if request.user.is_superuser== False:
+                books = list(Book.objects.filter(adult_only=False))[6*page_num:6*page_num+6]
+            else:
+                books=list(Book.objects.all())[6*page_num:6*page_num+6]
+    if len(list(Book.objects.all())[6*(page_num+1):6*(page_num+1)+6]) < 1:
         return render(request, "book_cataloge/bookPages.html", {"books": books, "plus": page_num, "minus": page_num-1,"last": True})
 
     return render(request, "book_cataloge/bookPages.html",{"books": books, "plus": page_num + 1, "minus": page_num - 1, "last": False})

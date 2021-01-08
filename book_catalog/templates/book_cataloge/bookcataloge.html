@@ -13,7 +13,7 @@
                     <img src="{{ book.image.url }}" class="card-img-top" alt="...">
                     <h5 class="card-title">{{ book.name|truncatechars:15}}</h5>
                     <div class="card-body size"><h6>{{ book.author_name }}</h6>
-                    <a href="{% url 'book_card' book.id %}" class="btn btn-info">overview</a>
+                    <a href="{% url 'book_card' book.id %}" class="btn btn-info">Overview</a>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
 
 <br><br><br><br>
 
-    <h1>catalog</h1>
+    <h1>Catalog</h1>
 
 <div class="grid-container">
     {% for book in books %}
@@ -32,22 +32,22 @@
                     <img src="{{ book.image.url }}" class="card-img-top" alt="...">
                     <h5 class="card-title">{{ book.name|truncatechars:15}}</h5>
                     <div class="card-body"><h6>{{ book.author_name }}</h6>
-                    <a href="{% url 'book_card' book.id %}" class="btn btn-primary">overview</a>
+                    <a href="{% url 'book_card' book.id %}" class="btn btn-primary">Overview</a>
                 </div>
                 </div>
             </div>
     {% endfor %}
 </div>
 
-    <a href="{% url 'bookPage' 1 %}" class="btn btn-danger">next page</a>
+    <a href="{% url 'bookPage' 1 %}" class="btn btn-danger">Next Page</a>
     <br><br>
 
 
-<h2>filter by:</h2>
+<h2>Filter By:</h2>
 <table class="table table-bordered text-center">
    <tbody>
        <tr>
-           <td>book name:</td>
+           <td>Book Name:</td>
            <td><input type="text" id="Name" name="Name"></td>
        </tr>
         <tr>
