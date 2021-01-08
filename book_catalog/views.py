@@ -36,7 +36,7 @@ def contact(request):
 def filteredbooks (request):
     books = Book.objects.all()
     if request.GET.get('genre')!='All':
-        books = list(filter(lambda x:x.genre == request.GET.get('genre'), books))
+        books = list(filter(lambda x: x.genre == request.GET.get('genre'), books))
     elif request.GET.get("AuthorName"):
         books = list(filter(lambda x: request.GET.get('AuthorName').lower() in x.author_name.lower(), books))
     elif request.GET.get("Name"):
