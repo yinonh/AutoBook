@@ -9,7 +9,11 @@
                 <div class="card" style="width: 12rem;">
                     <img src="{{ book.image.url }}" class="card-img-top" alt="...">
                     <h5 class="card-title">{{ book.name|truncatechars:15}}</h5>
-                    <div class="card-body"><h6> {{ book.length }} Minutes </h6>
+                    {% if book.length  != None %}
+                        <div class="card-body"><h6> {{ book.length }} Minutes </h6>
+                    {% else %}
+                        <div class="card-body"><h6>  </h6>
+                    {% endif %}
                     <a href="{{ book.link }}" class="btn btn-info">Listen Now !</a>
                 </div>
                 </div>
