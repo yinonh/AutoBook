@@ -30,7 +30,7 @@ class Book (models.Model):
     Grade_CHOICES = (
         (1, 1), (2, 2),(3, 3),(4, 4),(5, 5),(6, 6),(7, 7),(8, 8),(9, 9),(10, 10),(11, 11),(12, 12)
     )
-    Grade = models.IntegerField(default=None, max_length=100, choices=Grade_CHOICES,null=True,blank=True)
+    Grade = models.IntegerField(default=None, choices=Grade_CHOICES,null=True,blank=True)
     Take_Date=models.DateField(default=None,null=True,blank=True)
 
 
@@ -39,7 +39,7 @@ class Book (models.Model):
 
 class AudioBook (models.Model):
     name = models.CharField(max_length=50)
-    length = models.IntegerField(default=None, max_length=100, null=True, blank=True)
+    length = models.IntegerField(default=None, null=True, blank=True)
     link = models.URLField(max_length=200,null=True,default=None,blank=True)
     reader_name = models.CharField(max_length=50, blank=True)
     image = models.ImageField(upload_to='book_catalog/images', default='book_catalog/images/defult.png')

@@ -42,6 +42,19 @@ def meadult(request):
             return redirect('homepage')
         except ValueError:
             return render(request,'mepage/adult/mepageadult.html',{'form1': form1,'error':'Invalid Username Or Password Please Try Again'})
+
+
+@login_required
+def meadultfavourites(request):
+    return render(request, 'mepage/adult/favouritebooks.html')
+
+@login_required
+def meAdultPossesses(request):
+    possessBooks = request.user.adult.Adultposses.all()
+    return render(request, 'mepage/adult/possessedbooks.html',{"possessBooks":possessBooks})
+
+@login_required
+
 @user_passes_test(is_adult)
 def meadultfavourites(request):
     return render(request, 'mepage/adult/favouritebooks.html')
@@ -49,6 +62,7 @@ def meadultfavourites(request):
 def meAdultPossesses(request):
     possessBooks = request.user.adult.Adultposses.all()
     return render(request, 'mepage/adult/possessedbooks.html',{"possessBooks":possessBooks})
+
 @user_passes_test(is_adult)
 def meAdultReturn(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
@@ -75,6 +89,9 @@ def meAdultReturn(request, book_id):
             return redirect("meadultpossesses")
 
     return render(request, 'mepage/adult/meAdultReturn.html',{"book":book})
+
+
+
 @user_passes_test(is_adult)
 def meAdultDamage(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
@@ -89,6 +106,7 @@ def meAdultDamage(request, book_id):
         elif 'no' in request.POST:
             return redirect("meadultpossesses")
     return render(request, 'mepage/adult/meAdultDamage.html',{"book":book})
+
 @user_passes_test(is_student)
 def meStudentDamage(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
@@ -103,6 +121,9 @@ def meStudentDamage(request, book_id):
         elif 'no' in request.POST:
             return redirect("mestudentpossesses")
     return render(request, 'mepage/student/meStudentDamage.html',{"book":book})
+
+
+
 @user_passes_test(is_student)
 def meStudentReturn(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
@@ -129,6 +150,18 @@ def meStudentReturn(request, book_id):
             return redirect("mestudentpossesses")
 
     return render(request, 'mepage/student/meStudentReturn.html', {"book": book})
+
+
+@login_required
+def mestudent(request):
+    return render(request, 'mepage/student/mepagestudent.html')
+
+@login_required
+def mestudentpossesses(request):
+    possessBooks = request.user.student.Studentposses.all()
+    return render(request, 'mepage/student/possessedbooks.html', {"possessBooks": possessBooks})
+
+
 @user_passes_test(is_student)
 def mestudent(request):
     return render(request, 'mepage/student/mepagestudent.html')
@@ -143,6 +176,8 @@ def mestudentevents(request):
     except:
         events = None
     return render(request, 'mepage/student/events.html',{"events":events})
+
+
 @user_passes_test(is_student)
 def registerEvents(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
@@ -156,6 +191,8 @@ def registerEvents(request, event_id):
         return redirect("mestudentevents")
 
     return render(request, 'mepage/student/registerEvent.html', {"event": event})
+
+
 @user_passes_test(is_student)
 def mestudentlendedbooks(request):
     books=Book.objects.all()
@@ -173,6 +210,9 @@ def mestudentlendedbooks(request):
 @user_passes_test(is_admin)
 def meadminpage(request):
     return render(request, 'mepage/admin/reports.html')
+
+
+
 @user_passes_test(is_admin)
 def getout(request):
     if request.method == 'POST':
@@ -203,6 +243,8 @@ def getout(request):
     books = Book.objects.filter(posses=True,takenout=False)
     books = list(filter(lambda x:not x.takenout,books))
     return render(request, 'mepage/admin/getout.html',{'books':books})
+
+
 @user_passes_test(is_admin)
 def getin(request):
     if request.method == 'POST':
@@ -231,6 +273,8 @@ def getin(request):
     books = list(filter(lambda x:not x.returned,books))
 
     return render(request, 'mepage/admin/getin.html',{'books':books})
+
+
 @user_passes_test(is_admin)
 def damaged (request):
     if request.method == 'POST':
@@ -242,6 +286,8 @@ def damaged (request):
             book.save()
     books = Book.objects.filter(Is_Damaged=True)
     return render(request, 'mepage/admin/damaged.html',{'books':books})
+
+
 @user_passes_test(is_admin)
 def delayed (request):
     books=Book.objects.all()
@@ -274,6 +320,9 @@ def delayed (request):
 
     print(delayedbooks)
     return render(request, 'mepage/admin/delayed.html',{'books':delayedbooks})
+
+
+
 @user_passes_test(is_admin)
 def forumbanned (request):
     bannedstudents=Student.objects.filter(Forum_Banned=True)
@@ -286,6 +335,9 @@ def forumbanned (request):
                     student.save()
                     bannedstudents = Student.objects.filter(Forum_Banned=True)
     return render(request, 'mepage/admin/forumbanned.html',{'students':bannedstudents})
+
+
+
 @user_passes_test(is_admin)
 def adultbanned (request):
     bannedadults=Adult.objects.filter(Is_Banned=True)
