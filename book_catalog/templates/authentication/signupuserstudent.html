@@ -1,18 +1,19 @@
 {% extends 'home/style.html' %}
-
 {% block content %}
-    <div class="registration">
-        <h1>Register</h1>
 
-        <form method="POST" action="{% url 'signupstudent' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {{ profile_form.as_p }}
-            <input type="submit" value ="Create Account">
-        </form>
+    <div class="container px-lg-5">
+        <div class="col mx-lg-n5">
+            <div class="row py-3 px-lg-5"><h1 style="color:dodgerblue">Register</h1></div>
+                <div class="row py-3 px-lg-5 border bg-light">
+                    <form method="POST" action="{% url 'signupstudent' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        {{ profile_form.as_p }}
+                        <input type="submit" value ="Create Account">
+                    </form>
+                </div>
+                </div>
+          </div>
     </div>
-    <br>
-    <br>
-    <br>
-
+<br><br><br><br>
 {% endblock %}
