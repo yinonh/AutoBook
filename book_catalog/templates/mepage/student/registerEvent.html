@@ -24,12 +24,12 @@
      <form method="POST" action="{% url 'registerEvent' event.id %}">
                         {% csrf_token %}
 
-         <button class="btn btn-success" name="register" onclick="myFunction()" type="submit">register</button>
+         <button class="btn btn-success" name="register" onclick="myFunction()" type="submit">Register</button>
        </form>
     {% else %}
         <form method="POST" action="{% url 'registerEvent' event.id %}">
                         {% csrf_token %}
-        <button class="btn btn-danger" name="cancelled" onclick="myFunction()" type="submit">cancelled</button>
+        <button class="btn btn-danger" name="cancelled" onclick="myFunction()" type="submit">Cancel Register</button>
 </form>
     {% endif %}
     <br>

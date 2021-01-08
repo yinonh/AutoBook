@@ -1,33 +1,24 @@
 {% extends "mepage/adult/styleadult.html" %}
 
 {% block content %}
-<div class="container text-center">
-    <h1>Me</h1><br>
-    <h2>My Favorites</h2><br>
 
-    {% if user.adult.FavouriteBooks.all|length == 0 %}
-      <h2>You Don't Own Any Books In Favourites.</h2>
+{% if user.adult.FavouriteBooks.all|length == 0 %}
+      <h2>You Don't Have Any Favourited Books.</h2>
         {% else %}
-    <h2 class="alert alert-warning">
-        <table style="table:table-bordered table-striped text-center">
-            <tr>
-        {% for book in user.adult.FavouriteBooks.all %}
-
-        <th><h4>{{ book.name|truncatechars:15 }} <br>by <br>{{ book.author_name }}</h4></th>
-
-        {% endfor %}
-        </tr>
-      <tr>
-
-
-
-         {% for book in user.adult.FavouriteBooks.all %}
-          <th><a href="{% url 'book_card' book.id %}"><img src="{{ book.image.url }}" height="90" width="90"></a></th>
-         {% endfor %}
-    {% endif %}
-        </tr>
-    </table>
-    </h2>
+<div class="container text-center">
+<div class="grid-container">
+<br><br><h2 style="color: gold"> My Favorites </h2><br><br>
+    {% for book in user.adult.FavouriteBooks.all %}
+            <div class="grid-item">
+                <div class="card" style="width: 12rem;">
+                    <img src="{{ book.image.url }}" class="card-img-top" alt="...">
+                    <h5 class="card-title">{{ book.name|truncatechars:15}}</h5>
+                    <div class="card-body"><h6>{{ book.author_name }}</h6>
+                    <a href="{% url 'book_card' book.id %}" class="btn btn-primary">overview</a>
+                </div>
+                </div>
+         </div>
+    {% endfor %}
+{% endif %}
 </div>
-
 {% endblock %}

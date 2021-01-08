@@ -1,7 +1,7 @@
 {% extends 'book_cataloge/style.html' %}
 {% block content %}
     <br><br><br>
-    <h1 align="center">{{ book.name }}</h1>
+    <h1 align="center">Reviews About : "{{ book.name }}"</h1>
     <br><br>
     {% for review in reviews %}
         <div class="card bg-light mb-3" style="max-width: 100rem;">

@@ -17,7 +17,9 @@
                 </div>
          </div>
     {% endfor %}
-<br><br><h2> Book For Your Grade : {{ user.student.grade }}</h2><br><br>
+</div>
+
+<br><br><h2> More Books For Grade {{ user.student.grade }}: </h2><br><br>
     {% for book in books %}
      {% if book.Grade == user.student.grade and book not in lendbooks%}
             <div class="grid-item">
@@ -32,7 +34,7 @@
         {% endif %}
     {% endfor %}
 </div>
-</div>
+
 
 {% endblock %}
 

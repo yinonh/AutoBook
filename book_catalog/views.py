@@ -25,7 +25,7 @@ def bookcataloge (request):
             if request.user.student:
                 books = list(Book.objects.filter(adult_only=False))[:6]
         except:
-            books = list(Book.objects.all())[:4]
+            books = list(Book.objects.all())[:6]
 
 
     return render(request,'book_cataloge/bookcataloge.html',{'books': books})
@@ -128,7 +128,10 @@ def bookPage(request, page_num):
             if request.user.student:
                 books = list(Book.objects.filter(adult_only=False))[6*page_num:6*page_num+6]
         except:
-            books = list(Book.objects.all())[6*page_num:6*page_num+6]
+            if request.user.is_superuser== False:
+                books = list(Book.objects.filter(adult_only=False))[6*page_num:6*page_num+6]
+            else:
+                books=list(Book.objects.all())[6*page_num:6*page_num+6]
     if len(list(Book.objects.all())[6*(page_num+1):6*(page_num+1)+6]) < 1:
         return render(request, "book_cataloge/bookPages.html", {"books": books, "plus": page_num, "minus": page_num-1,"last": True})
 

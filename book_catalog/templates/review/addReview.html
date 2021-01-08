@@ -1,17 +1,18 @@
 {% extends 'book_cataloge/style.html' %}
 {% block content %}
-
+<div class="container text-center">
 <br><br><br>
 
-    <h2>write review: </h2>
+    <h2>Write Review: </h2>
+    <br>
     <h5>{{ error }}</h5>
 
     <form method="POST">
         {% csrf_token %}
             {{ form.as_p }}
 
-        <button type="submit">submit</button>
+        <button type="submit" class="btn btn-primary">Post</button>
         </form>
 
-
+</div>
 {% endblock %}
