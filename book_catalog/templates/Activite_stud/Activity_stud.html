@@ -9,13 +9,14 @@
         <div class="card bg-light mb-3" style="max-width: 100rem;">
   <div class="card-header">
 
-<h5 class="card-title">{{ activity.title }}</h5>
+<h3 class="card-title" align="center">{{ activity.title }}</h3>
 
   </div>
   <div class="card-body">
-
-      <a href="{{ activity.link }}" target="_blank">link</a>
-    <p class="card-text">{{ activity.grade }}</p>
+<div class="container text-center">
+      <a href="{{ activity.link }}" target="_blank">Click Here</a>
+    <p class="card-text"><h5>For Class: {{ activity.grade }}</h5></p>
+</div>
   </div>
 </div>
     {% endfor %}

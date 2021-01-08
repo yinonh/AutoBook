@@ -42,8 +42,8 @@
         <a class="nav-link text-primary text size-12" href="{% url "meadultpossesses" %}">Me</a>
             {% endif %}
             {% if user.student.grade %}
-            <li class="nav-item"  href="{% url "mestudent" %}">
-        <a class="nav-link text-primary text size-12" href="{% url "mestudent" %}">Me</a>
+            <li class="nav-item"  href="{% url "mestudentpossesses" %}">
+        <a class="nav-link text-primary text size-12" href="{% url "mestudentpossesses" %}">Me</a>
             {% endif %}
             {% if user.is_superuser %}
             <li class="nav-item"  href="{% url "meadminpage" %}">

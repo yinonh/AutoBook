@@ -134,7 +134,7 @@ def mestudent(request):
     return render(request, 'mepage/student/mepagestudent.html')
 @user_passes_test(is_student)
 def mestudentpossesses(request):
-    possessBooks = request.user.student.Studentposses.all()
+    possessBooks = request.user.student.Studentposses.filter(study_book=False)
     return render(request, 'mepage/student/possessedbooks.html', {"possessBooks": possessBooks})
 @user_passes_test(is_student)
 def mestudentevents(request):
