@@ -12,7 +12,7 @@
 }
 </style>
 
-<br><br><h2> Book You Lend: </h2>
+
 
 <div class="rcorners">
 <div class="container">
@@ -20,24 +20,49 @@
     <div class="row">
 
     <div class="grid-container alert-secondary">
-        {% for book in lendbooks %}
-                <div class="grid-item alert-secondary">
-                    <div class="card alert-secondary" style="width: 12rem;">
-                        <img src="{{ book.image.url }}" class="card-img-top" alt="...">
-                        <h5 class="card-title">{{ book.name|truncatechars:15}}</h5>
-                        <div class="card-body"><h6>{{ book.author_name }}</h6>
-                        <a href="{% url 'book_card' book.id %}" class="btn btn-primary">overview</a>
+
+    {% if not lendbooks %}
+    <br><br><h2> You Dont Own Any Lended Books. </h2>
+    {% else %}
+        {% for book in  lendbooks %}
+                        <div class="grid-item">
+                            <div class="card alert-secondary" style="width: 12rem;">
+                                <img src="{{ book.image.url }}" class="card-img-top" alt="...">
+                                <h5 class="card-title">{{ book.name|truncatechars:15}}</h5>
+                                <div class="card-body"><h6>{{ book.author_name }}</h6>
+                                    {% if book.takenout == False %}
+                                        <button class="btn btn-warning" type="submit">Waiting For Admin Confirmation</button>
+                                        <form method="POST" action="{% url 'meStudentReturn' book.id %}" >
+                                        {% csrf_token %}
+                                        <button class="btn btn-primary" name="cancelrequest" type="submit">Cancel Request</button>
+                                        </form>
+                                    {% else %}
+                                    {% if book.returned == False  %}
+                                        <button class="btn btn-warning" type="submit">Waiting For Admin Confirmation</button>
+                                        <form method="POST" action="{% url 'meStudentReturn' book.id %}" >
+                                        {% csrf_token %}
+                                        <button class="btn btn-primary" name="cancelreturn" type="submit">Cancel Request</button>
+                                        </form>
+                                    {% else %}
+                                        <form method="POST" action="{% url 'meStudentReturn' book.id %}" >
+                                        {% csrf_token %}
+                                        <button class="btn btn-primary" type="submit">Return Book</button>
+                                        </form>
+
+                                    {% endif %}
+                                {% endif %}
+                            </div>
                     </div>
-                    </div>
-             </div>
-        {% endfor %}
+                </div>
+                {% endfor %}
+    {% endif %}
     </div>
 
 
 	</div>
     <div class="row">
   <div class="grid-container alert-secondary">
-    <br><br><h2> More Books For Grade {{ user.student.grade }}: </h2><br><br>
+    <br><br><h2 align="center"> More Books For Grade {{ user.student.grade }}: </h2><br><br>
         {% for book in books %}
          {% if book.Grade == user.student.grade and book not in lendbooks%}
                 <div class="grid-item alert-secondary">

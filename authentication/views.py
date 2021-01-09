@@ -24,7 +24,6 @@ def studentsignupuser(request):
     if request.method == 'POST':
         form = ExtendedUserCreationForm(request.POST)
         profile_form = UserProfileForm(request.POST)
-        print(form.errors)
         if form.is_valid() and profile_form.is_valid():
             user = form.save()
 
@@ -36,14 +35,14 @@ def studentsignupuser(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            print("befor")
             return redirect("homepage")
-        print("after")
     else:
         form = ExtendedUserCreationForm()
-        profile_form = UserProfileForm()
+        profile_form= UserProfileForm()
+    if "clicked" in request.POST:
+        return render(request, 'authentication/signupuserstudent.html',{'form': form, 'profile_form': profile_form, 'error': "Bad Data Please Try Again"})
 
-    context = {'form': form, 'profile_form': profile_form}
+    context= {'form': form, 'profile_form':profile_form,'error': ""}
 
     return render(request, 'authentication/signupuserstudent.html', context)
 
@@ -51,29 +50,26 @@ def studentsignupuser(request):
 
 
 def adultsignupuser(request):
-    if request.method == 'POST':
+    if request.method == 'POST' :
         form=ExtendedUserCreationForm(request.POST)
         profile_form=AdultProfileForm(request.POST)
-
         if form.is_valid() and profile_form.is_valid():
             user = form.save()
-
             profile=profile_form.save(commit=False)
             profile.user = user
-
             profile.save()
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username,password=password)
             login(request, user)
-            print("befor")
             return redirect('homepage')
-        print("after")
     else:
         form = ExtendedUserCreationForm()
         profile_form= AdultProfileForm()
+    if "clicked" in request.POST:
+        return render(request, 'authentication/signupuseradult.html',{'form': form, 'profile_form': profile_form, 'error': "Bad Data Please Try Again"})
 
-    context= {'form': form, 'profile_form':profile_form}
+    context= {'form': form, 'profile_form':profile_form,'error': ""}
 
     return render(request, 'authentication/signupuseradult.html', context)
 
@@ -90,7 +86,7 @@ def loginU(request):
     else:
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         if user is None:
-            return render(request, 'authentication/login.html', {'form': AuthenticationForm(), 'error': "worng username or password"})
+            return render(request, 'authentication/login.html', {'form': AuthenticationForm(), 'error': "Wrong username or password"})
         else:
             login(request, user)
             return redirect('homepage')

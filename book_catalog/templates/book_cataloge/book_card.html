@@ -149,7 +149,7 @@
 
 {% endif %}
 
-{% if request.user.adult and book.study_book == False %}
+{% if request.user.adult and book.study_book == False and request.user.adult.Is_Banned == False %}
     <a href="{% url 'add_review' book.id %}" class="btn btn-info">Write Review</a>
 {% endif %}
 <br><br>

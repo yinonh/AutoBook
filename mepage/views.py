@@ -209,6 +209,13 @@ def mestudentlendedbooks(request):
 
 @user_passes_test(is_admin)
 def meadminpage(request):
+    if request.method == 'POST':
+        print("imhere")
+        students=Student.objects.all()
+        for student in students:
+            if student.grade != 12:
+                student.grade+=1
+                student.save()
     return render(request, 'mepage/admin/reports.html')
 
 

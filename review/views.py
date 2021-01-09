@@ -29,9 +29,15 @@ def addReview(request, book_id):
 @login_required
 def allReview(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
+    reviews = Review.objects.filter(book=book)
+    rank, count = 0, 0
+    for reviw in reviews:
+        rank += reviw.rank
+        count += 1
     reviews = []
     for review in Review.objects.all():
         if (book in review.book.all()):
             reviews.append(review)
+    rank = rank / count if count > 0 else 0
 
-    return render(request, "review/allReview.html", {"book": book,"reviews":reviews})
+    return render(request, "review/allReview.html", {"book": book,"reviews":reviews,"rank":rank})

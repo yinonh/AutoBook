@@ -26,6 +26,9 @@ def searchresults(request):
         for book in books:
             if query.lower() in book.name.lower():
                 result.append(book)
+        for book in books:
+            if query.lower() in book.key_words.lower():
+                result.append(book)
         for event in events:
             if query.lower() in event.title.lower():
                 eventres.append(event)

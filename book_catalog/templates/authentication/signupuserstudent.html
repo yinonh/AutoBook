@@ -4,12 +4,15 @@
     <div class="container px-lg-5">
         <div class="col mx-lg-n5">
             <div class="row py-3 px-lg-5"><h1 style="color:dodgerblue">Register</h1></div>
+            {% if error != "" %}
+            <h2 class="alert alert-danger">{{ error }}</h2>
+                {% endif %}
                 <div class="row py-3 px-lg-5 border bg-light">
-                    <form method="POST" action="{% url 'signupstudent' %}">
+                    <form method="POST" name="clicked" action="{% url 'signupstudent' %}" >
                         {% csrf_token %}
                         {{ form.as_p }}
                         {{ profile_form.as_p }}
-                        <input type="submit" value ="Create Account">
+                        <input type="submit" name="clicked" value ="Create Account">
                     </form>
                 </div>
                 </div>

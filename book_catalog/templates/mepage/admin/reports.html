@@ -72,7 +72,12 @@ tr:nth-child(even) {
   </tr>
 
 </table>
-
+    <br><br><br>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="Add Year">
+    </form>
+</div>
 </body>
 </html>
 {% endblock %}
