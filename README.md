@@ -178,7 +178,7 @@ SOFTWARE.
 
 ## Author Info
 
-- Googl Drive - [Drive](https://twitter.com/jamesqquick)
-- Website - [AutoBook](https://jamesqquick.com)
+- Googl Drive - [Drive](https://drive.google.com/drive/folders/1CQn1Eo5loU1D98TSUGAgSxYFpUU7x1qk?usp=sharing)
+- Website - [AutoBook](https://autobook.pythonanywhere.com)
 
 [Back To The Top](#library-project)
