@@ -1,0 +1,79 @@
+{% extends "mepage/admin/styleadmin.html" %}
+{% block content %}
+    <br>
+    <br>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #E0FFFF;
+}
+</style>
+</head>
+<body>
+
+<h2>Delayed Books</h2>
+
+<table>
+  <tr>
+    <th>Book Name</th>
+    <th>Id book</th>
+    <th>Days Delayed</th>
+      <th>Type</th>
+    <th>Username</th>
+
+
+  </tr>
+  <tr>
+      {% if books|length == 0 %}
+
+    {% else %}
+
+    {% for book in books %}
+    <td>{{ book.0.name }}</td>
+    <td>{{  book.0.id  }}</td>
+    <td> {{ book.1 }}</td>
+        {% if book.0.study_book %}
+            <td> Annual Loan</td>
+        {% else %}
+            <td>Standard</td>
+
+        {% endif %}
+
+        <td> {{ book.2 }}</td>
+
+
+
+
+  <tr>
+         <br>
+    {% endfor %}
+
+</td>
+
+    <br>
+
+    {% endif %}
+      </tr>
+
+</table><br><br>
+</body>
+</html>
+<a href={% url 'meadminpage' %}><button class="btn btn-primary">Back</button></a>
+{% endblock %}
+}

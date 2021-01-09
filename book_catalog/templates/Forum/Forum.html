@@ -1,0 +1,43 @@
+{% extends "mepage/student/stylestudent.html" %}
+{% block content %}
+
+    <div class="container text-center">
+<br><br>
+
+<br>
+        <h1 align="center">Student Forum:</h1>
+    <br><br>
+    {% for forum in forums %}
+        <div class="card bg-light mb-3" style="max-width: 100rem;">
+  <div class="card-header">
+<h5 class="card-header">{{ forum.title }}</h5>
+  </div>
+  <div class="card-body">
+    <h6 class="card-title">{{ forum.text }}</h6>
+    <p class="card-text" align="left">Posted by: {{ forum.student.user.username }}</p>
+      <p class="card-text" align="right"> {{ forum.forumdate }}</p>
+      <a href="{% url 'comments' forum.id %}" class="btn btn-info">Comments</a>
+  </div>
+</div>
+        <br><br>
+    {% endfor %}
+        <br><br>
+
+    {% if user.student.Forum_Banned %}
+        <button type="button" class="btn btn-danger">
+    <a href="{% url 'contact' %}" style="color: #FFFFFF">You are band<br>Click To Contact Us</a>
+</button>
+    {% else %}
+        <h5>Add Thread:</h5>
+        <form method="POST">
+        {% csrf_token %}
+            {{ error }}
+            {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+    {% endif %}
+
+    </div>
+
+{% endblock %}

@@ -1,5 +1,8 @@
 from django.urls import path,include
 from . import views
+from teachers import views as teachersviews
+from Activite_stud import views as Act_views
+
 
 urlpatterns = [
     path('Adult/', views.meadult, name="meadult"),
@@ -12,11 +15,17 @@ urlpatterns = [
     path('Student/Possesses/<int:book_id>/', views.meStudentReturn, name="meStudentReturn"),
     path('Student/Possesses/Damaged/<int:book_id>/', views.meStudentDamage, name="meStudentDamage"),
     path('Student/Events/', views.mestudentevents, name="mestudentevents"),
+    path('Student/Activities/',Act_views.Activity_stud , name="activity"),
     path('Student/Events/<int:event_id>/', views.registerEvents, name="registerEvent"),
+    path('Student/Teachers/', teachersviews.teachers, name="teachers"),
+    path('Student/Teachers/<int:teacher_id>/', teachersviews.teachercard, name="teachercard"),
     path('Student/LendedBooks/', views.mestudentlendedbooks, name="melendedbooks"),
     path('Admin/Reports/', views.meadminpage, name="meadminpage"),
     path('getout/',views.getout,name="getout"),
     path('getin/',views.getin,name="getin"),
     path('damaged/',views.damaged,name="damaged"),
+    path('delayed/',views.delayed,name="delayed"),
+    path('forumbanned/',views.forumbanned,name="forumbanned"),
+    path('adultsbanned/',views.adultbanned,name="adultbanned"),
 
 ]

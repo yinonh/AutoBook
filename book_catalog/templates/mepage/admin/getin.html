@@ -46,16 +46,20 @@ tr:nth-child(even) {
     {% for book in books %}
     <td>{{ book.name }}</td>
     <td>{{  book.id  }}</td>
-    <td>&emsp;Took In  <input type="checkbox" name="book.id" value="{{ book.id }}"
-  </tr>
-  <tr>
+        <td>Took In  <input type="checkbox" name="book.id" value="{{ book.id }}"></td>
+<tr>
          <br>
     {% endfor %}
+
+    <br>
+
     {% endif %}
-      </tr>
+</tr>
+</td>
 </table>
     <br><br>
-    <input type="submit" class="btn btn-success" value="Submit"></td>
+
+    <input type="submit" class="btn btn-success" value="Submit">
           </form>
 
 

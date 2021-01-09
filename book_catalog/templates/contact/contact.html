@@ -1,23 +1,24 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-{% load static %}
-<img src="{% static 'book_catalog/defult.png' %}" height="100" width="100">
+{% extends 'home/style.html' %}
+{% block content %}
 <div class="container text-center">
-<h1>Contact Page:</h1>
     <br>
-    <h2>Contact Library:</h2>
-    <br>Address: Jabutinsky Av. 153, Beer Sheva , Israel
-    <br>Phone:08-6413533
-    <br>Mail: <a href=mailto:main@br7library.com>main@br7library.com</a>
-    <br><br>Main Librarian: Yossi Cohen<br>Mail: <a href=mailto:Yossico@br7library.com>Yossico@br7library.com</a>
-    <br>
-    <br><h2>Contact Software Developers:</h2>
-    Mail: <a href=mailto:Contact@autobookservice.com>Contact@autobookservice.com</a>
+    <h2><u>Contact Us:</u></h2><br>
+    <h4>Phone:08-6413533</h4>
+    <h5>Mail: <a href=mailto:main@br7library.com>main@br7library.com</h5></a>
+    <h4>Main Librarian: Yossi Cohen</h4>
+    <h5>Mail: <a href=mailto:Yossico@br7library.com>Yossico@br7library.com</a></h5><br>
+    <h3><i>looking forward to see you</i></h3>
+    <h5>Address: Jabutinsky Av. 153, Beer Sheva , Israel</h5>
+    <br><h4>Contact Software Developers:</h4>
+    <h5>Mail: <a href=mailto:Contact@autobookservice.com>Contact@autobookservice.com</a></h5>
 
 <br>
 <br>
-<a href={% url 'simple' %}><button class="btn btn-primary">Back</button></a>
+<a href={% url 'homepage' %}><button class="btn btn-primary">Home</button></a>
 
     <br>
     <br>
     <br>
     <br>
+</div>
+{% endblock %}

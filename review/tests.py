@@ -1,3 +1,7 @@
 from django.test import TestCase
+from teachers.models import Teacher
 
-# Create your tests here.
+class Teachertest(TestCase):
+    def test_setUp(self):
+        Teacher.objects.create()
+

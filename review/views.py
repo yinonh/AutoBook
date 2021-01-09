@@ -2,7 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from review.forms import ReviewForm
 from review.models import Review
 from book_catalog.models import Book
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def addReview(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     userReview = request.user.adult.reviews.filter(book=book)
@@ -20,11 +22,11 @@ def addReview(request, book_id):
             newReview.save()
             newReview.book.add(book)
             request.user.adult.reviews.add(newReview)
-            return redirect("homepage")
+            return redirect("book_card", book_id)
         else:
             return render(request, "review/addReview.html", {"form": ReviewForm(), "book_id": book_id,"error":"bad data"})
 
-
+@login_required
 def allReview(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     reviews = []

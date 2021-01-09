@@ -1,7 +1,12 @@
 {% extends "mepage/adult/styleadult.html" %}
 
 {% block content %}
+    <div class="container px-lg-5">
+        <div class="col mx-lg-n5">
+            <div class="row py-3 px-lg-5"><h1 style="color:dodgerblue">Edit Profile</h1></div>
+                <div class="row py-3 px-lg-5 border bg-light">
     <h2 style="color: red">{{ error }} </h2>
+<<<<<<< HEAD
     <div class="container px-lg-5">
         <div class="col mx-lg-n5">
             <div class="row py-3 px-lg-5"><h1 style="color:dodgerblue">Edit Profile</h1></div>
@@ -12,9 +17,23 @@
                 {#     {{ form2.as_p }}#}
                     <button type="submit"> Save</button>
                     </form>
+=======
+    <form method="POST">
+    {% csrf_token %}
+    {{ form1.as_p }}
+{#     {{ form2.as_p }}#}
+    <button type="submit"> Save</button>
+    </form>
+>>>>>>> 0b99b948d9b526fd7258c5866e571764ecc9a423
                 </div>
                 </div>
           </div>
     </div>
+<<<<<<< HEAD
+=======
+<br><br><br><br>
+
+
+>>>>>>> 0b99b948d9b526fd7258c5866e571764ecc9a423
 
 {% endblock %}

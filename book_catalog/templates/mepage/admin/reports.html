@@ -20,6 +20,7 @@ td, th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+  text-align: center;
 }
 
 tr:nth-child(even) {
@@ -29,8 +30,9 @@ tr:nth-child(even) {
 </head>
 <body>
 
-
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<div class="container text-center">
+<br>
 <table>
   <tr>
     <th>Reports</th>
@@ -38,21 +40,36 @@ tr:nth-child(even) {
 
   </tr>
   <tr>
-    <td>Books needed to take out report </td>
+    <td>Books To Take Out </td>
     <td><a href={% url 'getout' %}><button class="btn btn-primary">GO</button></a></td>
 
   </tr>
   <tr>
 
-  <td>Books to fix report</td>
+  <td>Books To Fix</td>
     <td> <a href={% url 'damaged' %}><button class="btn btn-primary">GO</button></a></td>
 
   </tr>
   <tr>
-  <td> Books needed to bring in report</td>
+  <td> Books To Bring In</td>
     <td><a href={% url 'getin' %}><button class="btn btn-primary">GO</button></a></td>
   </tr>
   <tr>
+  <td> Delayed Books</td>
+    <td><a href={% url 'delayed' %}><button class="btn btn-primary">GO</button></a></td>
+
+  </tr>
+
+    <tr>
+  <td> Forum Banned Students</td>
+    <td><a href={% url 'forumbanned' %}><button class="btn btn-primary">GO</button></a></td>
+
+  </tr>
+    <tr>
+  <td> Banned Adults</td>
+    <td><a href={% url 'adultbanned' %}><button class="btn btn-primary">GO</button></a></td>
+
+  </tr>
 
 </table>
 

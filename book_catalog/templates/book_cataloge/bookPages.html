@@ -1,0 +1,80 @@
+{% extends 'book_cataloge/style.html' %}
+{% block content %}
+
+
+
+<div class="container text-center">
+<br><br>
+<h1>catalog</h1>
+<br>
+<div class="grid-container">
+    {% for book in books %}
+            <div class="grid-item">
+                <div class="card" style="width: 12rem;">
+                    <img src="{{ book.image.url }}" class="card-img-top" alt="...">
+                    <h5 class="card-title">{{ book.name|truncatechars:15}}</h5>
+                    <div class="card-body"><h6>{{ book.author_name }}</h6>
+                    <a href="{% url 'book_card' book.id %}" class="btn btn-primary">Overview</a>
+                </div>
+                </div>
+            </div>
+    {% endfor %}
+</div>
+</div>
+    <br>
+    <div class="container text-center">
+
+<a href="{% url 'bookPage' minus   %}" class="btn btn-danger">Previous Page</a>
+{#        {% if books|length == 3%}#}
+        {% if not last %}
+<a href="{% url 'bookPage' plus   %}" class="btn btn-danger">Next Page</a>
+    {% endif %}
+    </div>
+    <br>
+    <br>
+<div class="container text-center">
+	<form action={% url "filteredbooks" %}>
+
+<h2>filter by:</h2>
+<table class="table table-bordered text-center">
+   <tbody>
+       <tr>
+           <td>book name:</td>
+           <td><input type="text" id="Name" name="Name"></td>
+       </tr>
+        <tr>
+           <td>Author Name:</td>
+           <td><input type="text" id="AuthorName" name="AuthorName"></td>
+        </tr>
+   </tbody>
+</table>
+
+{% if not user.adult %}
+Study Book: <input type="checkbox" name="Study_Book"><br>
+    {% endif %}
+Available:<input type="checkbox" name="Available" checked><br>
+
+    <br>
+        Genre<select name="genre">
+            <option value="Drama">Drama</option>
+            <option value="Roman">Roman</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Poetry">Poetry</option>
+            <option value="Short story">Short story</option>
+            <option value="Thriller" >Thriller</option>
+            <option value="Science fiction">Science fiction</option>
+            <option value="Horror">Horror</option>
+            <option value="Fairytale">Fairytale</option>
+            <option value="Comic book">Comic book</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Food">Food</option>
+            <option value="Study Book">Study Book</option>
+            <option value="All"selected="All">All</option>
+        </select><br><br>
+   <input type="submit" value="Show" class="btn btn-primary"><br><br>
+</form></div>
+
+
+{% endblock %}
+

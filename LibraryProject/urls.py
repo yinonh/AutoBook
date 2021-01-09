@@ -39,14 +39,23 @@ urlpatterns = [
     path('signup/student/', authentication_views.studentsignupuser, name="signupstudent"),
     path('signup/adult/', authentication_views.adultsignupuser, name="signupadult"),
     path('signup/', authentication_views.signupuser, name="signupuser"),
-    path('logoutuser/', authentication_views.logoutuser, name="logoutuser"),
+    path(r'^logout', authentication_views.logoutuser, name="logoutuser"),
     path('loginU/', authentication_views.loginU, name="loginU"),
+
+
+
+
 
     #Me page
     path('Me/', include('mepage.urls')),
     # path('Me/Adult/', mepage_views.meadult, name="meadult"),
     # # path('Me/Adult/Favourites/', mepage_views.meadultfavourites, name="meadultfavourites"),
     # path('Me/Student/', mepage_views.mestudent, name="mestudent"),
+    #Search
+    path('Results/',homepage_views.searchresults,name='results'),
+    path('Forum/', include('Forum.urls')),
+
+
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

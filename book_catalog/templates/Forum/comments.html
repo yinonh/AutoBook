@@ -1,0 +1,57 @@
+{% extends "mepage/student/stylestudent.html" %}
+{% block content %}
+
+<div class="container text-center">
+    <div class="container text-center">
+<br><br>
+
+<br>
+        <h1 align="center">Student Forum</h1>
+    <br><br>
+        <div class="card bg-light mb-3" style="max-width: 100rem;">
+  <div class="card-header">
+<h5 align="center">Topic:</h5><h5 class="card-header">{{ forum.title }}</h5>
+  </div>
+  <div class="card-body">
+    <h6 class="card-title">{{ forum.text }}</h6>
+    <p class="card-text" align="left">Posted by: {{ forum.student.user.username }}</p>
+      <p class="card-text" align="right"> {{ forum.forumdate }}</p>
+  </div>
+</div>
+  <h3 style="color: #205067">Comments</h3>
+      {% for comment in commentim %}
+
+        <div class="card">
+  <div class="card-header">
+    <h5>{{ comment.title }}</h5>
+  </div>
+  <div class="card-body">
+    <h6 class="card-title">{{ comment.text }}</h6>
+      <p class="card-text" align="left"> Posted by: {{ comment.student.user.username }}</p>
+      <p class="card-text" align="right"> {{ comment.commentdate }}</p>
+  </div>
+</div>
+    {% endfor %}
+
+  {% if user.student.Forum_Banned %}
+  <button type="button" class="btn btn-danger">
+    <a href="{% url 'contact' %}" style="color: #FFFFFF">You are band<br>Click To Contact Us</a>
+</button>
+  {% else %}
+        <br>
+        <h5>Add Comment:</h5>
+        <form method="POST">
+        {% csrf_token %}
+            {{ error }}
+            {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+  {% endif %}
+    <br><a href="{% url 'Forum' %}" class="btn btn-info">Back To Forum</a>
+  </div>
+<br><br>
+
+</div>
+
+{% endblock %}
