@@ -11,7 +11,6 @@
 - [Description](#description)
 - [Requirements](#requirements)
 - [UML](#uml)
-- [References](#references)
 - [License](#license)
 - [Author Info](#author-info)
 
@@ -139,11 +138,6 @@ System management and database changes are all managed by the librarian without 
 
 ![UML image](https://i.ibb.co/0h8CWRX/Library.png)
 
-[Back To The Top](#library-project)
-
----
-
-## References
 [Back To The Top](#library-project)
 
 ---
