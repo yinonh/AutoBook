@@ -50,7 +50,7 @@ def studentsignupuser(request):
 
 
 def adultsignupuser(request):
-    if request.method == 'POST' :
+    if request.method == 'POST':
         form=ExtendedUserCreationForm(request.POST)
         profile_form=AdultProfileForm(request.POST)
         if form.is_valid() and profile_form.is_valid():
@@ -90,6 +90,3 @@ def loginU(request):
         else:
             login(request, user)
             return redirect('homepage')
-
-
-

@@ -12,10 +12,10 @@ import datetime
 def home(request):
     return render(request, 'home/home.html')
 
-def simple (request):
+def simple(request):
     return render(request, 'home/simple.html')
 
-def bookcataloge (request):
+def bookcataloge(request):
     try:
         if request.user.adult:
             books = list(Book.objects.filter(study_book=False,kids=False))[:6]
@@ -33,7 +33,7 @@ def bookcataloge (request):
 def contact(request):
     return render(request,'contact/contact.html')
 
-def filteredbooks (request):
+def filteredbooks(request):
     books = Book.objects.all()
     if request.GET.get('genre')!='All':
         books = list(filter(lambda x: x.genre == request.GET.get('genre'), books))

@@ -1,9 +1,44 @@
 from django.test import TestCase
 from book_catalog.models import Book, AudioBook
-"""import unittest
-from book_catalog import views"""
+
+from django.test import RequestFactory, TestCase
+from django.utils import timezone
+from django.utils.timezone import now
+from django.contrib.auth.models import AnonymousUser, User
+
+from .views import *
+from mepage.views import audobooks
+
 
 class Booktest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_simple(self):
+        request = self.factory.get('simple')
+        response = simple(request)
+        self.assertEqual(response.status_code, 200)
+        self.assertNotEqual(response.status_code, 404)
+
+    def test_home(self):
+        request = self.factory.get('home')
+        response = home(request)
+        self.assertEqual(response.status_code, 200)
+        self.assertNotEqual(response.status_code, 404)
+
+    def test_bookcatalog(self):
+        request = self.factory.get('bookcataloge')
+        response = bookcataloge(request)
+        self.assertEqual(response.status_code, 200)
+        self.assertNotEqual(response.status_code, 404)
+
+    def test_searchresults(self):
+        request = self.factory.get('filteredbooks')
+        response = filteredbooks(request)
+        self.assertEqual(response.status_code, 200)
+        self.assertNotEqual(response.status_code, 404)
+
+
     def test_setUp(self):
         Book.objects.create(name='hieexei',
                             author_name='jhcccs',
@@ -57,6 +92,7 @@ class Booktest(TestCase):
         lambda3=list(filter(lambda x: abcd_book.name.lower() in x.name.lower(), books))
         result= lambda3
         self.assertEqual(result[0],abcde_book)
+
     def test_lambda4(self):
         abcde_book = Book.objects.create(name='abcde', author_name='temp', summary='temp', key_words='temp',
                                             genre='Fairytale',
@@ -86,7 +122,17 @@ class Booktest(TestCase):
         self.assertEqual(result[0],abcde_book)
 
 class AudioBooktest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+
     def test_setUp(self):
         AudioBook.objects.create(name="Sdg", length=4, key_words="dfsd", genre='Study Book')
         AudioBook.objects.create(name="Sdg", length=4, key_words="dfsd", genre='Study Book')
+
+    def test_audobooks(self):
+        request = self.factory.get('audobooks')
+        response = audobooks(request)
+        self.assertEqual(response.status_code, 200)
+        self.assertNotEqual(response.status_code, 404)
 

@@ -44,20 +44,21 @@ def meadult(request):
             return render(request,'mepage/adult/mepageadult.html',{'form1': form1,'error':'Invalid Username Or Password Please Try Again'})
 
 
-@login_required
-def meadultfavourites(request):
-    return render(request, 'mepage/adult/favouritebooks.html')
+# # @login_required
+# def meadultfavourites(request):
+#     return render(request, 'mepage/adult/favouritebooks.html')
 
 @login_required
 def meAdultPossesses(request):
     possessBooks = request.user.adult.Adultposses.all()
     return render(request, 'mepage/adult/possessedbooks.html',{"possessBooks":possessBooks})
 
-@login_required
+
 
 @user_passes_test(is_adult)
 def meadultfavourites(request):
     return render(request, 'mepage/adult/favouritebooks.html')
+
 @user_passes_test(is_adult)
 def meAdultPossesses(request):
     possessBooks = request.user.adult.Adultposses.all()
@@ -153,10 +154,6 @@ def meStudentReturn(request, book_id):
 
 
 @login_required
-def mestudent(request):
-    return render(request, 'mepage/student/mepagestudent.html')
-
-@login_required
 def mestudentpossesses(request):
     possessBooks = request.user.student.Studentposses.all()
     return render(request, 'mepage/student/possessedbooks.html', {"possessBooks": possessBooks})
@@ -165,10 +162,12 @@ def mestudentpossesses(request):
 @user_passes_test(is_student)
 def mestudent(request):
     return render(request, 'mepage/student/mepagestudent.html')
+
 @user_passes_test(is_student)
 def mestudentpossesses(request):
     possessBooks = request.user.student.Studentposses.filter(study_book=False)
     return render(request, 'mepage/student/possessedbooks.html', {"possessBooks": possessBooks})
+
 @user_passes_test(is_student)
 def mestudentevents(request):
     try:
@@ -283,7 +282,7 @@ def getin(request):
 
 
 @user_passes_test(is_admin)
-def damaged (request):
+def damaged(request):
     if request.method == 'POST':
         id_list = request.POST.getlist('book.id')
         for bookid in id_list:

@@ -1,7 +1,9 @@
 from django.urls import path,include
 from . import views
+from . import tests
 from teachers import views as teachersviews
 from Activite_stud import views as Act_views
+from teachers import tests as techersTest
 
 
 urlpatterns = [
@@ -27,5 +29,26 @@ urlpatterns = [
     path('delayed/',views.delayed,name="delayed"),
     path('forumbanned/',views.forumbanned,name="forumbanned"),
     path('adultsbanned/',views.adultbanned,name="adultbanned"),
+
+    ###### test#######
+
+    path('Student/Teachers/<int:teacher_id>/', techersTest.teachercard1, name="teachercard1"),
+    path('Student/Teachers/', techersTest.teachers1, name="teachers1"),
+
+
+    path('Student/Events/<int:event_id>/', tests.registerEvents1, name="registerEvent1"),
+    path('Student/Events/', tests.mestudentevents1, name="mestudentevents1"),
+    path('Student/', tests.mestudent1, name="mestudent1"),
+    path('Student/Possesses/<int:book_id>/', tests.meStudentReturn1, name="meStudentReturn1"),
+    path('Student/Possesses/Damaged/<int:book_id>/', tests.meStudentDamage1, name="meStudentDamage1"),
+    path('Adult/Possesses/Damaged/<int:book_id>/', tests.meAdultDamage1, name="meAdultDamage1"),
+    path('Adult/Possesses/<int:book_id>/', tests.meAdultReturn1, name="meAdultReturn1"),
+    path('Adult/Favourites/', tests.meadultfavourites1, name="meadultfavourites1"),
+    path('Admin/Reports/', tests.meadminpage1, name="meadminpage1"),
+    path('getout/',tests.getout1,name="getout1"),
+    path('getin/',tests.getin1,name="getin1"),
+    path('damaged/',tests.damaged1,name="damaged1"),
+    path('delayed/',tests.delayed1,name="delayed1"),
+
 
 ]
