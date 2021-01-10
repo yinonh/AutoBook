@@ -2,7 +2,7 @@
 
 ![Project Image](https://i.ibb.co/9pxmqzf/defult.png)
 
->  Library management system during corona time
+>  Library management system during corona time group 24
 
 ---
 
