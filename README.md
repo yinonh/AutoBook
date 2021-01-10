@@ -10,6 +10,7 @@
 
 - [Description](#description)
 - [Requirements](#requirements)
+- [How To Run](#how-to-run)
 - [UML](#uml)
 - [License](#license)
 - [Author Info](#author-info)
@@ -129,6 +130,15 @@ System management and database changes are all managed by the librarian without 
 - [x] Book details
 - [x] Filter book by name, author name, category and more...
 - [x] Contact page
+
+[Back To The Top](#library-project)
+
+---
+## How To Run
+In order to run the program, the python interpeter must be at least version 3.7 and include these packages:
+ - Django
+ - Pillow
+
 
 [Back To The Top](#library-project)
 
